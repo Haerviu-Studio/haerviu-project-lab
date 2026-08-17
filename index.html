@@ -4,12 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Haerviu — Project Lab</title>
+<title>HAERVIU — Creative Lab</title>
 
 <style>
 
+:root {
+    --gold: #d6a33a;
+    --gold-light: #f3d58a;
+    --black: #050505;
+    --dark: #0c0c0c;
+    --grey: #858585;
+    --white: #f5f5f5;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -17,348 +28,839 @@ html {
 }
 
 body {
-    margin: 0;
+    background: var(--black);
+    color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
-    background: #050505;
-    color: #ffffff;
+    overflow-x: hidden;
 }
 
-/* HERO */
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 5%;
+
+    z-index: 100;
+
+    background: rgba(5,5,5,0.65);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-logo {
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: var(--gold-light);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--gold-light);
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 700px;
+
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+
     overflow: hidden;
 
     background:
-        radial-gradient(circle at 20% 20%, rgba(190,130,35,0.28), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(120,70,20,0.18), transparent 30%),
-        linear-gradient(135deg, #050505, #111111 50%, #030303);
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(210,150,40,0.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(210,150,40,0.13),
+            transparent 30%
+        ),
+        #050505;
 }
 
 .hero::before {
     content: "";
+
     position: absolute;
-    inset: 0;
+    inset: -30%;
 
     background:
-        linear-gradient(
-            115deg,
-            transparent 0%,
-            rgba(255,190,80,0.08) 35%,
-            transparent 55%
+        repeating-radial-gradient(
+            circle at center,
+            transparent 0px,
+            transparent 70px,
+            rgba(255,190,70,0.025) 72px,
+            transparent 74px
         );
 
-    pointer-events: none;
+    animation: rotate 50s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-content {
-    width: min(1100px, 90%);
-    text-align: center;
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
-.logo {
-    font-size: clamp(70px, 13vw, 170px);
-    font-weight: 900;
-    letter-spacing: -8px;
-    line-height: 0.85;
+.hero-small {
+    font-size: 11px;
+    letter-spacing: 7px;
+    color: var(--gold);
+    margin-bottom: 30px;
+}
 
-    background: linear-gradient(
-        180deg,
-        #fff1b0,
-        #d99b2b 45%,
-        #8c5815
-    );
+.hero-title {
+    font-size: clamp(80px, 17vw, 220px);
+
+    font-weight: 900;
+
+    letter-spacing: -10px;
+
+    line-height: 0.75;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff2bb 0%,
+            #e5b84f 35%,
+            #9b671b 70%,
+            #e3b84e 100%
+        );
 
     -webkit-background-clip: text;
     background-clip: text;
+
     color: transparent;
 
     text-shadow:
-        0 0 35px rgba(210,150,40,0.18);
+        0 0 50px rgba(214,163,58,0.15);
 }
 
-.tagline {
-    margin-top: 35px;
-    font-size: clamp(16px, 2vw, 24px);
-    letter-spacing: 7px;
-    text-transform: uppercase;
-    color: #d6d6d6;
-}
-
-.intro {
-    max-width: 720px;
-    margin: 30px auto 0;
-    color: #9d9d9d;
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-.scroll {
-    margin-top: 70px;
-    color: #b88932;
-    font-size: 12px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-}
-
-/* MAIN */
-
-main {
-    width: min(1150px, 90%);
-    margin: auto;
-}
-
-/* SECTION */
-
-.section {
-    padding: 120px 0;
-}
-
-.section-title {
-    font-size: 42px;
-    margin: 0 0 15px;
-    letter-spacing: -1px;
-}
-
-.section-subtitle {
-    color: #777;
-    margin-bottom: 55px;
-    font-size: 16px;
-}
-
-/* CARDS */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
-
-.card {
-    min-height: 300px;
-    padding: 35px;
-
-    border: 1px solid #242424;
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.055),
-            rgba(255,255,255,0.015)
-        );
-
-    position: relative;
-    overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
+.hero-line {
     width: 180px;
-    height: 180px;
-    right: -80px;
-    bottom: -80px;
+    height: 1px;
 
-    background: radial-gradient(
-        circle,
-        rgba(210,150,40,0.18),
-        transparent 70%
-    );
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: #8d641f;
+    margin: 45px auto 30px;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.025)
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
         );
 }
 
-.card-number {
-    font-size: 12px;
-    color: #a67a2c;
-    letter-spacing: 4px;
-    margin-bottom: 45px;
+.hero-subtitle {
+    color: #aaa;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
 }
 
-.card h2 {
-    font-size: 29px;
-    margin: 0 0 18px;
-}
+.hero-description {
+    max-width: 600px;
 
-.card p {
-    color: #888;
-    line-height: 1.7;
+    margin: 30px auto;
+
+    color: #777;
+
+    line-height: 1.8;
+
     font-size: 15px;
 }
 
-/* FEATURE */
+.hero-button {
+    display: inline-block;
 
-.feature {
-    border-top: 1px solid #202020;
-    border-bottom: 1px solid #202020;
+    margin-top: 20px;
 
-    padding: 100px 0;
+    padding: 16px 32px;
+
+    border: 1px solid #80601f;
+
+    color: var(--gold-light);
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+section {
+    width: min(1200px, 90%);
+    margin: auto;
+}
+
+.section {
+    padding: 140px 0;
+}
+
+.section-label {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: clamp(42px, 7vw, 85px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+}
+
+.section-text {
+    max-width: 600px;
+    margin-top: 30px;
+    color: #777;
+    line-height: 1.9;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-section {
+    border-top: 1px solid #1b1b1b;
+}
+
+.music-grid {
+    margin-top: 70px;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
 
-    align-items: center;
+    grid-template-columns:
+        1.4fr
+        1fr;
+
+    gap: 30px;
 }
 
-.feature-label {
-    color: #b88932;
-    font-size: 12px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-}
+.music-main {
+    min-height: 430px;
 
-.feature h2 {
-    font-size: clamp(40px, 6vw, 75px);
-    line-height: 0.95;
-    margin: 20px 0 30px;
-}
+    padding: 45px;
 
-.feature p {
-    color: #888;
-    line-height: 1.8;
-    max-width: 500px;
-}
-
-.visual {
-    height: 420px;
-    border-radius: 25px;
+    border: 1px solid #292929;
 
     background:
         radial-gradient(
-            circle at 35% 35%,
-            rgba(220,160,50,0.35),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 70% 70%,
-            rgba(140,80,20,0.25),
+            circle at 70% 30%,
+            rgba(210,150,40,0.16),
             transparent 30%
         ),
         linear-gradient(
             135deg,
-            #1c1c1c,
-            #050505
+            #151515,
+            #070707
         );
 
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.music-main::before {
+    content: "H";
+
+    position: absolute;
+
+    top: 20px;
+    right: 40px;
+
+    font-size: 230px;
+
+    font-weight: 900;
+
+    color: transparent;
+
+    -webkit-text-stroke:
+        1px rgba(214,163,58,0.12);
+}
+
+.music-number {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+.music-main h3 {
+    font-size: 50px;
+    margin: 15px 0;
+}
+
+.music-main p {
+    color: #777;
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+.music-small {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.music-card {
+    flex: 1;
+
+    padding: 30px;
+
+    border: 1px solid #222;
+
+    background: #0b0b0b;
+
+    transition: 0.3s;
+}
+
+.music-card:hover {
+    border-color: #75551d;
+    transform: translateX(5px);
+}
+
+.music-card span {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+}
+
+.music-card h3 {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+.music-card p {
+    margin-top: 10px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* =========================
+   VISUALS
+========================= */
+
+.visual-section {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+    border-top: 1px solid #1b1b1b;
+}
+
+.visual-box {
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+
     border: 1px solid #292929;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(230,170,55,0.28),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 30% 70%,
+            rgba(120,70,20,0.25),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #191919,
+            #030303
+        );
+}
+
+.visual-box::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(214,163,58,0.25);
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.visual-box::after {
+    content: "HAERVIU";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-90deg);
+
+    font-size: 55px;
+
+    letter-spacing: 15px;
+
+    color: rgba(255,255,255,0.08);
+}
+
+/* =========================
+   LAB
+========================= */
+
+.lab-section {
+    border-top: 1px solid #1b1b1b;
+}
+
+.lab-grid {
+    margin-top: 70px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.lab-item {
+    min-height: 220px;
+
+    padding: 30px;
+
+    border: 1px solid #202020;
+
+    background: #080808;
+
+    transition: 0.3s;
+}
+
+.lab-item:hover {
+    background: #111;
+    border-color: #74531a;
+}
+
+.lab-item span {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+.lab-item h3 {
+    margin-top: 55px;
+    font-size: 22px;
+}
+
+.lab-item p {
+    margin-top: 15px;
+    color: #666;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================
+   MANIFESTO
+========================= */
+
+.manifesto {
+    min-height: 600px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
-    overflow: hidden;
+    text-align: center;
+
+    border-top: 1px solid #1b1b1b;
+    border-bottom: 1px solid #1b1b1b;
 }
 
-.visual::before {
-    content: "H";
+.manifesto h2 {
+    max-width: 1000px;
 
-    font-size: 260px;
-    font-weight: 900;
+    font-size: clamp(45px, 8vw, 105px);
+
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #777
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
 
     color: transparent;
-
-    -webkit-text-stroke: 1px rgba(218,164,67,0.35);
-
-    transform: rotate(-8deg);
 }
 
-/* FOOTER */
+.manifesto p {
+    margin-top: 35px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    letter-spacing: 7px;
+
+    text-transform: uppercase;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-    padding: 70px 0;
+    padding: 90px 5% 40px;
+
     text-align: center;
-    border-top: 1px solid #181818;
 }
 
 .footer-logo {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 5px;
+    font-size: 30px;
+
+    font-weight: 900;
+
+    letter-spacing: 8px;
+
+    color: var(--gold-light);
 }
 
-footer p {
+.footer-links {
+    margin: 35px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.footer-links a {
     color: #666;
-    font-size: 13px;
-    margin-top: 15px;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
 }
 
-/* MOBILE */
+.footer-links a:hover {
+    color: var(--gold);
+}
 
-@media (max-width: 800px) {
+.footer-copy {
+    color: #444;
 
-    .grid {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        letter-spacing: -5px;
+    }
+
+    .music-grid {
         grid-template-columns: 1fr;
     }
 
-    .feature {
+    .visual-section {
         grid-template-columns: 1fr;
-        gap: 40px;
     }
 
-    .visual {
-        height: 300px;
+    .visual-box {
+        height: 400px;
     }
+
+    .lab-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 500px) {
 
     .section {
-        padding: 80px 0;
+        padding: 90px 0;
     }
 
-    .tagline {
-        letter-spacing: 4px;
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-subtitle {
+        letter-spacing: 3px;
+    }
+
+    .hero-title {
+        font-size: 72px;
+    }
+
+    .music-main h3 {
+        font-size: 38px;
+    }
+
+    .manifesto h2 {
+        letter-spacing: -3px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
-<!-- HERO -->
 
-<section class="hero">
+<!-- =========================
+     NAV
+========================= -->
+
+<nav>
+
+    <div class="nav-logo">
+        HAERVIU
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#music">
+            MUSIC
+        </a>
+
+        <a href="#visuals">
+            VISUALS
+        </a>
+
+        <a href="#lab">
+            LAB
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
 
     <div class="hero-content">
 
-        <div class="logo">
+        <div class="hero-small">
+            INDEPENDENT CREATIVE LAB
+        </div>
+
+        <div class="hero-title">
             HAERVIU
         </div>
 
-        <div class="tagline">
+        <div class="hero-line"></div>
+
+        <div class="hero-subtitle">
             Music · Visuals · Experiments
         </div>
 
-        <p class="intro">
-            An independent creative space dedicated to music,
-            visual creations, technology and new ideas.
+        <p class="hero-description">
+            A creative universe built around sound,
+            images, technology and ideas.
+            No fixed boundaries. No predefined direction.
         </p>
 
-        <div class="scroll">
-            Explore the lab ↓
+        <a class="hero-button" href="#music">
+            ENTER THE LAB
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<section class="section music-section" id="music">
+
+    <div class="section-label">
+        01 — MUSIC
+    </div>
+
+    <h2 class="section-title">
+        Sound<br>
+        in motion.
+    </h2>
+
+    <p class="section-text">
+        Electronic music, deep house, world influences,
+        DJ mixes and original productions.
+        Every project starts with a sound and evolves from there.
+    </p>
+
+
+    <div class="music-grid">
+
+        <div class="music-main">
+
+            <div class="music-number">
+                HAERVIU STUDIO
+            </div>
+
+            <h3>
+                Original Music
+            </h3>
+
+            <p>
+                Tracks, ideas, experiments and productions
+                created inside the Haerviu universe.
+            </p>
+
+        </div>
+
+
+        <div class="music-small">
+
+            <div class="music-card">
+
+                <span>
+                    01
+                </span>
+
+                <h3>
+                    Deep House
+                </h3>
+
+                <p>
+                    Groove, atmosphere and movement.
+                </p>
+
+            </div>
+
+
+            <div class="music-card">
+
+                <span>
+                    02
+                </span>
+
+                <h3>
+                    World Fusion
+                </h3>
+
+                <p>
+                    Traditional sounds meeting electronic production.
+                </p>
+
+            </div>
+
+
+            <div class="music-card">
+
+                <span>
+                    03
+                </span>
+
+                <h3>
+                    Experiments
+                </h3>
+
+                <p>
+                    Unexpected combinations and new directions.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
@@ -366,186 +868,166 @@ footer p {
 </section>
 
 
-<main>
+<!-- =========================
+     VISUALS
+========================= -->
 
-    <!-- PROJECTS -->
+<section class="section visual-section" id="visuals">
 
-    <section class="section">
-
-        <h1 class="section-title">
-            The Project Lab
-        </h1>
-
-        <p class="section-subtitle">
-            A place where sound, images and ideas become projects.
-        </p>
+    <div class="visual-box"></div>
 
 
-        <div class="grid">
+    <div>
 
-            <div class="card">
-
-                <div class="card-number">
-                    01 — MUSIC
-                </div>
-
-                <h2>
-                    Sound
-                </h2>
-
-                <p>
-                    Original tracks, electronic music,
-                    DJ mixes and experiments combining
-                    modern production with sounds from around the world.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-number">
-                    02 — VISUALS
-                </div>
-
-                <h2>
-                    Visuals
-                </h2>
-
-                <p>
-                    Music videos, cinematic images,
-                    visual identities and creative worlds
-                    built around each project.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-number">
-                    03 — LAB
-                </div>
-
-                <h2>
-                    Experiments
-                </h2>
-
-                <p>
-                    AI, hardware, production techniques,
-                    new ideas and everything that happens
-                    behind the scenes.
-                </p>
-
-            </div>
-
+        <div class="section-label">
+            02 — VISUALS
         </div>
 
-    </section>
+        <h2 class="section-title">
+            Music<br>
+            becomes<br>
+            image.
+        </h2>
+
+        <p class="section-text">
+            Cinematic worlds, artwork, music videos,
+            visual experiments and digital creations.
+            The visual identity is part of the music,
+            not simply an illustration of it.
+        </p>
+
+    </div>
+
+</section>
 
 
-    <!-- FEATURE -->
+<!-- =========================
+     LAB
+========================= -->
 
-    <section class="feature">
+<section class="section lab-section" id="lab">
 
-        <div>
+    <div class="section-label">
+        03 — THE LAB
+    </div>
 
-            <div class="feature-label">
-                Haerviu Studio
-            </div>
+    <h2 class="section-title">
+        Behind<br>
+        the sound.
+    </h2>
 
-            <h2>
-                Create.<br>
-                Experiment.<br>
-                Evolve.
-            </h2>
+    <p class="section-text">
+        This is where ideas are tested.
+        Hardware, software, AI, production,
+        video and everything that helps create
+        something different.
+    </p>
+
+
+    <div class="lab-grid">
+
+        <div class="lab-item">
+
+            <span>
+                HARDWARE
+            </span>
+
+            <h3>
+                Machines
+            </h3>
 
             <p>
-                Haerviu Project Lab is an evolving creative space.
-                Music is at the center, but the project goes beyond
-                sound: visuals, technology, AI and experimentation
-                are all part of the same universe.
+                Synthesizers, drum machines,
+                samplers and studio equipment.
             </p>
 
         </div>
 
 
-        <div class="visual"></div>
+        <div class="lab-item">
 
-    </section>
+            <span>
+                AI
+            </span>
 
+            <h3>
+                New Tools
+            </h3>
 
-    <!-- PHILOSOPHY -->
-
-    <section class="section">
-
-        <h1 class="section-title">
-            No limits.
-        </h1>
-
-        <p class="section-subtitle">
-            The laboratory is always evolving.
-        </p>
-
-
-        <div class="grid">
-
-            <div class="card">
-
-                <div class="card-number">
-                    SOUND
-                </div>
-
-                <h2>
-                    Feel
-                </h2>
-
-                <p>
-                    Rhythm, atmosphere, emotion and movement.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-number">
-                    VISION
-                </div>
-
-                <h2>
-                    Imagine
-                </h2>
-
-                <p>
-                    Create worlds that exist beyond the music.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-number">
-                    FUTURE
-                </div>
-
-                <h2>
-                    Explore
-                </h2>
-
-                <p>
-                    New technologies, AI and unexpected ideas.
-                </p>
-
-            </div>
+            <p>
+                Artificial intelligence used
+                as a creative instrument.
+            </p>
 
         </div>
 
-    </section>
 
-</main>
+        <div class="lab-item">
 
+            <span>
+                VIDEO
+            </span>
+
+            <h3>
+                Moving Images
+            </h3>
+
+            <p>
+                Editing, cinematic projects
+                and visual storytelling.
+            </p>
+
+        </div>
+
+
+        <div class="lab-item">
+
+            <span>
+                IDEAS
+            </span>
+
+            <h3>
+                Unknown
+            </h3>
+
+            <p>
+                Projects that don't have
+                a name yet.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MANIFESTO
+========================= -->
+
+<section class="manifesto" id="about">
+
+    <div>
+
+        <h2>
+            CREATE<br>
+            WHAT DOESN'T<br>
+            EXIST YET.
+        </h2>
+
+        <p>
+            HAERVIU — PROJECT LAB
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -553,11 +1035,32 @@ footer p {
         HAERVIU
     </div>
 
-    <p>
-        Project Lab · Music · Visuals · Experiments
-    </p>
+    <div class="footer-links">
+
+        <a href="#music">
+            MUSIC
+        </a>
+
+        <a href="#visuals">
+            VISUALS
+        </a>
+
+        <a href="#lab">
+            LAB
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
+    </div>
+
+    <div class="footer-copy">
+        © 2026 HAERVIU — PROJECT LAB
+    </div>
 
 </footer>
+
 
 </body>
 </html>
