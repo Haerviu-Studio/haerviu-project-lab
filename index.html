@@ -1,988 +1,563 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>HAERVIU — Music · Visuals · Experiments</title>
+<title>Haerviu — Project Lab</title>
 
-  <style>
+<style>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    body {
-      background: #050505;
-      color: #f4eee3;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #ffffff;
+}
 
-    /* =========================
-       NAVIGATION
-    ========================= */
+/* HERO */
 
-    nav {
-      height: 82px;
-      padding: 0 42px;
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(190,130,35,0.28), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(120,70,20,0.18), transparent 30%),
+        linear-gradient(135deg, #050505, #111111 50%, #030303);
+}
 
-      background: rgba(5,5,5,0.96);
-      border-bottom: 1px solid #2b2112;
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
 
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(255,190,80,0.08) 35%,
+            transparent 55%
+        );
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    pointer-events: none;
+}
 
-      color: #d8a83e;
-      font-size: 23px;
-      letter-spacing: 6px;
-      font-weight: bold;
-    }
+.hero-content {
+    width: min(1100px, 90%);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
 
-    .logo-symbol {
-      width: 42px;
-      height: 42px;
+.logo {
+    font-size: clamp(70px, 13vw, 170px);
+    font-weight: 900;
+    letter-spacing: -8px;
+    line-height: 0.85;
 
-      border: 1px solid #d8a83e;
-      border-radius: 50%;
+    background: linear-gradient(
+        180deg,
+        #fff1b0,
+        #d99b2b 45%,
+        #8c5815
+    );
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
-      font-family: Georgia, serif;
-      font-size: 25px;
-    }
+    text-shadow:
+        0 0 35px rgba(210,150,40,0.18);
+}
 
-    .menu {
-      display: flex;
-      gap: 38px;
-    }
+.tagline {
+    margin-top: 35px;
+    font-size: clamp(16px, 2vw, 24px);
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    color: #d6d6d6;
+}
 
-    .menu a {
-      color: #ddd5c8;
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+.intro {
+    max-width: 720px;
+    margin: 30px auto 0;
+    color: #9d9d9d;
+    font-size: 17px;
+    line-height: 1.8;
+}
 
-      transition: 0.3s;
-    }
+.scroll {
+    margin-top: 70px;
+    color: #b88932;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
 
-    .menu a:hover {
-      color: #d8a83e;
-    }
+/* MAIN */
 
-    /* =========================
-       HERO
-    ========================= */
+main {
+    width: min(1150px, 90%);
+    margin: auto;
+}
 
-    .hero {
-      min-height: 680px;
+/* SECTION */
 
-      position: relative;
-      overflow: hidden;
+.section {
+    padding: 120px 0;
+}
 
-      display: grid;
-      grid-template-columns: 42% 58%;
+.section-title {
+    font-size: 42px;
+    margin: 0 0 15px;
+    letter-spacing: -1px;
+}
 
-      background:
+.section-subtitle {
+    color: #777;
+    margin-bottom: 55px;
+    font-size: 16px;
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card {
+    min-height: 300px;
+    padding: 35px;
+
+    border: 1px solid #242424;
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -80px;
+    bottom: -80px;
+
+    background: radial-gradient(
+        circle,
+        rgba(210,150,40,0.18),
+        transparent 70%
+    );
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: #8d641f;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.08),
+            rgba(255,255,255,0.025)
+        );
+}
+
+.card-number {
+    font-size: 12px;
+    color: #a67a2c;
+    letter-spacing: 4px;
+    margin-bottom: 45px;
+}
+
+.card h2 {
+    font-size: 29px;
+    margin: 0 0 18px;
+}
+
+.card p {
+    color: #888;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* FEATURE */
+
+.feature {
+    border-top: 1px solid #202020;
+    border-bottom: 1px solid #202020;
+
+    padding: 100px 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+
+    align-items: center;
+}
+
+.feature-label {
+    color: #b88932;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.feature h2 {
+    font-size: clamp(40px, 6vw, 75px);
+    line-height: 0.95;
+    margin: 20px 0 30px;
+}
+
+.feature p {
+    color: #888;
+    line-height: 1.8;
+    max-width: 500px;
+}
+
+.visual {
+    height: 420px;
+    border-radius: 25px;
+
+    background:
         radial-gradient(
-          circle at 15% 45%,
-          rgba(190,125,20,0.28),
-          transparent 32%
+            circle at 35% 35%,
+            rgba(220,160,50,0.35),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(140,80,20,0.25),
+            transparent 30%
         ),
         linear-gradient(
-          90deg,
-          #090806 0%,
-          #100c07 42%,
-          #050505 100%
-        );
-    }
-
-    .hero-left {
-      padding: 95px 30px 80px 70px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      color: #c79739;
-      font-size: 12px;
-      letter-spacing: 7px;
-      text-transform: uppercase;
-
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-
-      font-size: clamp(65px, 8vw, 120px);
-      line-height: 0.9;
-
-      letter-spacing: 10px;
-
-      color: #d8a83e;
-
-      text-shadow:
-        0 0 25px rgba(216,168,62,0.15);
-
-      margin-bottom: 30px;
-    }
-
-    .hero-line {
-      width: 180px;
-      height: 1px;
-
-      background: #b98932;
-
-      margin-bottom: 25px;
-    }
-
-    .hero-subtitle {
-      font-size: 15px;
-      letter-spacing: 5px;
-      color: #e5ddd0;
-
-      text-transform: uppercase;
-    }
-
-    .hero-description {
-      max-width: 500px;
-
-      margin-top: 28px;
-
-      color: #999187;
-
-      line-height: 1.8;
-      font-size: 15px;
-    }
-
-    .hero-button {
-      display: inline-block;
-
-      width: fit-content;
-
-      margin-top: 35px;
-
-      padding: 15px 27px;
-
-      border: 1px solid #b88935;
-
-      color: #d8a83e;
-
-      text-decoration: none;
-
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-
-      transition: 0.3s;
-    }
-
-    .hero-button:hover {
-      background: #d8a83e;
-      color: #050505;
-    }
-
-    /* =========================
-       HERO VISUAL
-    ========================= */
-
-    .hero-visual {
-      position: relative;
-
-      min-height: 680px;
-
-      background:
-        radial-gradient(
-          circle at 50% 45%,
-          rgba(180,115,20,0.25),
-          transparent 30%
-        );
-    }
-
-    .studio-circle {
-      position: absolute;
-
-      width: 460px;
-      height: 460px;
-
-      border: 1px solid #8f6725;
-      border-radius: 50%;
-
-      top: 105px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      box-shadow:
-        0 0 80px rgba(192,130,31,0.10);
-    }
-
-    .studio-circle::before {
-      content: "";
-
-      position: absolute;
-
-      width: 380px;
-      height: 380px;
-
-      border: 1px solid #493719;
-      border-radius: 50%;
-
-      top: 39px;
-      left: 39px;
-    }
-
-    .studio-person {
-      position: absolute;
-
-      bottom: 0;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      width: 260px;
-      height: 360px;
-
-      background:
-        linear-gradient(
-          110deg,
-          #090909 0%,
-          #252018 50%,
-          #080808 100%
+            135deg,
+            #1c1c1c,
+            #050505
         );
 
-      border-radius: 130px 130px 30px 30px;
+    border: 1px solid #292929;
 
-      opacity: 0.95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.visual::before {
+    content: "H";
+
+    font-size: 260px;
+    font-weight: 900;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px rgba(218,164,67,0.35);
+
+    transform: rotate(-8deg);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 70px 0;
+    text-align: center;
+    border-top: 1px solid #181818;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 5px;
+}
+
+footer p {
+    color: #666;
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .grid {
+        grid-template-columns: 1fr;
     }
 
-    .studio-person::before {
-      content: "";
-
-      position: absolute;
-
-      width: 120px;
-      height: 120px;
-
-      background: #0a0a0a;
-
-      border-radius: 50%;
-
-      top: -35px;
-      left: 70px;
+    .feature {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
-    .gold-glow {
-      position: absolute;
-
-      width: 12px;
-      height: 12px;
-
-      border-radius: 50%;
-
-      background: #e6b94c;
-
-      box-shadow:
-        0 0 30px 10px rgba(230,185,76,0.5);
+    .visual {
+        height: 300px;
     }
-
-    .glow-one {
-      top: 120px;
-      left: 120px;
-    }
-
-    .glow-two {
-      top: 210px;
-      right: 100px;
-    }
-
-    .vertical-text {
-      position: absolute;
-
-      right: 25px;
-      top: 210px;
-
-      writing-mode: vertical-rl;
-
-      color: #9d7731;
-
-      font-size: 10px;
-      letter-spacing: 5px;
-    }
-
-    /* =========================
-       SECTIONS
-    ========================= */
 
     .section {
-      max-width: 1400px;
-
-      margin: auto;
-
-      padding: 90px 40px;
+        padding: 80px 0;
     }
 
-    .section-header {
-      margin-bottom: 45px;
+    .tagline {
+        letter-spacing: 4px;
     }
+}
 
-    .section-number {
-      color: #a57a2e;
-
-      font-size: 11px;
-      letter-spacing: 4px;
-
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-family: Georgia, serif;
-
-      font-size: 42px;
-
-      letter-spacing: 4px;
-
-      color: #e5d9c5;
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .cards {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 18px;
-    }
-
-    .card {
-      min-height: 330px;
-
-      padding: 30px;
-
-      border: 1px solid #302515;
-
-      background:
-        linear-gradient(
-          145deg,
-          #17130d,
-          #090909
-        );
-
-      position: relative;
-
-      overflow: hidden;
-
-      transition: 0.4s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-
-      border-color: #96702e;
-    }
-
-    .card-number {
-      color: #bd8d35;
-
-      font-size: 32px;
-
-      font-family: Georgia, serif;
-    }
-
-    .card h2 {
-      margin-top: 110px;
-
-      font-family: Georgia, serif;
-
-      font-size: 30px;
-
-      letter-spacing: 3px;
-
-      color: #e0c98d;
-    }
-
-    .card p {
-      margin-top: 15px;
-
-      color: #918a7d;
-
-      line-height: 1.7;
-
-      max-width: 350px;
-    }
-
-    .card-link {
-      display: inline-block;
-
-      margin-top: 25px;
-
-      color: #c79a3b;
-
-      text-decoration: none;
-
-      font-size: 11px;
-
-      letter-spacing: 3px;
-
-      text-transform: uppercase;
-    }
-
-    /* =========================
-       LATEST PROJECT
-    ========================= */
-
-    .latest {
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      border: 1px solid #302515;
-
-      min-height: 360px;
-
-      background: #0c0b09;
-    }
-
-    .latest-art {
-      min-height: 360px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(211,158,52,0.30),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #161006,
-          #050505
-        );
-    }
-
-    .record {
-      width: 250px;
-      height: 250px;
-
-      border-radius: 50%;
-
-      background:
-        repeating-radial-gradient(
-          circle,
-          #090909 0px,
-          #090909 4px,
-          #17130d 5px,
-          #17130d 7px
-        );
-
-      border: 2px solid #9c742c;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      box-shadow:
-        0 0 60px rgba(210,155,48,0.2);
-    }
-
-    .record-label {
-      width: 85px;
-      height: 85px;
-
-      border-radius: 50%;
-
-      background: #b8862d;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: #080706;
-
-      font-family: Georgia, serif;
-
-      font-size: 28px;
-    }
-
-    .latest-content {
-      padding: 55px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .latest-content small {
-      color: #b48631;
-
-      letter-spacing: 4px;
-    }
-
-    .latest-content h2 {
-      font-family: Georgia, serif;
-
-      font-size: 48px;
-
-      letter-spacing: 5px;
-
-      margin: 18px 0;
-    }
-
-    .latest-content p {
-      color: #999186;
-
-      line-height: 1.8;
-
-      max-width: 500px;
-    }
-
-    .listen {
-      display: inline-block;
-
-      width: fit-content;
-
-      margin-top: 30px;
-
-      padding: 14px 25px;
-
-      border: 1px solid #a77a2d;
-
-      color: #d1a044;
-
-      text-decoration: none;
-
-      letter-spacing: 3px;
-
-      font-size: 11px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      text-align: center;
-
-      max-width: 800px;
-
-      margin: auto;
-    }
-
-    .about p {
-      color: #9d968a;
-
-      line-height: 2;
-
-      font-size: 17px;
-    }
-
-    .quote {
-      margin-top: 35px;
-
-      color: #d2b56e;
-
-      font-family: Georgia, serif;
-
-      font-size: 25px;
-
-      font-style: italic;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      border-top: 1px solid #2a2115;
-
-      padding: 40px;
-
-      text-align: center;
-
-      color: #665e51;
-
-      font-size: 11px;
-
-      letter-spacing: 4px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 850px) {
-
-      nav {
-        padding: 0 20px;
-      }
-
-      .menu {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-left {
-        padding: 80px 25px;
-        text-align: center;
-        align-items: center;
-      }
-
-      .hero-visual {
-        min-height: 430px;
-      }
-
-      .studio-circle {
-        width: 330px;
-        height: 330px;
-      }
-
-      .studio-circle::before {
-        width: 270px;
-        height: 270px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .latest {
-        grid-template-columns: 1fr;
-      }
-
-      .latest-content {
-        padding: 40px 25px;
-      }
-
-      .section {
-        padding: 70px 20px;
-      }
-    }
-
-  </style>
+</style>
 </head>
 
 
 <body>
 
-  <!-- NAVIGATION -->
+<!-- HERO -->
 
-  <nav>
+<section class="hero">
 
-    <div class="logo">
+    <div class="hero-content">
 
-      <div class="logo-symbol">
-        H
-      </div>
+        <div class="logo">
+            HAERVIU
+        </div>
 
-      HAERVIU
+        <div class="tagline">
+            Music · Visuals · Experiments
+        </div>
 
-    </div>
+        <p class="intro">
+            An independent creative space dedicated to music,
+            visual creations, technology and new ideas.
+        </p>
 
-
-    <div class="menu">
-
-      <a href="#home">Home</a>
-
-      <a href="#music">Music</a>
-
-      <a href="#visuals">Visuals</a>
-
-      <a href="#experiments">Experiments</a>
-
-      <a href="#about">About</a>
-
-      <a href="#contact">Contact</a>
+        <div class="scroll">
+            Explore the lab ↓
+        </div>
 
     </div>
 
-  </nav>
+</section>
 
 
-  <!-- HERO -->
+<main>
 
-  <section class="hero" id="home">
+    <!-- PROJECTS -->
 
-    <div class="hero-left">
+    <section class="section">
 
-      <div class="eyebrow">
-        Independent Artist · Creative Lab
-      </div>
+        <h1 class="section-title">
+            The Project Lab
+        </h1>
 
-      <h1>
+        <p class="section-subtitle">
+            A place where sound, images and ideas become projects.
+        </p>
+
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-number">
+                    01 — MUSIC
+                </div>
+
+                <h2>
+                    Sound
+                </h2>
+
+                <p>
+                    Original tracks, electronic music,
+                    DJ mixes and experiments combining
+                    modern production with sounds from around the world.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    02 — VISUALS
+                </div>
+
+                <h2>
+                    Visuals
+                </h2>
+
+                <p>
+                    Music videos, cinematic images,
+                    visual identities and creative worlds
+                    built around each project.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    03 — LAB
+                </div>
+
+                <h2>
+                    Experiments
+                </h2>
+
+                <p>
+                    AI, hardware, production techniques,
+                    new ideas and everything that happens
+                    behind the scenes.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURE -->
+
+    <section class="feature">
+
+        <div>
+
+            <div class="feature-label">
+                Haerviu Studio
+            </div>
+
+            <h2>
+                Create.<br>
+                Experiment.<br>
+                Evolve.
+            </h2>
+
+            <p>
+                Haerviu Project Lab is an evolving creative space.
+                Music is at the center, but the project goes beyond
+                sound: visuals, technology, AI and experimentation
+                are all part of the same universe.
+            </p>
+
+        </div>
+
+
+        <div class="visual"></div>
+
+    </section>
+
+
+    <!-- PHILOSOPHY -->
+
+    <section class="section">
+
+        <h1 class="section-title">
+            No limits.
+        </h1>
+
+        <p class="section-subtitle">
+            The laboratory is always evolving.
+        </p>
+
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-number">
+                    SOUND
+                </div>
+
+                <h2>
+                    Feel
+                </h2>
+
+                <p>
+                    Rhythm, atmosphere, emotion and movement.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    VISION
+                </div>
+
+                <h2>
+                    Imagine
+                </h2>
+
+                <p>
+                    Create worlds that exist beyond the music.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    FUTURE
+                </div>
+
+                <h2>
+                    Explore
+                </h2>
+
+                <p>
+                    New technologies, AI and unexpected ideas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
         HAERVIU
-      </h1>
-
-      <div class="hero-line"></div>
-
-      <div class="hero-subtitle">
-        Music · Visuals · Experiments
-      </div>
-
-      <p class="hero-description">
-        A creative journey between sound,
-        imagination and new worlds.
-      </p>
-
-      <a href="#music" class="hero-button">
-        Enter the Lab →
-      </a>
-
     </div>
 
-
-    <div class="hero-visual">
-
-      <div class="studio-circle"></div>
-
-      <div class="studio-person"></div>
-
-      <div class="gold-glow glow-one"></div>
-
-      <div class="gold-glow glow-two"></div>
-
-      <div class="vertical-text">
-        CREATE · FEEL · SHARE
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CREATIVE AREAS -->
-
-  <section class="section">
-
-    <div class="section-header">
-
-      <div class="section-number">
-        01 / CREATIVE UNIVERSE
-      </div>
-
-      <h2 class="section-title">
-        EXPLORE
-      </h2>
-
-    </div>
-
-
-    <div class="cards">
-
-
-      <div class="card" id="music">
-
-        <div class="card-number">
-          01
-        </div>
-
-        <h2>
-          MUSIC
-        </h2>
-
-        <p>
-          Original tracks, Deep House,
-          world influences, grooves and
-          musical experiments.
-        </p>
-
-        <a href="#" class="card-link">
-          Explore Music →
-        </a>
-
-      </div>
-
-
-      <div class="card" id="visuals">
-
-        <div class="card-number">
-          02
-        </div>
-
-        <h2>
-          VISUALS
-        </h2>
-
-        <p>
-          Music videos, cinematic creations,
-          visual worlds and stories built
-          around sound.
-        </p>
-
-        <a href="#" class="card-link">
-          Discover Visuals →
-        </a>
-
-      </div>
-
-
-      <div class="card" id="experiments">
-
-        <div class="card-number">
-          03
-        </div>
-
-        <h2>
-          EXPERIMENTS
-        </h2>
-
-        <p>
-          AI, sound design, new technologies,
-          creative tests and unexpected ideas.
-        </p>
-
-        <a href="#" class="card-link">
-          Enter Experiments →
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- LATEST PROJECT -->
-
-  <section class="section">
-
-    <div class="section-header">
-
-      <div class="section-number">
-        02 / LATEST PROJECT
-      </div>
-
-      <h2 class="section-title">
-        NEW HORIZONS
-      </h2>
-
-    </div>
-
-
-    <div class="latest">
-
-
-      <div class="latest-art">
-
-        <div class="record">
-
-          <div class="record-label">
-            H
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="latest-content">
-
-        <small>
-          A NEW JOURNEY
-        </small>
-
-        <h2>
-          NEW HORIZONS
-        </h2>
-
-        <p>
-          Sound, energy and emotion coming together.
-          A new Haerviu project exploring electronic
-          music, atmosphere and influences from
-          around the world.
-        </p>
-
-        <a href="#" class="listen">
-          Listen Now →
-        </a>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-
-  <!-- ABOUT -->
-
-  <section class="section" id="about">
-
-    <div class="about">
-
-      <div class="section-number">
-        03 / ABOUT
-      </div>
-
-      <h2 class="section-title">
-        THE LAB
-      </h2>
-
-      <p>
-        Haerviu is an independent creative project
-        where music, visuals, technology and
-        imagination meet.
-      </p>
-
-      <p>
-        The studio is the starting point.
-        The world is the inspiration.
-      </p>
-
-      <div class="quote">
-        “The studio is my playground.
-        The world is my inspiration.”
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer id="contact">
-
-    HAERVIU · MUSIC · VISUALS · EXPERIMENTS
-
-  </footer>
-
+    <p>
+        Project Lab · Music · Visuals · Experiments
+    </p>
+
+</footer>
 
 </body>
 </html>
