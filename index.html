@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAERVIU — Project Lab</title>
+
+<title>HAERVIU — Music · Visuals · Experiments</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -19,9 +23,9 @@ html {
 }
 
 body {
-    background: #050403;
+    background: #050505;
     color: #f4eee3;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
@@ -30,782 +34,1387 @@ a {
     text-decoration: none;
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+:root {
+    --gold: #c99a45;
+    --gold-light: #e6bd6c;
+    --gold-dark: #7d5925;
+    --black: #050505;
+    --panel: #090909;
+    --line: rgba(201,154,69,0.32);
+    --white: #f3eee5;
+}
 
-nav {
-    height: 88px;
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+.navbar {
+    height: 86px;
     width: 100%;
-    background: rgba(3,3,3,.96);
-    border-bottom: 1px solid rgba(190,125,30,.25);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 0 42px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+    background: #030303;
+
+    border-bottom: 1px solid rgba(201,154,69,0.12);
+
+    position: relative;
+    z-index: 50;
 }
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+
+/* LOGO */
 
 .logo {
-    width: 54px;
-    height: 54px;
-    border: 1px solid #c88a2b;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    min-width: 260px;
+}
+
+.logo-mark {
+    width: 56px;
+    height: 56px;
+
+    border: 1px solid var(--gold);
+
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #d9a34c;
-    font-family: 'Cinzel', serif;
+
+    color: var(--gold-light);
+
+    font-family: Georgia, serif;
     font-size: 34px;
-    box-shadow: 0 0 20px rgba(196,132,37,.12);
+
+    box-shadow:
+        0 0 12px rgba(201,154,69,0.12),
+        inset 0 0 12px rgba(201,154,69,0.08);
 }
 
-.brand-name {
-    font-family: 'Cinzel', serif;
+.logo-name {
+    color: var(--gold-light);
+
     font-size: 25px;
+    font-weight: 400;
+
     letter-spacing: 8px;
-    color: #d5a04a;
 }
 
-.menu {
+
+/* MENU */
+
+.main-menu {
     display: flex;
     align-items: center;
-    gap: 46px;
-    font-size: 12px;
-    letter-spacing: 3px;
+    justify-content: center;
+
+    gap: 48px;
+
+    height: 100%;
 }
 
-.menu a {
+.main-menu a {
     position: relative;
-    padding: 35px 0;
-    color: #e9e1d5;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+
+    color: #ddd7ce;
+
+    padding: 34px 0;
+
+    transition: color 0.3s ease;
 }
 
-.menu a::after {
+.main-menu a:hover {
+    color: var(--gold-light);
+}
+
+.main-menu a.active::after {
     content: "";
+
     position: absolute;
+
     left: 0;
-    bottom: 26px;
-    width: 0;
+    right: 0;
+    bottom: 18px;
+
     height: 1px;
-    background: #d79a36;
-    transition: .3s;
+
+    background: var(--gold);
 }
 
-.menu a:hover::after,
-.menu a.active::after {
-    width: 100%;
-}
+
+/* SOCIALS */
 
 .socials {
+    min-width: 260px;
+
     display: flex;
-    gap: 22px;
-    color: #d39a3b;
-    font-size: 18px;
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 24px;
 }
 
-/* =========================
+.social {
+    width: 21px;
+    height: 21px;
+
+    border: 1px solid var(--gold);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+}
+
+.social:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
-    min-height: 590px;
     position: relative;
+
+    min-height: 475px;
+
     display: grid;
-    grid-template-columns: 31% 38% 31%;
+
+    grid-template-columns: 29% 42% 29%;
+
     overflow: hidden;
-    border-bottom: 1px solid rgba(194,130,35,.3);
-    background:
-        radial-gradient(circle at 18% 50%, rgba(176,103,18,.25), transparent 28%),
-        radial-gradient(circle at 78% 42%, rgba(153,93,18,.20), transparent 32%),
-        linear-gradient(90deg,#090704,#020202 52%,#090704);
+
+    border-bottom: 1px solid var(--line);
 }
+
+
+/* GOLD DUST BACKGROUND */
 
 .hero::before {
     content: "";
+
     position: absolute;
+
     inset: 0;
+
     background:
-        radial-gradient(circle at 8% 10%, rgba(225,154,48,.35) 0 1px, transparent 2px),
-        radial-gradient(circle at 25% 35%, rgba(225,154,48,.22) 0 1px, transparent 2px),
-        radial-gradient(circle at 75% 20%, rgba(225,154,48,.18) 0 1px, transparent 2px);
-    background-size: 170px 170px, 130px 130px, 210px 210px;
-    opacity: .7;
+        radial-gradient(circle at 12% 25%, rgba(210,153,53,0.35), transparent 15%),
+        radial-gradient(circle at 70% 15%, rgba(190,130,35,0.12), transparent 22%),
+        radial-gradient(circle at 90% 50%, rgba(190,130,35,0.15), transparent 25%),
+        linear-gradient(115deg, #090705, #030303 45%, #080604);
+
+    z-index: 0;
 }
+
+
+/* =========================================================
+   LEFT HERO
+========================================================= */
 
 .hero-left {
     position: relative;
+    z-index: 2;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+
+    overflow: hidden;
 }
 
-.record {
-    width: 350px;
-    height: 350px;
+
+/* VINYL */
+
+.vinyl {
+    width: 355px;
+    height: 355px;
+
     border-radius: 50%;
+
     position: relative;
+
     background:
         repeating-radial-gradient(
             circle,
-            #060606 0px,
-            #111 3px,
-            #020202 5px,
-            #141414 7px
+            #030303 0px,
+            #090909 2px,
+            #020202 4px
         );
-    border: 3px solid #9d671e;
+
+    border: 1px solid rgba(211,167,87,0.65);
+
     box-shadow:
-        0 0 0 9px rgba(170,105,23,.12),
-        0 0 0 13px rgba(210,144,40,.20),
-        0 0 70px rgba(192,117,22,.25);
+        0 0 0 8px rgba(201,154,69,0.06),
+        0 0 0 12px rgba(201,154,69,0.16),
+        0 0 55px rgba(201,154,69,0.20);
 }
 
-.record::before {
-    content: "H";
-    position: absolute;
-    inset: 43px;
-    border: 2px solid #c4872d;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cinzel', serif;
-    font-size: 170px;
-    line-height: 1;
-    color: #d69a3d;
-    text-shadow: 0 0 15px rgba(214,154,61,.35);
-}
 
-.record::after {
+/* GOLD RING */
+
+.vinyl::before {
     content: "";
+
     position: absolute;
-    width: 9px;
-    height: 9px;
-    background: #e6b85c;
+
+    inset: 10px;
+
     border-radius: 50%;
+
+    border: 1px solid rgba(220,176,93,0.8);
+
+    box-shadow:
+        inset 0 0 20px rgba(201,154,69,0.12);
+}
+
+
+/* CENTER */
+
+.vinyl::after {
+    content: "";
+
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 15px #e4ad45;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(circle, #050505 0 7px, var(--gold) 8px 10px, #050505 11px);
+
+    border: 1px solid var(--gold);
 }
+
+
+/* BIG H */
+
+.vinyl-letter {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 3;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 205px;
+
+    line-height: 1;
+
+    color: #d5a553;
+
+    text-shadow:
+        1px 1px 0 #684719,
+        2px 2px 0 #4c3416,
+        0 0 15px rgba(201,154,69,0.22);
+}
+
+
+/* =========================================================
+   CENTER HERO
+========================================================= */
 
 .hero-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 30px;
     position: relative;
     z-index: 3;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 35px 20px 35px 15px;
 }
+
 
 .hero-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(58px,6vw,108px);
-    font-weight: 500;
-    letter-spacing: 14px;
-    color: #dca349;
-    line-height: .95;
-}
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 
-.gold-line {
-    height: 1px;
-    width: 405px;
-    max-width: 100%;
-    background: linear-gradient(90deg,#c88b31,transparent);
-    margin: 22px 0;
-}
+    font-size: clamp(65px, 6vw, 112px);
 
-.hero-sub {
-    font-size: 17px;
+    font-weight: 400;
+
     letter-spacing: 7px;
-    color: #f1e8db;
+
+    color: #d5a451;
+
+    line-height: 0.9;
+
+    text-shadow:
+        1px 1px 0 #69491d,
+        0 0 18px rgba(201,154,69,0.14);
+}
+
+
+.hero-line {
+    width: 410px;
+    max-width: 90%;
+
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        var(--gold),
+        rgba(201,154,69,0.15)
+    );
+
+    margin: 20px 0 16px;
+}
+
+
+.hero-subtitle {
+    font-size: 16px;
+
+    letter-spacing: 5px;
+
+    color: #eee7dc;
+
     margin-bottom: 28px;
 }
 
-.hero-text {
-    font-size: 13px;
-    line-height: 2;
-    letter-spacing: 2px;
-    color: #c7beb2;
-    max-width: 500px;
-    margin-bottom: 28px;
+
+.hero-description {
+    max-width: 470px;
+
+    color: #aaa49b;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
 }
 
-.cta {
+
+/* BUTTON */
+
+.hero-button {
     display: inline-flex;
+
     align-items: center;
-    gap: 25px;
-    border: 1px solid #a97024;
-    padding: 15px 25px;
-    width: fit-content;
-    color: #dda54a;
+    justify-content: center;
+
+    width: 215px;
+
+    height: 48px;
+
+    margin-top: 28px;
+
+    border: 1px solid var(--gold);
+
+    color: var(--gold-light);
+
     font-size: 12px;
-    letter-spacing: 3px;
-    transition: .3s;
+
+    letter-spacing: 2px;
+
+    transition: all 0.3s ease;
 }
 
-.cta:hover {
-    background: rgba(194,130,35,.12);
-    box-shadow: 0 0 25px rgba(194,130,35,.15);
+.hero-button span {
+    margin-left: 22px;
+
+    font-size: 18px;
 }
+
+.hero-button:hover {
+    background: var(--gold);
+
+    color: #050505;
+
+    box-shadow: 0 0 25px rgba(201,154,69,0.18);
+}
+
+
+/* =========================================================
+   RIGHT HERO — STUDIO
+========================================================= */
 
 .hero-right {
     position: relative;
+
     overflow: hidden;
+
+    border-left: 1px solid rgba(201,154,69,0.14);
+}
+
+
+.studio {
+    position: absolute;
+
+    inset: 0;
+
     background:
-        linear-gradient(90deg, rgba(3,3,3,.15), rgba(3,3,3,.15)),
-        radial-gradient(circle at 50% 38%, rgba(192,122,26,.25), transparent 25%),
-        linear-gradient(140deg,#17110a,#030303 70%);
+        radial-gradient(
+            ellipse at 50% 35%,
+            rgba(198,153,68,0.30),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(201,154,69,0.08),
+            transparent 45%
+        ),
+        #080706;
 }
 
-.studio-ring {
-    position: absolute;
-    width: 340px;
-    height: 340px;
-    border: 3px solid rgba(205,144,43,.55);
-    border-radius: 50%;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%,-50%);
-    box-shadow:
-        0 0 35px rgba(201,132,31,.3),
-        inset 0 0 35px rgba(201,132,31,.15);
-}
 
-.studio-ring::before,
-.studio-ring::after {
+/* studio screen */
+
+.studio::before {
     content: "";
+
     position: absolute;
-    border-radius: 50%;
-    inset: 18px;
-    border: 1px solid rgba(214,154,54,.3);
+
+    left: 8%;
+    right: 8%;
+
+    bottom: 25%;
+
+    height: 26%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #17120b,
+            #4a371d,
+            #17120b
+        );
+
+    border: 1px solid rgba(201,154,69,0.18);
+
+    box-shadow:
+        0 0 30px rgba(201,154,69,0.12);
 }
 
-.studio-ring::after {
-    inset: 38px;
-    border-color: rgba(214,154,54,.18);
-}
+
+/* PERSON */
 
 .person {
     position: absolute;
-    bottom: -25px;
+
     left: 50%;
+    bottom: 0;
+
     transform: translateX(-50%);
-    width: 220px;
-    height: 310px;
-    background: linear-gradient(90deg,#050505,#191512,#030303);
-    clip-path: polygon(
-        36% 100%,
-        20% 80%,
-        18% 48%,
-        30% 35%,
-        35% 20%,
-        50% 13%,
-        65% 20%,
-        70% 35%,
-        82% 48%,
-        80% 80%,
-        64% 100%
-    );
-    filter: drop-shadow(0 0 20px rgba(0,0,0,.8));
-}
 
-.console {
-    position: absolute;
-    bottom: 40px;
-    left: 8%;
-    right: 8%;
-    height: 70px;
-    border: 1px solid rgba(183,119,29,.45);
-    background: linear-gradient(#17110b,#050505);
-    transform: perspective(300px) rotateX(18deg);
-}
+    width: 180px;
+    height: 280px;
 
-.play {
-    position: absolute;
-    bottom: 30px;
-    right: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: #dba248;
-    font-size: 11px;
-    letter-spacing: 3px;
-}
-
-.play-circle {
-    width: 38px;
-    height: 38px;
-    border: 1px solid #d69b3d;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.cards {
-    padding: 18px 40px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-}
-
-.card {
-    min-height: 260px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(190,125,30,.35);
-    background: linear-gradient(135deg,#100b06,#030303);
-    padding: 35px;
-    transition: .4s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #b87924;
-    box-shadow: 0 10px 40px rgba(187,117,23,.12);
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
     background:
-        radial-gradient(circle at 75% 45%, rgba(205,141,42,.24), transparent 30%);
-    opacity: .8;
+        radial-gradient(
+            ellipse at 50% 20%,
+            #19130c 0 28%,
+            transparent 29%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 15%,
+            #0a0806 16% 84%,
+            transparent 85%
+        );
+
+    border-radius: 80px 80px 0 0;
+
+    filter: drop-shadow(0 0 25px rgba(0,0,0,0.8));
 }
 
-.card:nth-child(1)::after {
+
+/* desk */
+
+.studio::after {
     content: "";
+
     position: absolute;
-    width: 260px;
-    height: 260px;
-    right: -50px;
-    top: 35px;
-    border-radius: 50%;
-    border: 35px double rgba(198,137,42,.18);
+
+    left: 5%;
+    right: 5%;
+
+    bottom: 0;
+
+    height: 28%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #19130d,
+            #060504
+        );
+
+    border-top: 1px solid rgba(201,154,69,0.16);
 }
 
-.card:nth-child(2)::after {
-    content: "◉";
+
+/* =========================================================
+   VERTICAL SIDE TEXT
+========================================================= */
+
+.side-text {
     position: absolute;
-    right: 50px;
-    top: 55px;
-    font-size: 150px;
-    color: rgba(199,137,42,.12);
-}
 
-.card:nth-child(3)::after {
-    content: "✧";
-    position: absolute;
-    right: 45px;
-    top: 30px;
-    font-size: 180px;
-    color: rgba(204,142,45,.14);
-}
+    right: 13px;
+    top: 50%;
 
-.card > * {
-    position: relative;
-    z-index: 2;
-}
+    transform: translateY(-50%) rotate(-90deg);
 
-.number {
-    color: #d49a3e;
-    font-family: 'Cinzel',serif;
-    font-size: 40px;
-    letter-spacing: 5px;
-}
+    transform-origin: right center;
 
-.card h2 {
-    font-size: 26px;
-    letter-spacing: 5px;
-    font-weight: 500;
-    margin: 20px 0 13px;
-}
+    color: var(--gold);
 
-.card h2::after {
-    content: "";
-    display: block;
-    width: 38px;
-    height: 1px;
-    background: #c88b31;
-    margin-top: 13px;
-}
+    font-size: 10px;
 
-.card p {
-    color: #c4bbb0;
-    font-size: 13px;
-    line-height: 1.8;
-    max-width: 260px;
-}
-
-.card-link {
-    position: absolute;
-    bottom: 25px;
-    left: 35px;
-    color: #dca34a;
-    font-size: 11px;
     letter-spacing: 3px;
+
+    white-space: nowrap;
 }
 
-/* =========================
-   LATEST PROJECT
-========================= */
 
-.latest {
-    margin: 0 40px 40px;
-    min-height: 170px;
-    border: 1px solid rgba(190,125,30,.35);
-    display: grid;
-    grid-template-columns: 24% 18% 28% 30%;
-    background: #060504;
-}
+/* =========================================================
+   PLAY INTRO
+========================================================= */
 
-.latest-info,
-.latest-text,
-.latest-quote {
-    padding: 30px;
-}
+.play-intro {
+    position: absolute;
 
-.latest-label {
-    color: #d59b3c;
-    font-size: 11px;
-    letter-spacing: 3px;
-    margin-bottom: 17px;
-}
+    right: 28px;
+    bottom: 22px;
 
-.latest h3 {
-    font-family: 'Cinzel',serif;
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
-}
+    z-index: 8;
 
-.meta {
-    color: #aaa097;
-    font-size: 13px;
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #d7cfc2;
+
+    font-size: 10px;
+
     letter-spacing: 2px;
 }
 
-.project-image {
-    min-height: 170px;
-    background:
-        radial-gradient(circle at 50% 45%, rgba(222,160,54,.65), transparent 18%),
-        linear-gradient(180deg,#25170b,#080604);
-    position: relative;
-    overflow: hidden;
-}
+.play-circle {
+    width: 32px;
+    height: 32px;
 
-.project-image::before {
-    content: "";
-    position: absolute;
-    width: 115px;
-    height: 115px;
-    border-radius: 50%;
-    background: #d6a14c;
-    left: 50%;
-    top: 48%;
-    transform: translate(-50%,-50%);
-    box-shadow: 0 0 45px rgba(222,160,54,.5);
-}
+    border: 1px solid var(--gold);
 
-.project-play {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 50px;
-    height: 50px;
-    border: 1px solid #fff;
     border-radius: 50%;
-    z-index: 2;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    color: var(--gold);
 }
 
-.latest-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+/* =========================================================
+   THREE CARDS
+========================================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    padding: 14px 40px 0;
 }
 
-.latest-text p {
-    color: #c4bbb0;
+
+.card {
+    position: relative;
+
+    min-height: 258px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(201,154,69,0.25);
+
+    background: #080706;
+
+    padding: 34px 32px;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: rgba(201,154,69,0.75);
+}
+
+
+/* card backgrounds */
+
+.card.music {
+    background:
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(185,136,47,0.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            120deg,
+            #100d08,
+            #030303
+        );
+}
+
+.card.visuals {
+    background:
+        radial-gradient(
+            ellipse at 70% 40%,
+            rgba(123,94,48,0.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            140deg,
+            #11100e,
+            #050505
+        );
+}
+
+.card.experiments {
+    background:
+        radial-gradient(
+            circle at 75% 55%,
+            rgba(202,158,71,0.45),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 60% 70%,
+            rgba(125,85,25,0.30),
+            transparent 40%
+        ),
+        #050505;
+}
+
+
+/* decorative disc */
+
+.card.music::after {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    right: -90px;
+    bottom: -100px;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #111 0px,
+            #050505 3px,
+            #111 5px
+        );
+
+    border: 1px solid rgba(201,154,69,0.35);
+}
+
+
+/* numbers */
+
+.card-number {
+    color: var(--gold-light);
+
+    font-size: 28px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 28px;
+}
+
+
+/* card title */
+
+.card h2 {
+    position: relative;
+    z-index: 3;
+
+    font-size: 23px;
+
+    letter-spacing: 4px;
+
+    font-weight: 400;
+
+    color: #eee8dd;
+}
+
+
+/* little line */
+
+.card-line {
+    position: relative;
+    z-index: 3;
+
+    width: 40px;
+
+    height: 1px;
+
+    background: var(--gold);
+
+    margin: 13px 0 15px;
+}
+
+
+/* text */
+
+.card p {
+    position: relative;
+    z-index: 3;
+
+    max-width: 280px;
+
+    color: #aaa49a;
+
+    font-size: 13px;
+
     line-height: 1.8;
+
+    letter-spacing: 0.7px;
+}
+
+
+/* link */
+
+.card-link {
+    position: absolute;
+
+    left: 32px;
+    bottom: 22px;
+
+    color: var(--gold-light);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+.card-link span {
+    margin-left: 10px;
+}
+
+
+/* =========================================================
+   LATEST PROJECT
+========================================================= */
+
+.latest {
+    margin: 14px 40px 40px;
+
+    min-height: 160px;
+
+    border: 1px solid rgba(201,154,69,0.25);
+
+    display: grid;
+
+    grid-template-columns: 24% 18% 32% 26%;
+
+    background: #070707;
+}
+
+
+/* left */
+
+.latest-info {
+    padding: 28px 32px;
+
+    border-right: 1px solid rgba(201,154,69,0.18);
+}
+
+.latest-small {
+    color: var(--gold);
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+.latest-title {
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size: 28px;
+
+    letter-spacing: 4px;
+
+    color: #eee6d9;
+
+    margin-bottom: 18px;
+}
+
+.latest-tags {
+    color: #969087;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+/* image */
+
+.latest-image {
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(220,172,77,0.65),
+            transparent 20%
+        ),
+        linear-gradient(
+            180deg,
+            #30220f,
+            #080706
+        );
+
+    overflow: hidden;
+}
+
+.latest-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: 40%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            #e1ae4e 0 3px,
+            transparent 4px
+        ),
+        linear-gradient(
+            180deg,
+            #d8a84b,
+            #4d3515
+        );
+
+    box-shadow:
+        0 0 35px rgba(201,154,69,0.35);
+}
+
+.latest-play {
+    position: absolute;
+
+    width: 42px;
+    height: 42px;
+
+    left: 50%;
+    top: 60%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid #d2a654;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #d2a654;
+
+    background: rgba(0,0,0,0.35);
+}
+
+
+/* description */
+
+.latest-description {
+    padding: 28px 32px;
+
+    border-right: 1px solid rgba(201,154,69,0.18);
+}
+
+.latest-description .gold {
+    color: var(--gold);
+
+    font-size: 13px;
+
+    margin-bottom: 13px;
+}
+
+.latest-description p {
+    color: #aaa39a;
+
     font-size: 14px;
-    margin-bottom: 20px;
+
+    line-height: 1.8;
+
+    max-width: 300px;
 }
 
 .listen {
-    border: 1px solid #a97024;
-    padding: 12px 20px;
-    width: fit-content;
-    color: #dda54a;
-    font-size: 11px;
-    letter-spacing: 3px;
+    display: inline-block;
+
+    margin-top: 14px;
+
+    border: 1px solid rgba(201,154,69,0.6);
+
+    padding: 11px 18px;
+
+    color: var(--gold-light);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
 }
 
-.latest-quote {
+
+/* quote */
+
+.quote {
+    padding: 30px 35px;
+
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
-    border-left: 1px solid rgba(190,125,30,.18);
 }
 
 .quote-mark {
-    color: #ce9133;
-    font-family: Georgia,serif;
-    font-size: 50px;
+    color: var(--gold);
+
+    font-family: Georgia, serif;
+
+    font-size: 48px;
+
+    line-height: 0.6;
+
+    margin-bottom: 15px;
 }
 
-.latest-quote p {
-    color: #cfc5b8;
-    font-family: Georgia,serif;
-    font-style: italic;
+.quote p {
+    color: #aaa39a;
+
+    font-family: Georgia, serif;
+
     font-size: 17px;
+
+    font-style: italic;
+
     line-height: 1.6;
 }
 
-.signature {
-    margin-top: 14px;
-    color: #d59b3c;
-    font-size: 11px;
+.quote-author {
+    margin-top: 12px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
     letter-spacing: 3px;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    border-top: 1px solid rgba(190,125,30,.25);
-    padding: 28px 40px;
+    padding: 35px 40px;
+
+    border-top: 1px solid rgba(201,154,69,0.16);
+
     display: flex;
+
     justify-content: space-between;
-    color: #80776d;
+
+    color: #706b63;
+
     font-size: 10px;
-    letter-spacing: 3px;
+
+    letter-spacing: 2px;
 }
 
-/* =========================
+footer strong {
+    color: var(--gold);
+}
+
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:1100px) {
+@media (max-width: 1050px) {
 
-    nav {
-        padding: 0 22px;
+    .navbar {
+        padding: 0 25px;
     }
 
-    .menu {
-        gap: 20px;
+    .logo {
+        min-width: auto;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
+    .logo-name {
+        font-size: 20px;
+        letter-spacing: 5px;
     }
 
-    .hero-left {
-        min-height: 350px;
-    }
-
-    .hero-right {
-        min-height: 420px;
-    }
-
-    .hero-center {
-        padding: 50px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .latest {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .latest-quote {
-        grid-column: span 2;
-    }
-}
-
-@media(max-width:750px) {
-
-    nav {
-        height: auto;
-        padding: 18px;
-        flex-wrap: wrap;
-        gap: 18px;
-    }
-
-    .menu {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .menu a {
-        padding: 5px;
-    }
-
-    .menu a::after {
-        bottom: 0;
+    .main-menu {
+        gap: 22px;
     }
 
     .socials {
-        margin-left: auto;
+        min-width: auto;
+        gap: 12px;
     }
 
-    .hero-center {
-        padding: 40px 25px;
+    .hero {
+        grid-template-columns: 28% 44% 28%;
     }
 
-    .hero-title {
-        font-size: 52px;
-        letter-spacing: 8px;
-    }
-
-    .hero-sub {
-        font-size: 13px;
-        letter-spacing: 4px;
-    }
-
-    .record {
+    .vinyl {
         width: 270px;
         height: 270px;
     }
 
-    .record::before {
-        inset: 35px;
-        font-size: 130px;
+    .vinyl-letter {
+        font-size: 155px;
+    }
+
+    .hero-title {
+        font-size: 65px;
     }
 
     .cards {
-        padding: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .latest {
-        margin: 0 15px 25px;
-        grid-template-columns: 1fr;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .navbar {
+        height: auto;
+
+        min-height: 75px;
+
+        flex-wrap: wrap;
+
+        padding: 15px 20px;
     }
 
-    .latest-quote {
-        grid-column: auto;
-        border-left: 0;
-        border-top: 1px solid rgba(190,125,30,.18);
+    .logo {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .main-menu {
+        order: 3;
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        justify-content: flex-start;
+
+        padding-top: 10px;
+    }
+
+    .main-menu a {
+        padding: 12px 0;
+        white-space: nowrap;
+    }
+
+    .socials {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+    }
+
+    .hero-left {
+        min-height: 340px;
+    }
+
+    .hero-center {
+        padding: 55px 30px;
+    }
+
+    .hero-right {
+        min-height: 340px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+
+        padding: 15px 20px;
+    }
+
+    .latest {
+        grid-template-columns: 1fr;
+
+        margin: 0 20px 30px;
+    }
+
+    .latest-info,
+    .latest-description {
+        border-right: none;
+
+        border-bottom: 1px solid rgba(201,154,69,0.18);
+    }
+
+    .latest-image {
+        min-height: 220px;
+    }
+
+    .quote {
+        min-height: 180px;
     }
 
     footer {
-        padding: 25px 15px;
         flex-direction: column;
-        gap: 12px;
+        gap: 15px;
+
         text-align: center;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<nav>
 
-    <div class="brand">
-        <div class="logo">H</div>
-        <div class="brand-name">HAERVIU</div>
-    </div>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-    <div class="menu">
-        <a href="#home" class="active">HOME</a>
-        <a href="#music">MUSIC</a>
-        <a href="#visuals">VISUALS</a>
-        <a href="#experiments">EXPERIMENTS</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-    </div>
+<header class="navbar">
+
+    <a href="#home" class="logo">
+
+        <div class="logo-mark">H</div>
+
+        <div class="logo-name">
+            HAERVIU
+        </div>
+
+    </a>
+
+
+    <nav class="main-menu">
+
+        <a href="#home" class="active">
+            HOME
+        </a>
+
+        <a href="#music">
+            MUSIC
+        </a>
+
+        <a href="#visuals">
+            VISUALS
+        </a>
+
+        <a href="#experiments">
+            EXPERIMENTS
+        </a>
+
+        <a href="#about">
+            ABOUT
+        </a>
+
+        <a href="#contact">
+            CONTACT
+        </a>
+
+    </nav>
+
 
     <div class="socials">
-        <span>◎</span>
-        <span>▶</span>
-        <span>●</span>
+
+        <a href="#" class="social">◎</a>
+
+        <a href="#" class="social">▶</a>
+
+        <a href="#" class="social">●</a>
+
     </div>
 
-</nav>
+</header>
 
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <main id="home">
 
 <section class="hero">
 
+
+    <!-- LEFT -->
+
     <div class="hero-left">
-        <div class="record"></div>
+
+        <div class="vinyl">
+
+            <div class="vinyl-letter">
+                H
+            </div>
+
+        </div>
+
     </div>
+
+
+
+    <!-- CENTER -->
 
     <div class="hero-center">
 
-        <div class="hero-title">HAERVIU</div>
+        <h1 class="hero-title">
+            HAERVIU
+        </h1>
 
-        <div class="gold-line"></div>
+        <div class="hero-line"></div>
 
-        <div class="hero-sub">
-            MUSIC &nbsp; ◆ &nbsp; VISUALS &nbsp; ◆ &nbsp; EXPERIMENTS
+        <div class="hero-subtitle">
+            MUSIC <span>◆</span> VISUALS <span>◆</span> EXPERIMENTS
         </div>
 
-        <p class="hero-text">
-            A CREATIVE JOURNEY BETWEEN SOUND,<br>
+        <p class="hero-description">
+            A CREATIVE JOURNEY BETWEEN SOUND,
             IMAGINATION AND NEW WORLDS.
         </p>
 
-        <a href="#music" class="cta">
+        <a href="#music" class="hero-button">
             ENTER THE LAB
             <span>→</span>
         </a>
 
     </div>
 
+
+
+    <!-- RIGHT -->
+
     <div class="hero-right">
 
-        <div class="studio-ring"></div>
+        <div class="studio">
 
-        <div class="person"></div>
+            <div class="person"></div>
 
-        <div class="console"></div>
+        </div>
 
-        <div class="play">
-            <div class="play-circle">▶</div>
+        <div class="side-text">
+            CREATE · FEEL · SHARE
+        </div>
+
+        <div class="play-intro">
+
+            <div class="play-circle">
+                ▶
+            </div>
+
             PLAY INTRO
+
         </div>
 
     </div>
 
+
 </section>
 
 
+
+<!-- =====================================================
+     THREE CARDS
+===================================================== -->
+
 <section class="cards">
 
-    <article class="card" id="music">
 
-        <div class="number">01</div>
+    <!-- MUSIC -->
 
-        <h2>MUSIC</h2>
+    <article class="card music" id="music">
+
+        <div class="card-number">
+            01
+        </div>
+
+        <h2>
+            MUSIC
+        </h2>
+
+        <div class="card-line"></div>
 
         <p>
             Original tracks, electronic grooves,
@@ -814,36 +1423,53 @@ footer {
         </p>
 
         <a href="#" class="card-link">
-            EXPLORE&nbsp;&nbsp; →
+            EXPLORE <span>→</span>
         </a>
 
     </article>
 
 
-    <article class="card" id="visuals">
 
-        <div class="number">02</div>
+    <!-- VISUALS -->
 
-        <h2>VISUALS</h2>
+    <article class="card visuals" id="visuals">
+
+        <div class="card-number">
+            02
+        </div>
+
+        <h2>
+            VISUALS
+        </h2>
+
+        <div class="card-line"></div>
 
         <p>
             Music videos, cinematic atmospheres,
-            visual stories and creative
-            universes.
+            visual stories and creative universes.
         </p>
 
         <a href="#" class="card-link">
-            DISCOVER&nbsp;&nbsp; →
+            DISCOVER <span>→</span>
         </a>
 
     </article>
 
 
-    <article class="card" id="experiments">
 
-        <div class="number">03</div>
+    <!-- EXPERIMENTS -->
 
-        <h2>EXPERIMENTS</h2>
+    <article class="card experiments" id="experiments">
+
+        <div class="card-number">
+            03
+        </div>
+
+        <h2>
+            EXPERIMENTS
+        </h2>
+
+        <div class="card-line"></div>
 
         <p>
             AI, new ideas, creative tests,
@@ -852,43 +1478,58 @@ footer {
         </p>
 
         <a href="#" class="card-link">
-            EXPLORE&nbsp;&nbsp; →
+            EXPLORE <span>→</span>
         </a>
 
     </article>
 
+
 </section>
 
 
+
+<!-- =====================================================
+     LATEST PROJECT
+===================================================== -->
+
 <section class="latest">
+
 
     <div class="latest-info">
 
-        <div class="latest-label">
+        <div class="latest-small">
             LATEST PROJECT
         </div>
 
-        <h3>NEW HORIZONS</h3>
+        <div class="latest-title">
+            NEW HORIZONS
+        </div>
 
-        <div class="meta">
-            Deep House &nbsp; ◆ &nbsp; World &nbsp; ◆ &nbsp; Cinematic
+        <div class="latest-tags">
+            DEEP HOUSE
+            &nbsp; ◆ &nbsp;
+            WORLD
+            &nbsp; ◆ &nbsp;
+            CINEMATIC
         </div>
 
     </div>
 
 
-    <div class="project-image">
 
-        <div class="project-play">
+    <div class="latest-image">
+
+        <div class="latest-play">
             ▶
         </div>
 
     </div>
 
 
-    <div class="latest-text">
 
-        <div class="latest-label">
+    <div class="latest-description">
+
+        <div class="gold">
             A new journey.
         </div>
 
@@ -897,48 +1538,57 @@ footer {
             coming together.
         </p>
 
-        <a href="#" class="listen">
-            LISTEN NOW&nbsp;&nbsp; →
+        <a href="#music" class="listen">
+            LISTEN NOW&nbsp; →
         </a>
 
     </div>
 
 
-    <div class="latest-quote">
 
-        <div class="quote-mark">“</div>
+    <div class="quote">
+
+        <div class="quote-mark">
+            “
+        </div>
 
         <p>
             The studio is my playground.<br>
             The world is my inspiration.
         </p>
 
-        <div class="signature">
+        <div class="quote-author">
             — HAERVIU
         </div>
 
     </div>
 
+
 </section>
 
-
-<section id="about"></section>
-<section id="contact"></section>
 
 </main>
 
 
-<footer>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer id="about">
 
     <div>
+        <strong>HAERVIU</strong>
+        &nbsp; · &nbsp;
+        MUSIC · VISUALS · EXPERIMENTS
+    </div>
+
+    <div id="contact">
         © 2026 HAERVIU
     </div>
 
-    <div>
-        PROJECT LAB · MUSIC · VISUALS · EXPERIMENTS
-    </div>
-
 </footer>
+
 
 </body>
 </html>
