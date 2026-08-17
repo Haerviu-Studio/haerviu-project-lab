@@ -3,78 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haerviu Project Lab</title>
+
+  <title>Haerviu | Official Website</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0d;
+      color: #ffffff;
       text-align: center;
     }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 60px 25px;
+    .hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      background:
+        radial-gradient(circle at top, #292929 0%, #0b0b0d 55%);
     }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+    .hero h1 {
+      font-size: 64px;
+      letter-spacing: 8px;
+      margin: 0;
+      font-weight: 700;
     }
 
-    .subtitle {
-      color: #aaa;
+    .hero p {
+      margin-top: 18px;
       font-size: 18px;
-      margin-bottom: 50px;
+      color: #bbbbbb;
+      letter-spacing: 2px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 30px;
+      border: 1px solid #ffffff;
+      border-radius: 30px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #ffffff;
+      color: #0b0b0d;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 70px 25px;
+    }
+
+    .section-title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
     }
 
     .card {
-      background: #1d1d1d;
-      border-radius: 18px;
-      padding: 25px;
-      margin: 20px 0;
+      background: #151518;
+      border: 1px solid #29292d;
+      border-radius: 16px;
+      padding: 30px;
       text-align: left;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #555555;
     }
 
     .card h2 {
       margin-top: 0;
+      font-size: 24px;
     }
 
     .card p {
-      color: #bbb;
-      line-height: 1.6;
+      color: #aaaaaa;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 40px 20px;
+      border-top: 1px solid #222222;
+      color: #777777;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <section class="hero">
+    <h1>HAERVIU</h1>
 
-    <h1>Haerviu</h1>
+    <p>
+      MUSIC · VISUALS · EXPERIMENTS
+    </p>
 
-    <div class="subtitle">
-      Project Lab
+    <a href="#music" class="button">
+      ENTER THE PROJECT
+    </a>
+  </section>
+
+
+  <section class="container" id="music">
+
+    <h2 class="section-title">
+      THE HAERVIU PROJECT
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>Music</h2>
+        <p>
+          Original tracks, DJ mixes, deep house,
+          world music and musical experiments.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Videos</h2>
+        <p>
+          Music videos, cinematic projects,
+          visual creations and creative stories.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Experiments</h2>
+        <p>
+          New ideas, AI experiments, sound design
+          and creative discoveries.
+        </p>
+      </div>
+
     </div>
 
-   <div class="card">
-    <h2>🎵 Music</h2>
-    <p>Original tracks, DJ mixes, sound experiments and musical projects by Haerviu.</p>
-</div>
+  </section>
 
-<div class="card">
-    <h2>🎬 Videos</h2>
-    <p>Music videos, visual projects, cinematic creations and publications.</p>
-</div>
 
-<div class="card">
-    <h2>🧪 Experiments</h2>
-    <p>Creative tests, new ideas, AI experiments and discoveries.</p>
-</div>
+  <section class="container">
 
-  </div>
+    <h2 class="section-title">
+      ABOUT HAERVIU
+    </h2>
+
+    <p style="color:#aaaaaa; line-height:1.8; max-width:700px; margin:auto;">
+      Haerviu is an independent music and visual project
+      exploring electronic music, world influences,
+      cinematic atmospheres and new creative technologies.
+    </p>
+
+  </section>
+
+
+  <footer>
+    © 2026 Haerviu · Music · Visuals · Experiments
+  </footer>
 
 </body>
 </html>
