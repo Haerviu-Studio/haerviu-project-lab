@@ -3,19 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>HAERVIU — Creative Lab</title>
+<title>HAERVIU — Project Lab</title>
 
 <style>
-
-:root {
-    --gold: #d6a33a;
-    --gold-light: #f3d58a;
-    --black: #050505;
-    --dark: #0c0c0c;
-    --grey: #858585;
-    --white: #f5f5f5;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
 * {
     box-sizing: border-box;
@@ -28,10 +19,15 @@ html {
 }
 
 body {
-    background: var(--black);
-    color: var(--white);
-    font-family: Arial, Helvetica, sans-serif;
+    background: #050403;
+    color: #f4eee3;
+    font-family: 'Montserrat', Arial, sans-serif;
     overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 /* =========================
@@ -39,48 +35,81 @@ body {
 ========================= */
 
 nav {
-    position: fixed;
-    top: 0;
-    left: 0;
+    height: 88px;
     width: 100%;
-    height: 80px;
-
+    background: rgba(3,3,3,.96);
+    border-bottom: 1px solid rgba(190,125,30,.25);
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 0 5%;
-
-    z-index: 100;
-
-    background: rgba(5,5,5,0.65);
-    backdrop-filter: blur(15px);
-
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 42px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.nav-logo {
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 5px;
-    color: var(--gold-light);
-}
-
-.nav-links {
+.brand {
     display: flex;
-    gap: 35px;
+    align-items: center;
+    gap: 20px;
 }
 
-.nav-links a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 11px;
+.logo {
+    width: 54px;
+    height: 54px;
+    border: 1px solid #c88a2b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d9a34c;
+    font-family: 'Cinzel', serif;
+    font-size: 34px;
+    box-shadow: 0 0 20px rgba(196,132,37,.12);
+}
+
+.brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 25px;
+    letter-spacing: 8px;
+    color: #d5a04a;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    font-size: 12px;
     letter-spacing: 3px;
-    transition: 0.3s;
 }
 
-.nav-links a:hover {
-    color: var(--gold-light);
+.menu a {
+    position: relative;
+    padding: 35px 0;
+    color: #e9e1d5;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 26px;
+    width: 0;
+    height: 1px;
+    background: #d79a36;
+    transition: .3s;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+    width: 100%;
+}
+
+.socials {
+    display: flex;
+    gap: 22px;
+    color: #d39a3b;
+    font-size: 18px;
 }
 
 /* =========================
@@ -88,497 +117,475 @@ nav {
 ========================= */
 
 .hero {
-    height: 100vh;
-    min-height: 700px;
-
+    min-height: 590px;
     position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    display: grid;
+    grid-template-columns: 31% 38% 31%;
     overflow: hidden;
-
+    border-bottom: 1px solid rgba(194,130,35,.3);
     background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(210,150,40,0.18),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(210,150,40,0.13),
-            transparent 30%
-        ),
-        #050505;
+        radial-gradient(circle at 18% 50%, rgba(176,103,18,.25), transparent 28%),
+        radial-gradient(circle at 78% 42%, rgba(153,93,18,.20), transparent 32%),
+        linear-gradient(90deg,#090704,#020202 52%,#090704);
 }
 
 .hero::before {
     content: "";
-
     position: absolute;
-    inset: -30%;
-
+    inset: 0;
     background:
-        repeating-radial-gradient(
-            circle at center,
-            transparent 0px,
-            transparent 70px,
-            rgba(255,190,70,0.025) 72px,
-            transparent 74px
-        );
-
-    animation: rotate 50s linear infinite;
+        radial-gradient(circle at 8% 10%, rgba(225,154,48,.35) 0 1px, transparent 2px),
+        radial-gradient(circle at 25% 35%, rgba(225,154,48,.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 75% 20%, rgba(225,154,48,.18) 0 1px, transparent 2px);
+    background-size: 170px 170px, 130px 130px, 210px 210px;
+    opacity: .7;
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.hero-content {
+.hero-left {
     position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-.hero-small {
-    font-size: 11px;
-    letter-spacing: 7px;
-    color: var(--gold);
-    margin-bottom: 30px;
-}
-
-.hero-title {
-    font-size: clamp(80px, 17vw, 220px);
-
-    font-weight: 900;
-
-    letter-spacing: -10px;
-
-    line-height: 0.75;
-
-    background:
-        linear-gradient(
-            180deg,
-            #fff2bb 0%,
-            #e5b84f 35%,
-            #9b671b 70%,
-            #e3b84e 100%
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-
-    text-shadow:
-        0 0 50px rgba(214,163,58,0.15);
-}
-
-.hero-line {
-    width: 180px;
-    height: 1px;
-
-    margin: 45px auto 30px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
-
-.hero-subtitle {
-    color: #aaa;
-    font-size: 14px;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-}
-
-.hero-description {
-    max-width: 600px;
-
-    margin: 30px auto;
-
-    color: #777;
-
-    line-height: 1.8;
-
-    font-size: 15px;
-}
-
-.hero-button {
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 16px 32px;
-
-    border: 1px solid #80601f;
-
-    color: var(--gold-light);
-
-    text-decoration: none;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    transition: 0.3s;
-}
-
-.hero-button:hover {
-    background: var(--gold);
-    color: #000;
-}
-
-/* =========================
-   GENERAL
-========================= */
-
-section {
-    width: min(1200px, 90%);
-    margin: auto;
-}
-
-.section {
-    padding: 140px 0;
-}
-
-.section-label {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-}
-
-.section-title {
-    font-size: clamp(42px, 7vw, 85px);
-    line-height: 0.95;
-    letter-spacing: -3px;
-}
-
-.section-text {
-    max-width: 600px;
-    margin-top: 30px;
-    color: #777;
-    line-height: 1.9;
-}
-
-/* =========================
-   MUSIC
-========================= */
-
-.music-section {
-    border-top: 1px solid #1b1b1b;
-}
-
-.music-grid {
-    margin-top: 70px;
-
-    display: grid;
-
-    grid-template-columns:
-        1.4fr
-        1fr;
-
-    gap: 30px;
-}
-
-.music-main {
-    min-height: 430px;
-
-    padding: 45px;
-
-    border: 1px solid #292929;
-
-    background:
-        radial-gradient(
-            circle at 70% 30%,
-            rgba(210,150,40,0.16),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #151515,
-            #070707
-        );
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.music-main::before {
-    content: "H";
-
-    position: absolute;
-
-    top: 20px;
-    right: 40px;
-
-    font-size: 230px;
-
-    font-weight: 900;
-
-    color: transparent;
-
-    -webkit-text-stroke:
-        1px rgba(214,163,58,0.12);
-}
-
-.music-number {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 5px;
-}
-
-.music-main h3 {
-    font-size: 50px;
-    margin: 15px 0;
-}
-
-.music-main p {
-    color: #777;
-    max-width: 500px;
-    line-height: 1.7;
-}
-
-.music-small {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.music-card {
-    flex: 1;
-
-    padding: 30px;
-
-    border: 1px solid #222;
-
-    background: #0b0b0b;
-
-    transition: 0.3s;
-}
-
-.music-card:hover {
-    border-color: #75551d;
-    transform: translateX(5px);
-}
-
-.music-card span {
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 4px;
-}
-
-.music-card h3 {
-    margin-top: 15px;
-    font-size: 24px;
-}
-
-.music-card p {
-    margin-top: 10px;
-    color: #666;
-    line-height: 1.6;
-}
-
-/* =========================
-   VISUALS
-========================= */
-
-.visual-section {
-    display: grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap: 80px;
-
-    align-items: center;
-
-    border-top: 1px solid #1b1b1b;
-}
-
-.visual-box {
-    height: 550px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border: 1px solid #292929;
-
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(230,170,55,0.28),
-            transparent 20%
-        ),
-        radial-gradient(
-            circle at 30% 70%,
-            rgba(120,70,20,0.25),
-            transparent 25%
-        ),
-        linear-gradient(
-            145deg,
-            #191919,
-            #030303
-        );
-}
-
-.visual-box::before {
-    content: "";
-
-    position: absolute;
-
-    width: 420px;
-    height: 420px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(214,163,58,0.25);
-
-    left: 50%;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-}
-
-.visual-box::after {
-    content: "HAERVIU";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-90deg);
-
-    font-size: 55px;
-
-    letter-spacing: 15px;
-
-    color: rgba(255,255,255,0.08);
-}
-
-/* =========================
-   LAB
-========================= */
-
-.lab-section {
-    border-top: 1px solid #1b1b1b;
-}
-
-.lab-grid {
-    margin-top: 70px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.lab-item {
-    min-height: 220px;
-
-    padding: 30px;
-
-    border: 1px solid #202020;
-
-    background: #080808;
-
-    transition: 0.3s;
-}
-
-.lab-item:hover {
-    background: #111;
-    border-color: #74531a;
-}
-
-.lab-item span {
-    color: var(--gold);
-    font-size: 9px;
-    letter-spacing: 4px;
-}
-
-.lab-item h3 {
-    margin-top: 55px;
-    font-size: 22px;
-}
-
-.lab-item p {
-    margin-top: 15px;
-    color: #666;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-/* =========================
-   MANIFESTO
-========================= */
-
-.manifesto {
-    min-height: 600px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    text-align: center;
-
-    border-top: 1px solid #1b1b1b;
-    border-bottom: 1px solid #1b1b1b;
+    z-index: 2;
 }
 
-.manifesto h2 {
-    max-width: 1000px;
-
-    font-size: clamp(45px, 8vw, 105px);
-
-    line-height: 0.95;
-
-    letter-spacing: -5px;
-
+.record {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    position: relative;
     background:
-        linear-gradient(
-            180deg,
-            #fff,
-            #777
+        repeating-radial-gradient(
+            circle,
+            #060606 0px,
+            #111 3px,
+            #020202 5px,
+            #141414 7px
         );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
+    border: 3px solid #9d671e;
+    box-shadow:
+        0 0 0 9px rgba(170,105,23,.12),
+        0 0 0 13px rgba(210,144,40,.20),
+        0 0 70px rgba(192,117,22,.25);
 }
 
-.manifesto p {
-    margin-top: 35px;
+.record::before {
+    content: "H";
+    position: absolute;
+    inset: 43px;
+    border: 2px solid #c4872d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 170px;
+    line-height: 1;
+    color: #d69a3d;
+    text-shadow: 0 0 15px rgba(214,154,61,.35);
+}
 
-    color: var(--gold);
+.record::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: #e6b85c;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 15px #e4ad45;
+}
 
-    font-size: 10px;
+.hero-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    z-index: 3;
+}
 
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(58px,6vw,108px);
+    font-weight: 500;
+    letter-spacing: 14px;
+    color: #dca349;
+    line-height: .95;
+}
+
+.gold-line {
+    height: 1px;
+    width: 405px;
+    max-width: 100%;
+    background: linear-gradient(90deg,#c88b31,transparent);
+    margin: 22px 0;
+}
+
+.hero-sub {
+    font-size: 17px;
     letter-spacing: 7px;
+    color: #f1e8db;
+    margin-bottom: 28px;
+}
 
-    text-transform: uppercase;
+.hero-text {
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 2px;
+    color: #c7beb2;
+    max-width: 500px;
+    margin-bottom: 28px;
+}
+
+.cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+    border: 1px solid #a97024;
+    padding: 15px 25px;
+    width: fit-content;
+    color: #dda54a;
+    font-size: 12px;
+    letter-spacing: 3px;
+    transition: .3s;
+}
+
+.cta:hover {
+    background: rgba(194,130,35,.12);
+    box-shadow: 0 0 25px rgba(194,130,35,.15);
+}
+
+.hero-right {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(3,3,3,.15), rgba(3,3,3,.15)),
+        radial-gradient(circle at 50% 38%, rgba(192,122,26,.25), transparent 25%),
+        linear-gradient(140deg,#17110a,#030303 70%);
+}
+
+.studio-ring {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border: 3px solid rgba(205,144,43,.55);
+    border-radius: 50%;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    box-shadow:
+        0 0 35px rgba(201,132,31,.3),
+        inset 0 0 35px rgba(201,132,31,.15);
+}
+
+.studio-ring::before,
+.studio-ring::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 18px;
+    border: 1px solid rgba(214,154,54,.3);
+}
+
+.studio-ring::after {
+    inset: 38px;
+    border-color: rgba(214,154,54,.18);
+}
+
+.person {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 310px;
+    background: linear-gradient(90deg,#050505,#191512,#030303);
+    clip-path: polygon(
+        36% 100%,
+        20% 80%,
+        18% 48%,
+        30% 35%,
+        35% 20%,
+        50% 13%,
+        65% 20%,
+        70% 35%,
+        82% 48%,
+        80% 80%,
+        64% 100%
+    );
+    filter: drop-shadow(0 0 20px rgba(0,0,0,.8));
+}
+
+.console {
+    position: absolute;
+    bottom: 40px;
+    left: 8%;
+    right: 8%;
+    height: 70px;
+    border: 1px solid rgba(183,119,29,.45);
+    background: linear-gradient(#17110b,#050505);
+    transform: perspective(300px) rotateX(18deg);
+}
+
+.play {
+    position: absolute;
+    bottom: 30px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #dba248;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.play-circle {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #d69b3d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    padding: 18px 40px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+}
+
+.card {
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(190,125,30,.35);
+    background: linear-gradient(135deg,#100b06,#030303);
+    padding: 35px;
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #b87924;
+    box-shadow: 0 10px 40px rgba(187,117,23,.12);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 75% 45%, rgba(205,141,42,.24), transparent 30%);
+    opacity: .8;
+}
+
+.card:nth-child(1)::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -50px;
+    top: 35px;
+    border-radius: 50%;
+    border: 35px double rgba(198,137,42,.18);
+}
+
+.card:nth-child(2)::after {
+    content: "◉";
+    position: absolute;
+    right: 50px;
+    top: 55px;
+    font-size: 150px;
+    color: rgba(199,137,42,.12);
+}
+
+.card:nth-child(3)::after {
+    content: "✧";
+    position: absolute;
+    right: 45px;
+    top: 30px;
+    font-size: 180px;
+    color: rgba(204,142,45,.14);
+}
+
+.card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.number {
+    color: #d49a3e;
+    font-family: 'Cinzel',serif;
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+
+.card h2 {
+    font-size: 26px;
+    letter-spacing: 5px;
+    font-weight: 500;
+    margin: 20px 0 13px;
+}
+
+.card h2::after {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 1px;
+    background: #c88b31;
+    margin-top: 13px;
+}
+
+.card p {
+    color: #c4bbb0;
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 260px;
+}
+
+.card-link {
+    position: absolute;
+    bottom: 25px;
+    left: 35px;
+    color: #dca34a;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+/* =========================
+   LATEST PROJECT
+========================= */
+
+.latest {
+    margin: 0 40px 40px;
+    min-height: 170px;
+    border: 1px solid rgba(190,125,30,.35);
+    display: grid;
+    grid-template-columns: 24% 18% 28% 30%;
+    background: #060504;
+}
+
+.latest-info,
+.latest-text,
+.latest-quote {
+    padding: 30px;
+}
+
+.latest-label {
+    color: #d59b3c;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 17px;
+}
+
+.latest h3 {
+    font-family: 'Cinzel',serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+}
+
+.meta {
+    color: #aaa097;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.project-image {
+    min-height: 170px;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(222,160,54,.65), transparent 18%),
+        linear-gradient(180deg,#25170b,#080604);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image::before {
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    background: #d6a14c;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0 0 45px rgba(222,160,54,.5);
+}
+
+.project-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.latest-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.latest-text p {
+    color: #c4bbb0;
+    line-height: 1.8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.listen {
+    border: 1px solid #a97024;
+    padding: 12px 20px;
+    width: fit-content;
+    color: #dda54a;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.latest-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid rgba(190,125,30,.18);
+}
+
+.quote-mark {
+    color: #ce9133;
+    font-family: Georgia,serif;
+    font-size: 50px;
+}
+
+.latest-quote p {
+    color: #cfc5b8;
+    font-family: Georgia,serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.signature {
+    margin-top: 14px;
+    color: #d59b3c;
+    font-size: 11px;
+    letter-spacing: 3px;
 }
 
 /* =========================
@@ -586,281 +593,205 @@ section {
 ========================= */
 
 footer {
-    padding: 90px 5% 40px;
-
-    text-align: center;
-}
-
-.footer-logo {
-    font-size: 30px;
-
-    font-weight: 900;
-
-    letter-spacing: 8px;
-
-    color: var(--gold-light);
-}
-
-.footer-links {
-    margin: 35px 0;
-
+    border-top: 1px solid rgba(190,125,30,.25);
+    padding: 28px 40px;
     display: flex;
-
-    justify-content: center;
-
-    gap: 30px;
-}
-
-.footer-links a {
-    color: #666;
-
-    text-decoration: none;
-
+    justify-content: space-between;
+    color: #80776d;
     font-size: 10px;
-
     letter-spacing: 3px;
 }
 
-.footer-links a:hover {
-    color: var(--gold);
-}
-
-.footer-copy {
-    color: #444;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-}
-
 /* =========================
-   MOBILE
+   RESPONSIVE
 ========================= */
 
-@media (max-width: 850px) {
+@media(max-width:1100px) {
 
-    .nav-links {
-        display: none;
+    nav {
+        padding: 0 22px;
     }
 
-    .hero-title {
-        letter-spacing: -5px;
+    .menu {
+        gap: 20px;
     }
 
-    .music-grid {
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .hero-left {
+        min-height: 350px;
+    }
+
+    .hero-right {
+        min-height: 420px;
+    }
+
+    .hero-center {
+        padding: 50px;
+    }
+
+    .cards {
         grid-template-columns: 1fr;
     }
 
-    .visual-section {
-        grid-template-columns: 1fr;
-    }
-
-    .visual-box {
-        height: 400px;
-    }
-
-    .lab-grid {
+    .latest {
         grid-template-columns: 1fr 1fr;
     }
+
+    .latest-quote {
+        grid-column: span 2;
+    }
 }
 
-@media (max-width: 500px) {
+@media(max-width:750px) {
 
-    .section {
-        padding: 90px 0;
+    nav {
+        height: auto;
+        padding: 18px;
+        flex-wrap: wrap;
+        gap: 18px;
     }
 
-    .lab-grid {
-        grid-template-columns: 1fr;
+    .menu {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
     }
 
-    .hero-subtitle {
-        letter-spacing: 3px;
+    .menu a {
+        padding: 5px;
+    }
+
+    .menu a::after {
+        bottom: 0;
+    }
+
+    .socials {
+        margin-left: auto;
+    }
+
+    .hero-center {
+        padding: 40px 25px;
     }
 
     .hero-title {
-        font-size: 72px;
+        font-size: 52px;
+        letter-spacing: 8px;
     }
 
-    .music-main h3 {
-        font-size: 38px;
+    .hero-sub {
+        font-size: 13px;
+        letter-spacing: 4px;
     }
 
-    .manifesto h2 {
-        letter-spacing: -3px;
+    .record {
+        width: 270px;
+        height: 270px;
+    }
+
+    .record::before {
+        inset: 35px;
+        font-size: 130px;
+    }
+
+    .cards {
+        padding: 15px;
+    }
+
+    .latest {
+        margin: 0 15px 25px;
+        grid-template-columns: 1fr;
+    }
+
+    .latest-quote {
+        grid-column: auto;
+        border-left: 0;
+        border-top: 1px solid rgba(190,125,30,.18);
+    }
+
+    footer {
+        padding: 25px 15px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
     }
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =========================
-     NAV
-========================= -->
-
 <nav>
 
-    <div class="nav-logo">
-        HAERVIU
+    <div class="brand">
+        <div class="logo">H</div>
+        <div class="brand-name">HAERVIU</div>
     </div>
 
-    <div class="nav-links">
+    <div class="menu">
+        <a href="#home" class="active">HOME</a>
+        <a href="#music">MUSIC</a>
+        <a href="#visuals">VISUALS</a>
+        <a href="#experiments">EXPERIMENTS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#contact">CONTACT</a>
+    </div>
 
-        <a href="#music">
-            MUSIC
-        </a>
-
-        <a href="#visuals">
-            VISUALS
-        </a>
-
-        <a href="#lab">
-            LAB
-        </a>
-
-        <a href="#about">
-            ABOUT
-        </a>
-
+    <div class="socials">
+        <span>◎</span>
+        <span>▶</span>
+        <span>●</span>
     </div>
 
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<main id="home">
 
-<header class="hero">
+<section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-left">
+        <div class="record"></div>
+    </div>
 
-        <div class="hero-small">
-            INDEPENDENT CREATIVE LAB
+    <div class="hero-center">
+
+        <div class="hero-title">HAERVIU</div>
+
+        <div class="gold-line"></div>
+
+        <div class="hero-sub">
+            MUSIC &nbsp; ◆ &nbsp; VISUALS &nbsp; ◆ &nbsp; EXPERIMENTS
         </div>
 
-        <div class="hero-title">
-            HAERVIU
-        </div>
-
-        <div class="hero-line"></div>
-
-        <div class="hero-subtitle">
-            Music · Visuals · Experiments
-        </div>
-
-        <p class="hero-description">
-            A creative universe built around sound,
-            images, technology and ideas.
-            No fixed boundaries. No predefined direction.
+        <p class="hero-text">
+            A CREATIVE JOURNEY BETWEEN SOUND,<br>
+            IMAGINATION AND NEW WORLDS.
         </p>
 
-        <a class="hero-button" href="#music">
+        <a href="#music" class="cta">
             ENTER THE LAB
+            <span>→</span>
         </a>
 
     </div>
 
-</header>
+    <div class="hero-right">
 
+        <div class="studio-ring"></div>
 
-<!-- =========================
-     MUSIC
-========================= -->
+        <div class="person"></div>
 
-<section class="section music-section" id="music">
+        <div class="console"></div>
 
-    <div class="section-label">
-        01 — MUSIC
-    </div>
-
-    <h2 class="section-title">
-        Sound<br>
-        in motion.
-    </h2>
-
-    <p class="section-text">
-        Electronic music, deep house, world influences,
-        DJ mixes and original productions.
-        Every project starts with a sound and evolves from there.
-    </p>
-
-
-    <div class="music-grid">
-
-        <div class="music-main">
-
-            <div class="music-number">
-                HAERVIU STUDIO
-            </div>
-
-            <h3>
-                Original Music
-            </h3>
-
-            <p>
-                Tracks, ideas, experiments and productions
-                created inside the Haerviu universe.
-            </p>
-
-        </div>
-
-
-        <div class="music-small">
-
-            <div class="music-card">
-
-                <span>
-                    01
-                </span>
-
-                <h3>
-                    Deep House
-                </h3>
-
-                <p>
-                    Groove, atmosphere and movement.
-                </p>
-
-            </div>
-
-
-            <div class="music-card">
-
-                <span>
-                    02
-                </span>
-
-                <h3>
-                    World Fusion
-                </h3>
-
-                <p>
-                    Traditional sounds meeting electronic production.
-                </p>
-
-            </div>
-
-
-            <div class="music-card">
-
-                <span>
-                    03
-                </span>
-
-                <h3>
-                    Experiments
-                </h3>
-
-                <p>
-                    Unexpected combinations and new directions.
-                </p>
-
-            </div>
-
+        <div class="play">
+            <div class="play-circle">▶</div>
+            PLAY INTRO
         </div>
 
     </div>
@@ -868,199 +799,146 @@ footer {
 </section>
 
 
-<!-- =========================
-     VISUALS
-========================= -->
+<section class="cards">
 
-<section class="section visual-section" id="visuals">
+    <article class="card" id="music">
 
-    <div class="visual-box"></div>
+        <div class="number">01</div>
 
-
-    <div>
-
-        <div class="section-label">
-            02 — VISUALS
-        </div>
-
-        <h2 class="section-title">
-            Music<br>
-            becomes<br>
-            image.
-        </h2>
-
-        <p class="section-text">
-            Cinematic worlds, artwork, music videos,
-            visual experiments and digital creations.
-            The visual identity is part of the music,
-            not simply an illustration of it.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LAB
-========================= -->
-
-<section class="section lab-section" id="lab">
-
-    <div class="section-label">
-        03 — THE LAB
-    </div>
-
-    <h2 class="section-title">
-        Behind<br>
-        the sound.
-    </h2>
-
-    <p class="section-text">
-        This is where ideas are tested.
-        Hardware, software, AI, production,
-        video and everything that helps create
-        something different.
-    </p>
-
-
-    <div class="lab-grid">
-
-        <div class="lab-item">
-
-            <span>
-                HARDWARE
-            </span>
-
-            <h3>
-                Machines
-            </h3>
-
-            <p>
-                Synthesizers, drum machines,
-                samplers and studio equipment.
-            </p>
-
-        </div>
-
-
-        <div class="lab-item">
-
-            <span>
-                AI
-            </span>
-
-            <h3>
-                New Tools
-            </h3>
-
-            <p>
-                Artificial intelligence used
-                as a creative instrument.
-            </p>
-
-        </div>
-
-
-        <div class="lab-item">
-
-            <span>
-                VIDEO
-            </span>
-
-            <h3>
-                Moving Images
-            </h3>
-
-            <p>
-                Editing, cinematic projects
-                and visual storytelling.
-            </p>
-
-        </div>
-
-
-        <div class="lab-item">
-
-            <span>
-                IDEAS
-            </span>
-
-            <h3>
-                Unknown
-            </h3>
-
-            <p>
-                Projects that don't have
-                a name yet.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MANIFESTO
-========================= -->
-
-<section class="manifesto" id="about">
-
-    <div>
-
-        <h2>
-            CREATE<br>
-            WHAT DOESN'T<br>
-            EXIST YET.
-        </h2>
+        <h2>MUSIC</h2>
 
         <p>
-            HAERVIU — PROJECT LAB
+            Original tracks, electronic grooves,
+            world influences and musical
+            experiments.
         </p>
+
+        <a href="#" class="card-link">
+            EXPLORE&nbsp;&nbsp; →
+        </a>
+
+    </article>
+
+
+    <article class="card" id="visuals">
+
+        <div class="number">02</div>
+
+        <h2>VISUALS</h2>
+
+        <p>
+            Music videos, cinematic atmospheres,
+            visual stories and creative
+            universes.
+        </p>
+
+        <a href="#" class="card-link">
+            DISCOVER&nbsp;&nbsp; →
+        </a>
+
+    </article>
+
+
+    <article class="card" id="experiments">
+
+        <div class="number">03</div>
+
+        <h2>EXPERIMENTS</h2>
+
+        <p>
+            AI, new ideas, creative tests,
+            discoveries and unexpected
+            directions.
+        </p>
+
+        <a href="#" class="card-link">
+            EXPLORE&nbsp;&nbsp; →
+        </a>
+
+    </article>
+
+</section>
+
+
+<section class="latest">
+
+    <div class="latest-info">
+
+        <div class="latest-label">
+            LATEST PROJECT
+        </div>
+
+        <h3>NEW HORIZONS</h3>
+
+        <div class="meta">
+            Deep House &nbsp; ◆ &nbsp; World &nbsp; ◆ &nbsp; Cinematic
+        </div>
+
+    </div>
+
+
+    <div class="project-image">
+
+        <div class="project-play">
+            ▶
+        </div>
+
+    </div>
+
+
+    <div class="latest-text">
+
+        <div class="latest-label">
+            A new journey.
+        </div>
+
+        <p>
+            Sound, energy and emotion
+            coming together.
+        </p>
+
+        <a href="#" class="listen">
+            LISTEN NOW&nbsp;&nbsp; →
+        </a>
+
+    </div>
+
+
+    <div class="latest-quote">
+
+        <div class="quote-mark">“</div>
+
+        <p>
+            The studio is my playground.<br>
+            The world is my inspiration.
+        </p>
+
+        <div class="signature">
+            — HAERVIU
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<section id="about"></section>
+<section id="contact"></section>
+
+</main>
+
 
 <footer>
 
-    <div class="footer-logo">
-        HAERVIU
+    <div>
+        © 2026 HAERVIU
     </div>
 
-    <div class="footer-links">
-
-        <a href="#music">
-            MUSIC
-        </a>
-
-        <a href="#visuals">
-            VISUALS
-        </a>
-
-        <a href="#lab">
-            LAB
-        </a>
-
-        <a href="#about">
-            ABOUT
-        </a>
-
-    </div>
-
-    <div class="footer-copy">
-        © 2026 HAERVIU — PROJECT LAB
+    <div>
+        PROJECT LAB · MUSIC · VISUALS · EXPERIMENTS
     </div>
 
 </footer>
-
 
 </body>
 </html>
