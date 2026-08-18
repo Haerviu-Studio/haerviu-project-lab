@@ -173,6 +173,87 @@ body{overflow-x:hidden}
   cursor:pointer;
 }
 
+/* LECTEUR HAERVIU */
+.haerviu-player{
+  margin-top:25px;
+  padding:18px 18px 16px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  border:1px solid rgba(201,149,56,.35);
+  background:linear-gradient(135deg,#0c0a08,#050403);
+}
+
+.haerviu-play{
+  flex:0 0 52px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:1px solid #c99538;
+  background:#090807;
+  color:#d9a348;
+  font-size:17px;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-left:3px;
+  transition:.2s ease;
+}
+
+.haerviu-play:hover{
+  background:#15110b;
+  box-shadow:0 0 18px rgba(201,149,56,.16);
+}
+
+.haerviu-player-main{
+  flex:1;
+  min-width:0;
+}
+
+.haerviu-track-top,
+.haerviu-track-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.haerviu-track-name{
+  color:#d9a348;
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+.haerviu-time{
+  color:#77716a;
+  font-size:10px;
+  letter-spacing:1px;
+}
+
+.haerviu-progress-wrap{
+  position:relative;
+  width:100%;
+  height:5px;
+  margin:13px 0 11px;
+  background:#24201b;
+  cursor:pointer;
+}
+
+.haerviu-progress{
+  width:0%;
+  height:100%;
+  background:#c99538;
+  transition:width .05s linear;
+}
+
+.haerviu-track-bottom{
+  color:#68615a;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
 /* INTRO */
 #introScreen{
   position:fixed;
@@ -216,6 +297,21 @@ body{overflow-x:hidden}
   .content-grid{grid-template-columns:1fr}
   .page-header{padding:0 20px}
   .logo{font-size:17px}
+
+  .haerviu-player{
+    padding:15px;
+    gap:12px;
+  }
+
+  .haerviu-play{
+    flex-basis:46px;
+    width:46px;
+    height:46px;
+  }
+
+  .haerviu-track-bottom{
+    display:none;
+  }
 }
 </style>
 </head>
@@ -274,10 +370,49 @@ and cinematic experiments.
 HAERVIU — Feels Right
 </p>
 
-<audio controls preload="metadata" style="width:100%;margin-top:25px">
-  <source src="music/Feels-Right.mp3" type="audio/mpeg">
-  Votre navigateur ne peut pas lire ce fichier audio.
-</audio>
+<!-- LECTEUR FEELS RIGHT -->
+<div class="haerviu-player">
+
+  <audio id="feelsRightAudio" preload="metadata">
+    <source src="music/Feels-Right.mp3" type="audio/mpeg">
+    Votre navigateur ne peut pas lire ce fichier audio.
+  </audio>
+
+  <button
+    class="haerviu-play"
+    id="feelsRightPlay"
+    type="button"
+    onclick="toggleFeelsRight()"
+    aria-label="Lire Feels Right">
+    ▶
+  </button>
+
+  <div class="haerviu-player-main">
+
+    <div class="haerviu-track-top">
+      <span class="haerviu-track-name">FEELS RIGHT</span>
+      <span class="haerviu-time" id="feelsRightTime">0:00 / 0:00</span>
+    </div>
+
+    <div
+      class="haerviu-progress-wrap"
+      id="feelsRightProgress">
+
+      <div
+        class="haerviu-progress"
+        id="feelsRightProgressBar">
+      </div>
+
+    </div>
+
+    <div class="haerviu-track-bottom">
+      <span>HAERVIU</span>
+      <span>ORIGINAL MUSIC</span>
+    </div>
+
+  </div>
+
+</div>
 
 </article>
 
@@ -318,6 +453,7 @@ created around the HAERVIU universe.
 </p>
 
 <div class="content-grid">
+
 <article class="content-card">
 <h2>MUSIC VIDEOS</h2>
 <p>Official videos and visual journeys connected to the music.</p>
@@ -332,6 +468,7 @@ created around the HAERVIU universe.
 <h2>GALLERY</h2>
 <p>Artwork, covers and images from the different projects.</p>
 </article>
+
 </div>
 </main>
 </section>
@@ -355,6 +492,7 @@ creative directions.
 </p>
 
 <div class="content-grid">
+
 <article class="content-card">
 <h2>AI MUSIC</h2>
 <p>Experiments combining human ideas, artificial intelligence and production.</p>
@@ -369,6 +507,7 @@ creative directions.
 <h2>NEW IDEAS</h2>
 <p>Projects that don't fit into a category yet.</p>
 </article>
+
 </div>
 </main>
 </section>
@@ -398,6 +537,7 @@ An independent project where electronic music, world influences,
 cinematic imagery and new technologies meet.
 </p>
 </div>
+
 </main>
 </section>
 
@@ -422,6 +562,7 @@ For collaborations, music, visuals and creative projects.
 <h2>GET IN TOUCH</h2>
 <p>Contact information and social links will be added here.</p>
 </div>
+
 </main>
 </section>
 
@@ -447,6 +588,7 @@ world influences and cinematic atmosphere.
 <h2>NEW HORIZONS</h2>
 <p>HAERVIU — latest project.</p>
 </div>
+
 </main>
 </section>
 
@@ -505,6 +647,114 @@ function playIntro(){
 
 function closeIntro(){
   document.getElementById("introScreen").classList.remove("show");
+}
+
+/* LECTEUR FEELS RIGHT */
+
+const feelsRightAudio=document.getElementById("feelsRightAudio");
+const feelsRightPlay=document.getElementById("feelsRightPlay");
+const feelsRightTime=document.getElementById("feelsRightTime");
+const feelsRightProgress=document.getElementById("feelsRightProgress");
+const feelsRightProgressBar=document.getElementById("feelsRightProgressBar");
+
+function formatTime(seconds){
+
+  if(!Number.isFinite(seconds)) return "0:00";
+
+  const minutes=Math.floor(seconds/60);
+
+  const secs=Math.floor(seconds%60)
+    .toString()
+    .padStart(2,"0");
+
+  return minutes+":"+secs;
+}
+
+function updateFeelsRight(){
+
+  if(!feelsRightAudio) return;
+
+  const current=feelsRightAudio.currentTime || 0;
+  const duration=feelsRightAudio.duration || 0;
+
+  feelsRightTime.textContent=
+    formatTime(current)+" / "+formatTime(duration);
+
+  feelsRightProgressBar.style.width=
+    (duration ? (current/duration)*100 : 0)+"%";
+}
+
+function toggleFeelsRight(){
+
+  if(!feelsRightAudio) return;
+
+  if(feelsRightAudio.paused){
+    feelsRightAudio.play();
+  }else{
+    feelsRightAudio.pause();
+  }
+}
+
+if(feelsRightAudio){
+
+  feelsRightAudio.addEventListener("play",function(){
+
+    feelsRightPlay.textContent="Ⅱ";
+    feelsRightPlay.style.paddingLeft="0";
+
+  });
+
+  feelsRightAudio.addEventListener("pause",function(){
+
+    feelsRightPlay.textContent="▶";
+    feelsRightPlay.style.paddingLeft="3px";
+
+  });
+
+  feelsRightAudio.addEventListener(
+    "timeupdate",
+    updateFeelsRight
+  );
+
+  feelsRightAudio.addEventListener(
+    "loadedmetadata",
+    updateFeelsRight
+  );
+
+  feelsRightAudio.addEventListener("ended",function(){
+
+    feelsRightPlay.textContent="▶";
+    feelsRightPlay.style.paddingLeft="3px";
+
+    updateFeelsRight();
+
+  });
+
+}
+
+if(feelsRightProgress){
+
+  feelsRightProgress.addEventListener("click",function(event){
+
+    if(!feelsRightAudio || !feelsRightAudio.duration) return;
+
+    const rect=
+      feelsRightProgress.getBoundingClientRect();
+
+    const percent=
+      Math.max(
+        0,
+        Math.min(
+          1,
+          (event.clientX-rect.left)/rect.width
+        )
+      );
+
+    feelsRightAudio.currentTime=
+      percent*feelsRightAudio.duration;
+
+  });
+
 }
 
 </script>
