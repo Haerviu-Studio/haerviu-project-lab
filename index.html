@@ -7,1953 +7,283 @@
 <title>HAERVIU — Music · Visuals · Experiments</title>
 
 <style>
-
-/* =========================================================
-   HAERVIU — PROJECT LAB
-   DARK CINEMATIC / GOLD EDITION
-   ========================================================= */
-
-:root{
-    --black:#030303;
-    --black2:#070605;
-    --panel:#090807;
-    --gold:#c89538;
-    --gold2:#e3b35a;
-    --gold3:#8c5f18;
-    --cream:#eee7d8;
-    --muted:#9b968d;
-    --line:rgba(201,149,56,.28);
-    --line2:rgba(201,149,56,.12);
-}
-
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    width:100%;
+    min-height:100%;
     background:#000;
 }
 
 body{
-    background:
-        radial-gradient(circle at 52% 20%,rgba(104,64,18,.10),transparent 35%),
-        #030303;
-    color:var(--cream);
-    font-family:Arial,Helvetica,sans-serif;
     overflow-x:hidden;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font:inherit;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 /* =========================================================
-   NAVIGATION
+   IMAGE DE RÉFÉRENCE
    ========================================================= */
 
-.navbar{
-    height:88px;
+.site{
+    position:relative;
     width:100%;
-    position:relative;
-    z-index:50;
-
-    display:flex;
-    align-items:center;
-
-    padding:0 42px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #030303 0%,
-            #050403 100%
-        );
-
-    border-bottom:1px solid rgba(201,149,56,.16);
+    max-width:1536px;
+    margin:0 auto;
+    line-height:0;
 }
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:17px;
-    min-width:310px;
+.reference{
+    display:block;
+    width:100%;
+    height:auto;
 }
 
-.brand-mark{
-    width:55px;
-    height:55px;
-    border:1px solid var(--gold);
-    border-radius:50%;
+/* =========================================================
+   ZONES CLIQUABLES
+   ========================================================= */
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-
-    color:var(--gold2);
-
-    font-family:Georgia,serif;
-    font-size:32px;
-
-    box-shadow:
-        0 0 0 4px rgba(201,149,56,.035),
-        inset 0 0 20px rgba(201,149,56,.05);
-}
-
-.brand-mark:before{
-    content:"";
+.hotspot{
     position:absolute;
-    inset:5px;
-    border:1px solid rgba(201,149,56,.42);
-    border-radius:50%;
+    display:block;
+    z-index:10;
+    cursor:pointer;
+    background:transparent;
+    border:0;
+    text-decoration:none;
 }
 
-.brand-name{
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:25px;
-    letter-spacing:8px;
-    color:var(--gold2);
+/* NAVIGATION */
+
+.home{
+    left:27.8%;
+    top:2.0%;
+    width:5%;
+    height:5%;
 }
 
-.nav-links{
-    flex:1;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    gap:54px;
+.music-nav{
+    left:33.7%;
+    top:2.0%;
+    width:5.5%;
+    height:5%;
 }
 
-.nav-links a{
-    position:relative;
-
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-
-    color:#ddd5c6;
-
-    transition:.3s ease;
+.visuals-nav{
+    left:41.1%;
+    top:2.0%;
+    width:6%;
+    height:5%;
 }
 
-.nav-links a:hover{
-    color:var(--gold2);
+.experiments-nav{
+    left:48.5%;
+    top:2.0%;
+    width:8%;
+    height:5%;
 }
 
-.nav-links a.active:after{
-    content:"";
-
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:-17px;
-
-    height:1px;
-
-    background:var(--gold2);
+.about-nav{
+    left:58%;
+    top:2.0%;
+    width:5%;
+    height:5%;
 }
 
-.socials{
-    min-width:210px;
-
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    gap:28px;
-}
-
-.social{
-    color:var(--gold2);
-    font-size:17px;
-    opacity:.9;
+.contact-nav{
+    left:65%;
+    top:2.0%;
+    width:6%;
+    height:5%;
 }
 
 /* =========================================================
    HERO
    ========================================================= */
 
-.hero{
-    min-height:475px;
-
-    display:grid;
-    grid-template-columns:
-        31%
-        38%
-        31%;
-
-    position:relative;
-
-    border-bottom:1px solid rgba(201,149,56,.14);
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 17% 48%,
-            rgba(123,74,18,.23),
-            transparent 27%
-        ),
-        radial-gradient(
-            circle at 79% 40%,
-            rgba(112,68,18,.10),
-            transparent 28%
-        ),
-        linear-gradient(
-            100deg,
-            #080706,
-            #020202 48%,
-            #090705
-        );
-}
-
-/* fine gold dust */
-.hero:before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.35;
-
-    background-image:
-        radial-gradient(circle,rgba(224,175,80,.45) 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(224,175,80,.25) 1px,transparent 1.5px);
-
-    background-size:91px 91px,137px 137px;
-    background-position:12px 25px,48px 70px;
-
-    mask-image:linear-gradient(
-        90deg,
-        #000,
-        transparent 45%,
-        transparent 65%,
-        #000
-    );
-}
-
-/* =========================================================
-   LEFT VINYL
-   ========================================================= */
-
-.hero-left{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    position:relative;
-    z-index:2;
-}
-
-.vinyl{
-    width:355px;
-    height:355px;
-
-    border-radius:50%;
-
-    position:relative;
-
-    background:
-        repeating-radial-gradient(
-            circle at center,
-            #070707 0px,
-            #070707 5px,
-            #11100e 6px,
-            #050505 8px
-        );
-
-    border:2px solid var(--gold);
-
-    box-shadow:
-        0 0 0 8px rgba(201,149,56,.05),
-        0 0 0 10px rgba(201,149,56,.18),
-        0 0 55px rgba(158,99,21,.22),
-        inset 0 0 55px rgba(0,0,0,.9);
-}
-
-.vinyl:before{
-    content:"";
-
-    position:absolute;
-    inset:22px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.45);
-}
-
-.vinyl:after{
-    content:"";
-
-    position:absolute;
-    width:5px;
-    height:5px;
-
-    top:42px;
-    right:75px;
-
-    border-radius:50%;
-
-    background:#f5ce76;
-
-    box-shadow:
-        0 0 8px #f5ce76,
-        0 0 22px rgba(245,206,118,.8);
-}
-
-.vinyl-center{
-    position:absolute;
-    inset:92px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.7);
-
-    background:
-        radial-gradient(
-            circle,
-            #080706 0%,
-            #0b0907 62%,
-            #020202 100%
-        );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.vinyl-center:before{
-    content:"";
-
-    position:absolute;
-    inset:19px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.24);
-}
-
-.h-symbol{
-    font-family:Georgia,serif;
-    font-size:112px;
-    line-height:1;
-    color:var(--gold2);
-
-    text-shadow:
-        0 2px 3px #000,
-        0 0 20px rgba(210,153,52,.18);
-
-    z-index:2;
-}
-
-/* =========================================================
-   CENTER HERO
-   ========================================================= */
-
-.hero-center{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    padding:40px 20px;
-
-    position:relative;
-    z-index:5;
-}
-
-.hero-title{
-    font-family:Georgia,"Times New Roman",serif;
-
-    font-size:92px;
-    line-height:.9;
-
-    font-weight:400;
-
-    letter-spacing:7px;
-
-    color:#d8a247;
-
-    margin-bottom:25px;
-
-    text-shadow:
-        0 2px 12px rgba(0,0,0,.7);
-}
-
-.hero-rule{
-    width:400px;
-    max-width:100%;
-
-    height:1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            rgba(201,149,56,.12)
-        );
-
-    margin-bottom:24px;
-}
-
-.hero-subtitle{
-    font-size:16px;
-
-    letter-spacing:6px;
-
-    color:#f0e8da;
-
-    margin-bottom:30px;
-
-    white-space:nowrap;
-}
-
-.diamond{
-    color:var(--gold2);
-    padding:0 12px;
-}
-
-.hero-description{
-    max-width:510px;
-
-    font-size:14px;
-    line-height:2;
-
-    letter-spacing:2px;
-
-    color:#bbb4a9;
-
-    text-transform:uppercase;
-
-    margin-bottom:28px;
-}
-
-.enter-button{
-    width:max-content;
-
-    border:1px solid var(--gold);
-
-    padding:14px 30px;
-
-    color:var(--gold2);
-
-    font-size:12px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    background:rgba(0,0,0,.15);
-
-    transition:.35s ease;
-}
-
-.enter-button span{
-    padding-left:25px;
-    font-size:15px;
-}
-
-.enter-button:hover{
-    background:rgba(201,149,56,.12);
-
-    box-shadow:
-        0 0 25px rgba(201,149,56,.08);
-}
-
-/* =========================================================
-   RIGHT HERO — STUDIO
-   ========================================================= */
-
-.hero-right{
-    position:relative;
-    min-height:475px;
-
-    overflow:hidden;
-
-    border-left:1px solid rgba(201,149,56,.10);
-
-    background:
-        radial-gradient(
-            ellipse at 52% 30%,
-            rgba(116,72,21,.35),
-            transparent 38%
-        ),
-        linear-gradient(
-            180deg,
-            #0d0905,
-            #020202 78%
-        );
-}
-
-/* giant circular studio light */
-
-.studio-ring{
-    position:absolute;
-
-    width:315px;
-    height:315px;
-
-    top:45px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.75);
-
-    box-shadow:
-        0 0 0 10px rgba(201,149,56,.04),
-        0 0 0 22px rgba(201,149,56,.035),
-        inset 0 0 45px rgba(201,149,56,.08);
-}
-
-.studio-ring:before{
-    content:"";
-
-    position:absolute;
-    inset:18px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.28);
-}
-
-.studio-ring:after{
-    content:"";
-
-    position:absolute;
-    inset:43px;
-
-    border-radius:50%;
-
-    border:1px solid rgba(201,149,56,.16);
-}
-
-/* silhouette */
-
-.producer{
-    position:absolute;
-
-    width:165px;
-    height:250px;
-
-    bottom:-32px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:4;
-}
-
-.head{
-    width:57px;
-    height:68px;
-
-    border-radius:50% 50% 45% 45%;
-
-    background:#070606;
-
-    position:absolute;
-
-    top:17px;
-    left:54px;
-
-    box-shadow:
-        0 0 15px rgba(0,0,0,.8);
-}
-
-.hood{
-    position:absolute;
-
-    width:105px;
-    height:95px;
-
-    top:0;
-    left:29px;
-
-    border-radius:55% 55% 35% 35%;
-
-    background:#050505;
-
-    clip-path:polygon(
-        12% 35%,
-        30% 9%,
-        51% 0,
-        72% 10%,
-        90% 38%,
-        100% 100%,
-        0 100%
-    );
-}
-
-.body{
-    position:absolute;
-
-    width:160px;
-    height:180px;
-
-    left:2px;
-    top:69px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #020202,
-            #10100e 48%,
-            #020202
-        );
-
-    clip-path:polygon(
-        30% 0,
-        70% 0,
-        100% 100%,
-        0 100%
-    );
-}
-
-.desk{
-    position:absolute;
-
-    bottom:0;
-    left:8%;
-    width:84%;
-    height:78px;
-
-    background:
-        linear-gradient(
-            180deg,
-            #16110b,
-            #050403
-        );
-
-    border:1px solid rgba(201,149,56,.22);
-
-    box-shadow:
-        0 -15px 45px rgba(0,0,0,.8);
-}
-
-.mixer{
-    position:absolute;
-
-    width:115px;
-    height:26px;
-
-    left:50%;
-    top:12px;
-
-    transform:translateX(-50%) rotate(-4deg);
-
-    background:#18130e;
-
-    border:1px solid rgba(201,149,56,.22);
-}
-
-.mixer:after{
-    content:"";
-
-    position:absolute;
-
-    inset:7px;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #8b651f 0 3px,
-            transparent 3px 9px
-        );
-
-    opacity:.5;
+.enter-lab{
+    left:28.4%;
+    top:44.5%;
+    width:14%;
+    height:5.5%;
 }
 
 .play-intro{
-    position:absolute;
-
-    right:26px;
-    bottom:23px;
-
-    z-index:10;
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    color:var(--gold2);
-
-    font-size:10px;
-    letter-spacing:3px;
-    text-transform:uppercase;
-}
-
-.play-circle{
-    width:34px;
-    height:34px;
-
-    border-radius:50%;
-
-    border:1px solid var(--gold);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:12px;
-}
-
-/* vertical text */
-
-.side-message{
-    position:absolute;
-
-    right:10px;
-    top:150px;
-
-    writing-mode:vertical-rl;
-
-    color:var(--gold2);
-
-    font-size:10px;
-
-    letter-spacing:4px;
-
-    opacity:.75;
+    right:1.8%;
+    top:49%;
+    width:10%;
+    height:6%;
 }
 
 /* =========================================================
-   FEATURE CARDS
+   CARTES
    ========================================================= */
 
-.features{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:15px;
-
-    padding:38px 40px 18px;
+.music-card{
+    left:2.6%;
+    top:55.2%;
+    width:30.8%;
+    height:25.2%;
 }
 
-.card{
-    height:260px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    border:1px solid rgba(201,149,56,.23);
-
-    background:#080706;
-
-    transition:
-        transform .35s ease,
-        border-color .35s ease;
+.visuals-card{
+    left:34.7%;
+    top:55.2%;
+    width:30.7%;
+    height:25.2%;
 }
 
-.card:hover{
-    transform:translateY(-4px);
-
-    border-color:rgba(201,149,56,.65);
-}
-
-.card-overlay{
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0,0,0,.05) 15%,
-            rgba(0,0,0,.72) 100%
-        );
-
-    z-index:2;
-}
-
-/* ---------------------------------------------------------
-   CARD 01 — VINYL
-   --------------------------------------------------------- */
-
-.card-vinyl{
-    position:absolute;
-
-    width:300px;
-    height:300px;
-
-    right:-15px;
-    top:-35px;
-
-    border-radius:50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #111 0 3px,
-            #050505 4px 7px
-        );
-
-    box-shadow:
-        inset 0 0 50px #000,
-        0 0 30px rgba(0,0,0,.5);
-}
-
-.card-vinyl-center{
-    position:absolute;
-
-    width:115px;
-    height:115px;
-
-    border-radius:50%;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    border:1px solid var(--gold);
-
-    background:#090807;
-}
-
-.card-vinyl-center:after{
-    content:"";
-
-    position:absolute;
-
-    width:14px;
-    height:14px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-}
-
-/* ---------------------------------------------------------
-   CARD 02 — CAMERA / LANDSCAPE
-   --------------------------------------------------------- */
-
-.card-camera{
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            180deg,
-            #151719 0%,
-            #292b29 40%,
-            #0c0c0b 100%
-        );
-}
-
-.mountain{
-    position:absolute;
-
-    bottom:0;
-
-    width:100%;
-    height:70%;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent 0 23%,
-            #181714 24% 36%,
-            transparent 37% 44%,
-            #11110f 45% 60%,
-            transparent 61%
-        );
-}
-
-.camera-body{
-    position:absolute;
-
-    width:95px;
-    height:63px;
-
-    right:60px;
-    bottom:53px;
-
-    background:#080807;
-
-    border:1px solid rgba(201,149,56,.45);
-
-    z-index:3;
-}
-
-.camera-lens{
-    position:absolute;
-
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    right:-31px;
-    top:5px;
-
-    background:#050505;
-
-    border:1px solid rgba(201,149,56,.55);
-}
-
-.tripod{
-    position:absolute;
-
-    width:3px;
-    height:105px;
-
-    right:105px;
-    bottom:-20px;
-
-    background:#060606;
-
-    transform:rotate(10deg);
-}
-
-.tripod:after{
-    content:"";
-
-    position:absolute;
-
-    width:3px;
-    height:105px;
-
-    left:35px;
-    top:0;
-
-    background:#060606;
-
-    transform:rotate(-20deg);
-}
-
-/* ---------------------------------------------------------
-   CARD 03 — EXPERIMENT
-   --------------------------------------------------------- */
-
-.card-experiment{
-    position:absolute;
-
-    inset:0;
-
-    background:
-        radial-gradient(
-            circle at 57% 50%,
-            rgba(226,169,66,.50),
-            rgba(108,64,12,.20) 12%,
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(218,158,49,.13),
-            transparent 55%
-        ),
-        #070604;
-}
-
-.orbit{
-    position:absolute;
-
-    width:190px;
-    height:190px;
-
-    left:50%;
-    top:50%;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(23deg);
-
-    border:1px solid rgba(224,171,71,.6);
-
-    border-radius:50%;
-
-    box-shadow:
-        0 0 25px rgba(207,148,42,.12);
-}
-
-.orbit:nth-child(2){
-    width:135px;
-    height:210px;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(-48deg);
-}
-
-.orbit:nth-child(3){
-    width:220px;
-    height:105px;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(60deg);
-}
-
-.card-content{
-    position:absolute;
-
-    left:32px;
-    top:31px;
-
-    z-index:4;
-}
-
-.card-number{
-    font-family:Georgia,serif;
-
-    color:var(--gold2);
-
-    font-size:44px;
-
-    letter-spacing:3px;
-
-    margin-bottom:23px;
-}
-
-.card-title{
-    font-size:25px;
-
-    letter-spacing:5px;
-
-    color:#f0e9dc;
-
-    margin-bottom:17px;
-}
-
-.card-line{
-    width:38px;
-    height:1px;
-
-    background:var(--gold2);
-
-    margin-bottom:15px;
-}
-
-.card-text{
-    width:270px;
-
-    color:#d0c9be;
-
-    font-size:14px;
-
-    line-height:1.65;
-}
-
-.card-link{
-    position:absolute;
-
-    left:32px;
-    bottom:24px;
-
-    z-index:5;
-
-    color:var(--gold2);
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-}
-
-.card-link span{
-    padding-left:12px;
+.experiments-card{
+    left:66.1%;
+    top:55.2%;
+    width:31%;
+    height:25.2%;
 }
 
 /* =========================================================
-   LATEST PROJECT
+   PROJET
    ========================================================= */
 
-.latest{
-    margin:0 40px 0;
-
-    min-height:160px;
-
-    display:grid;
-
-    grid-template-columns:
-        24%
-        17%
-        28%
-        31%;
-
-    border:1px solid rgba(201,149,56,.20);
-
-    background:#070706;
-
-    overflow:hidden;
+.latest-project{
+    left:2.6%;
+    top:82.2%;
+    width:38%;
+    height:16%;
 }
 
-.latest-info{
-    padding:25px 32px;
-
-    border-right:1px solid rgba(201,149,56,.12);
-}
-
-.eyebrow{
-    color:var(--gold2);
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    margin-bottom:14px;
-}
-
-.latest-title{
-    font-family:Georgia,serif;
-
-    font-size:34px;
-
-    letter-spacing:4px;
-
-    color:#eee8dd;
-
-    margin-bottom:17px;
-}
-
-.tags{
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    color:#9f988d;
-}
-
-.tags span{
-    color:var(--gold2);
-    padding:0 8px;
-}
-
-/* latest visual */
-
-.latest-visual{
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 46%,
-            #c38d31 0 8%,
-            #9b681e 9% 17%,
-            transparent 18%
-        ),
-        radial-gradient(
-            circle at 50% 46%,
-            rgba(213,160,61,.30),
-            transparent 42%
-        ),
-        linear-gradient(
-            180deg,
-            #171108,
-            #070605 80%
-        );
-}
-
-.sun{
-    position:absolute;
-
-    width:95px;
-    height:95px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #e7b451,
-            #9b681d 70%,
-            transparent 71%
-        );
-
-    left:50%;
-    top:47%;
-
-    transform:translate(-50%,-50%);
-
-    box-shadow:
-        0 0 45px rgba(215,159,52,.42);
-}
-
-.horizon{
-    position:absolute;
-
-    left:0;
-    right:0;
-    bottom:32px;
-
-    height:40px;
-
-    background:
-        linear-gradient(
-            160deg,
-            transparent 0 28%,
-            #15120d 29% 48%,
-            transparent 49% 57%,
-            #0d0b08 58% 78%,
-            transparent 79%
-        );
-}
-
-.latest-play{
-    position:absolute;
-
-    width:46px;
-    height:46px;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    border-radius:50%;
-
-    border:1px solid rgba(255,207,104,.8);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:#fff;
-
-    background:rgba(0,0,0,.22);
-
-    z-index:5;
-}
-
-/* latest text */
-
-.latest-middle{
-    padding:26px 32px;
-
-    border-right:1px solid rgba(201,149,56,.12);
-}
-
-.latest-middle p{
-    color:#aaa298;
-
-    font-size:14px;
-
-    line-height:1.8;
-
-    max-width:300px;
-
-    margin-bottom:17px;
-}
-
-.listen{
-    display:inline-block;
-
-    padding:12px 19px;
-
-    border:1px solid rgba(201,149,56,.7);
-
-    color:var(--gold2);
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    text-transform:uppercase;
-}
-
-/* quote */
-
-.quote{
-    padding:25px 40px;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    position:relative;
-}
-
-.quote-mark{
-    color:var(--gold2);
-
-    font-family:Georgia,serif;
-
-    font-size:42px;
-
-    line-height:.7;
-
-    margin-bottom:14px;
-}
-
-.quote-text{
-    font-family:Georgia,serif;
-
-    font-style:italic;
-
-    color:#c9c0b2;
-
-    font-size:16px;
-
-    line-height:1.7;
-
-    max-width:390px;
-}
-
-.quote-author{
-    color:var(--gold2);
-
-    font-size:10px;
-
-    letter-spacing:3px;
-
-    margin-top:12px;
+.listen-now{
+    left:42.7%;
+    top:88%;
+    width:11%;
+    height:5%;
 }
 
 /* =========================================================
-   FOOTER
+   EFFET LÉGER AU SURVOL
    ========================================================= */
 
-footer{
-    min-height:95px;
-
-    margin-top:0;
-
-    padding:38px 40px 25px;
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:flex-end;
-
-    border-top:1px solid rgba(201,149,56,.08);
-
-    color:#666158;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
+.hotspot:hover{
+    background:rgba(212,157,56,0.035);
 }
 
-.footer-brand{
-    color:var(--gold2);
+.hotspot:active{
+    background:rgba(212,157,56,0.08);
 }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media(max-width:1100px){
-
-    .navbar{
-        padding:0 25px;
-    }
-
-    .brand{
-        min-width:auto;
-    }
-
-    .brand-name{
-        font-size:20px;
-        letter-spacing:5px;
-    }
-
-    .nav-links{
-        gap:25px;
-    }
-
-    .socials{
-        min-width:auto;
-        gap:14px;
-    }
-
-    .hero{
-        grid-template-columns:30% 42% 28%;
-    }
-
-    .vinyl{
-        width:280px;
-        height:280px;
-    }
-
-    .vinyl-center{
-        inset:72px;
-    }
-
-    .h-symbol{
-        font-size:90px;
-    }
-
-    .hero-title{
-        font-size:65px;
-    }
-
-    .hero-subtitle{
-        font-size:12px;
-        letter-spacing:4px;
-    }
-
-    .features{
-        padding-left:25px;
-        padding-right:25px;
-    }
-
-    .latest{
-        margin-left:25px;
-        margin-right:25px;
-    }
-}
-
 @media(max-width:800px){
 
-    .navbar{
-        height:auto;
-        min-height:80px;
-        flex-wrap:wrap;
-        padding:15px 20px;
-    }
-
-    .brand{
+    .site{
         width:100%;
-        justify-content:center;
     }
 
-    .nav-links{
-        order:3;
-        width:100%;
-        padding-top:20px;
-        gap:18px;
-        overflow-x:auto;
-    }
+    /*
+       On conserve exactement les proportions
+       de la référence.
+    */
 
-    .nav-links a{
-        font-size:9px;
-        letter-spacing:2px;
-        white-space:nowrap;
-    }
-
-    .socials{
-        display:none;
-    }
-
-    .hero{
-        grid-template-columns:1fr;
-    }
-
-    .hero-left{
-        min-height:330px;
-    }
-
-    .hero-center{
-        padding:50px 30px;
-        align-items:center;
-        text-align:center;
-    }
-
-    .hero-title{
-        font-size:60px;
-    }
-
-    .hero-description{
-        text-align:center;
-    }
-
-    .hero-right{
-        min-height:390px;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-        padding:25px 20px;
-    }
-
-    .card{
-        height:280px;
-    }
-
-    .latest{
-        margin:0 20px;
-        grid-template-columns:1fr;
-    }
-
-    .latest-info,
-    .latest-middle{
-        border-right:0;
-        border-bottom:1px solid rgba(201,149,56,.12);
-    }
-
-    .latest-visual{
-        min-height:190px;
-    }
-
-    .quote{
-        min-height:180px;
-    }
-
-    footer{
-        padding-left:20px;
-        padding-right:20px;
+    .hotspot{
+        -webkit-tap-highlight-color:transparent;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-<!-- ======================================================
-     NAVIGATION
-     ====================================================== -->
+<div class="site">
 
-<header class="navbar">
+    <!-- IMAGE EXACTE DE LA RÉFÉRENCE -->
+    <img
+        src="reference.png"
+        class="reference"
+        alt="HAERVIU — Music Visuals Experiments"
+    >
 
-    <a href="#home" class="brand">
+    <!-- NAVIGATION -->
 
-        <div class="brand-mark">H</div>
+    <a href="#home"
+       class="hotspot home"
+       aria-label="Home"></a>
 
-        <div class="brand-name">
-            HAERVIU
-        </div>
+    <a href="#music"
+       class="hotspot music-nav"
+       aria-label="Music"></a>
 
-    </a>
+    <a href="#visuals"
+       class="hotspot visuals-nav"
+       aria-label="Visuals"></a>
 
+    <a href="#experiments"
+       class="hotspot experiments-nav"
+       aria-label="Experiments"></a>
 
-    <nav class="nav-links">
+    <a href="#about"
+       class="hotspot about-nav"
+       aria-label="About"></a>
 
-        <a href="#home" class="active">
-            HOME
-        </a>
+    <a href="#contact"
+       class="hotspot contact-nav"
+       aria-label="Contact"></a>
 
-        <a href="#music">
-            MUSIC
-        </a>
 
-        <a href="#visuals">
-            VISUALS
-        </a>
+    <!-- HERO -->
 
-        <a href="#experiments">
-            EXPERIMENTS
-        </a>
+    <a href="#music"
+       class="hotspot enter-lab"
+       aria-label="Enter the Lab"></a>
 
-        <a href="#about">
-            ABOUT
-        </a>
+    <a href="#intro"
+       class="hotspot play-intro"
+       aria-label="Play Intro"></a>
 
-        <a href="#contact">
-            CONTACT
-        </a>
 
-    </nav>
+    <!-- CARTES -->
 
+    <a href="#music"
+       class="hotspot music-card"
+       aria-label="Music"></a>
 
-    <div class="socials">
+    <a href="#visuals"
+       class="hotspot visuals-card"
+       aria-label="Visuals"></a>
 
-        <a class="social" href="#" aria-label="Instagram">
-            ◎
-        </a>
+    <a href="#experiments"
+       class="hotspot experiments-card"
+       aria-label="Experiments"></a>
 
-        <a class="social" href="#" aria-label="YouTube">
-            ▶
-        </a>
 
-        <a class="social" href="#" aria-label="Spotify">
-            ●
-        </a>
+    <!-- LATEST PROJECT -->
 
-    </div>
+    <a href="#latest"
+       class="hotspot latest-project"
+       aria-label="New Horizons"></a>
 
-</header>
+    <a href="#latest"
+       class="hotspot listen-now"
+       aria-label="Listen Now"></a>
 
+</div>
 
-<!-- ======================================================
-     HERO
-     ====================================================== -->
 
-<main id="home">
+<!-- =========================================================
+     ANCRES
+     ========================================================= -->
 
-<section class="hero">
-
-
-    <!-- LEFT -->
-
-    <div class="hero-left">
-
-        <div class="vinyl">
-
-            <div class="vinyl-center">
-
-                <div class="h-symbol">
-                    H
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- CENTER -->
-
-    <div class="hero-center">
-
-        <h1 class="hero-title">
-            HAERVIU
-        </h1>
-
-        <div class="hero-rule"></div>
-
-        <div class="hero-subtitle">
-
-            MUSIC
-            <span class="diamond">◆</span>
-
-            VISUALS
-            <span class="diamond">◆</span>
-
-            EXPERIMENTS
-
-        </div>
-
-
-        <p class="hero-description">
-
-            A CREATIVE JOURNEY BETWEEN SOUND,
-            IMAGINATION AND NEW WORLDS.
-
-        </p>
-
-
-        <a href="#music" class="enter-button">
-
-            ENTER THE LAB
-
-            <span>→</span>
-
-        </a>
-
-    </div>
-
-
-    <!-- RIGHT -->
-
-    <div class="hero-right">
-
-        <div class="studio-ring"></div>
-
-
-        <div class="producer">
-
-            <div class="hood"></div>
-
-            <div class="head"></div>
-
-            <div class="body"></div>
-
-        </div>
-
-
-        <div class="desk">
-
-            <div class="mixer"></div>
-
-        </div>
-
-
-        <div class="side-message">
-            CREATE · FEEL · SHARE
-        </div>
-
-
-        <div class="play-intro">
-
-            <div class="play-circle">
-                ▶
-            </div>
-
-            PLAY INTRO
-
-        </div>
-
-    </div>
-
-
-</section>
-
-
-<!-- ======================================================
-     FEATURE CARDS
-     ====================================================== -->
-
-<section class="features">
-
-
-    <!-- MUSIC -->
-
-    <article class="card" id="music">
-
-        <div class="card-vinyl">
-
-            <div class="card-vinyl-center"></div>
-
-        </div>
-
-        <div class="card-overlay"></div>
-
-
-        <div class="card-content">
-
-            <div class="card-number">
-                01
-            </div>
-
-            <div class="card-title">
-                MUSIC
-            </div>
-
-            <div class="card-line"></div>
-
-            <p class="card-text">
-
-                Original tracks, electronic grooves,
-                world influences and musical experiments.
-
-            </p>
-
-        </div>
-
-
-        <a href="#" class="card-link">
-            EXPLORE <span>→</span>
-        </a>
-
-    </article>
-
-
-    <!-- VISUALS -->
-
-    <article class="card" id="visuals">
-
-        <div class="card-camera">
-
-            <div class="mountain"></div>
-
-            <div class="camera-body">
-
-                <div class="camera-lens"></div>
-
-            </div>
-
-            <div class="tripod"></div>
-
-        </div>
-
-        <div class="card-overlay"></div>
-
-
-        <div class="card-content">
-
-            <div class="card-number">
-                02
-            </div>
-
-            <div class="card-title">
-                VISUALS
-            </div>
-
-            <div class="card-line"></div>
-
-            <p class="card-text">
-
-                Music videos, cinematic atmospheres,
-                visual stories and creative universes.
-
-            </p>
-
-        </div>
-
-
-        <a href="#" class="card-link">
-            DISCOVER <span>→</span>
-        </a>
-
-    </article>
-
-
-    <!-- EXPERIMENTS -->
-
-    <article class="card" id="experiments">
-
-        <div class="card-experiment">
-
-            <div class="orbit"></div>
-            <div class="orbit"></div>
-            <div class="orbit"></div>
-
-        </div>
-
-        <div class="card-overlay"></div>
-
-
-        <div class="card-content">
-
-            <div class="card-number">
-                03
-            </div>
-
-            <div class="card-title">
-                EXPERIMENTS
-            </div>
-
-            <div class="card-line"></div>
-
-            <p class="card-text">
-
-                AI, new ideas, creative tests,
-                discoveries and unexpected directions.
-
-            </p>
-
-        </div>
-
-
-        <a href="#" class="card-link">
-            EXPLORE <span>→</span>
-        </a>
-
-    </article>
-
-
-</section>
-
-
-<!-- ======================================================
-     LATEST PROJECT
-     ====================================================== -->
-
-<section class="latest">
-
-
-    <div class="latest-info">
-
-        <div class="eyebrow">
-            LATEST PROJECT
-        </div>
-
-        <h2 class="latest-title">
-            NEW HORIZONS
-        </h2>
-
-        <div class="tags">
-
-            Deep House
-
-            <span>◆</span>
-
-            World
-
-            <span>◆</span>
-
-            Cinematic
-
-        </div>
-
-    </div>
-
-
-    <div class="latest-visual">
-
-        <div class="sun"></div>
-
-        <div class="horizon"></div>
-
-        <div class="latest-play">
-            ▶
-        </div>
-
-    </div>
-
-
-    <div class="latest-middle">
-
-        <div class="eyebrow">
-            A new journey.
-        </div>
-
-        <p>
-            Sound, energy and emotion
-            coming together.
-        </p>
-
-        <a href="#" class="listen">
-            LISTEN NOW →
-        </a>
-
-    </div>
-
-
-    <div class="quote" id="about">
-
-        <div class="quote-mark">
-            “
-        </div>
-
-        <div class="quote-text">
-
-            The studio is my playground.
-            <br>
-            The world is my inspiration.
-
-        </div>
-
-        <div class="quote-author">
-            — HAERVIU
-        </div>
-
-    </div>
-
-
-</section>
-
-
-</main>
-
-
-<!-- ======================================================
-     FOOTER
-     ====================================================== -->
-
-<footer id="contact">
-
-    <div class="footer-brand">
-        HAERVIU
-    </div>
-
-    <div>
-        MUSIC · VISUALS · EXPERIMENTS
-    </div>
-
-    <div>
-        © 2026 HAERVIU
-    </div>
-
-</footer>
-
+<div id="home"></div>
+<div id="music"></div>
+<div id="visuals"></div>
+<div id="experiments"></div>
+<div id="about"></div>
+<div id="contact"></div>
+<div id="intro"></div>
+<div id="latest"></div>
 
 </body>
 </html>
