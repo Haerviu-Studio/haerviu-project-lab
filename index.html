@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,25 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-    --black:#050505;
-    --black2:#0a0806;
-    --gold:#c99538;
-    --gold-light:#e5b75a;
-    --gold-dark:#795019;
-    --cream:#eee8dc;
-    --grey:#aaa49a;
-    --line:rgba(201,149,56,.28);
+    --black:#050403;
+    --black2:#0b0907;
+    --gold:#c9963e;
+    --gold2:#e0ae55;
+    --gold3:#8b6120;
+    --cream:#eee5d5;
+    --muted:#aaa096;
+    --line:rgba(201,150,62,.35);
 }
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -35,31 +34,34 @@ html{
 }
 
 body{
-    background:#050505;
+    background:#050403;
     color:var(--cream);
     font-family:Montserrat,Arial,sans-serif;
     overflow-x:hidden;
 }
 
-
-/* =========================================================
+/* =========================
    NAVIGATION
-========================================================= */
+========================= */
 
 nav{
     height:86px;
     width:100%;
+    background:#050403;
+    border-bottom:1px solid rgba(201,150,62,.18);
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:0 42px;
-    background:#050505;
-    border-bottom:1px solid rgba(201,149,56,.18);
-    position:relative;
-    z-index:20;
+
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.brand{
+.logo{
     display:flex;
     align-items:center;
     gap:18px;
@@ -70,112 +72,98 @@ nav{
     height:58px;
     border:1px solid var(--gold);
     border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    position:relative;
-}
 
-.logo-circle:before{
-    content:"";
-    position:absolute;
-    inset:5px;
-    border:1px solid rgba(201,149,56,.35);
-    border-radius:50%;
-}
-
-.logo-h{
     font-family:Cinzel,serif;
-    color:var(--gold-light);
-    font-size:32px;
-    line-height:1;
+    font-size:30px;
+    color:var(--gold2);
+
+    box-shadow:
+        0 0 0 1px rgba(201,150,62,.12) inset,
+        0 0 25px rgba(201,150,62,.08);
 }
 
-.brand-name{
+.logo-name{
     font-family:Cinzel,serif;
     font-size:22px;
-    letter-spacing:8px;
-    color:var(--gold-light);
+    letter-spacing:7px;
+    color:var(--gold2);
 }
 
-.nav-links{
+.menu{
     display:flex;
-    align-items:center;
     gap:48px;
-    height:100%;
+    align-items:center;
 }
 
-.nav-links a{
-    height:100%;
-    display:flex;
-    align-items:center;
-    position:relative;
-    color:#eee8dc;
+.menu a{
+    color:#eee7dc;
     text-decoration:none;
     font-size:12px;
     letter-spacing:3px;
-    font-weight:500;
+    position:relative;
+    padding:34px 0;
 }
 
-.nav-links a:after{
+.menu a:hover{
+    color:var(--gold2);
+}
+
+.menu a.active::after{
     content:"";
     position:absolute;
-    bottom:20px;
     left:0;
-    width:0;
-    height:1px;
-    background:var(--gold-light);
-    transition:.3s;
+    right:0;
+    bottom:20px;
+    height:2px;
+    background:var(--gold);
 }
 
-.nav-links a:hover:after,
-.nav-links a.active:after{
-    width:100%;
-}
-
-.socials{
+.social{
     display:flex;
-    gap:20px;
-    color:var(--gold-light);
+    gap:22px;
+    align-items:center;
+}
+
+.social span{
+    color:var(--gold2);
     font-size:18px;
 }
 
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
     min-height:480px;
-    display:grid;
-    grid-template-columns:31% 37% 32%;
-    border-bottom:1px solid rgba(201,149,56,.16);
-    background:
-        radial-gradient(circle at 18% 48%,rgba(150,90,15,.16),transparent 27%),
-        radial-gradient(circle at 78% 45%,rgba(135,82,20,.12),transparent 28%),
-        linear-gradient(90deg,#090705,#030303 52%,#090604);
     position:relative;
+
+    display:grid;
+    grid-template-columns:30% 40% 30%;
+
     overflow:hidden;
+
+    background:
+        radial-gradient(circle at 15% 45%,rgba(196,137,39,.14),transparent 30%),
+        radial-gradient(circle at 70% 40%,rgba(155,94,19,.10),transparent 30%),
+        linear-gradient(90deg,#080604,#030302 50%,#090705);
 }
 
-
-/* GOLD PARTICLES */
-
-.hero:before{
+.hero::before{
     content:"";
     position:absolute;
     inset:0;
-    opacity:.32;
-    background-image:
-        radial-gradient(circle at 12% 18%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 23% 71%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 37% 25%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 61% 18%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 83% 23%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 92% 69%,#c99538 0 1px,transparent 2px),
-        radial-gradient(circle at 70% 78%,#c99538 0 1px,transparent 2px);
-}
 
+    background-image:
+        radial-gradient(circle,rgba(255,184,67,.45) 1px,transparent 1px);
+
+    background-size:110px 110px;
+    opacity:.18;
+    pointer-events:none;
+}
 
 /* LEFT VINYL */
 
@@ -188,526 +176,563 @@ nav{
 }
 
 .vinyl{
-    width:345px;
-    height:345px;
+    width:350px;
+    height:350px;
+
     border-radius:50%;
-    position:relative;
 
     background:
         repeating-radial-gradient(
             circle,
-            #070707 0px,
-            #101010 2px,
+            #050505 0px,
             #050505 4px,
-            #111 6px
+            #111 5px,
+            #050505 7px
         );
 
-    border:7px solid rgba(201,149,56,.48);
+    border:3px solid var(--gold);
 
     box-shadow:
-        0 0 0 2px #8b5c18,
-        0 0 35px rgba(201,149,56,.22),
-        inset 0 0 45px #000;
+        0 0 0 9px rgba(201,150,62,.13),
+        0 0 0 11px rgba(201,150,62,.32),
+        0 0 55px rgba(201,150,62,.18);
+
+    position:relative;
 }
 
-.vinyl:before{
+.vinyl::before{
     content:"";
     position:absolute;
-    inset:18px;
-    border:2px solid rgba(201,149,56,.55);
+    inset:35px;
+
+    border:1px solid rgba(201,150,62,.8);
     border-radius:50%;
 }
 
-.vinyl:after{
+.vinyl::after{
     content:"";
     position:absolute;
-    inset:75px;
+    inset:112px;
+
     border-radius:50%;
+    border:2px solid var(--gold);
+
     background:
-        radial-gradient(circle at center,
-        #d9a94e 0 7px,
-        #8a5b19 8px 12px,
-        #050505 13px 100%);
-    border:1px solid #c99538;
+        radial-gradient(circle,#17110a 0%,#080604 70%);
 }
 
 .vinyl-h{
     position:absolute;
-    z-index:4;
     inset:0;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    z-index:4;
+
     font-family:Cinzel,serif;
-    font-size:150px;
-    color:#dba94e;
+    font-size:130px;
+    color:#dca64d;
+
     text-shadow:
-        2px 2px 0 #684515,
-        0 0 20px rgba(201,149,56,.28);
+        0 2px 0 #6e4716,
+        0 0 25px rgba(218,164,72,.25);
 }
 
-.light{
-    position:absolute;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:#ffe4a0;
-    box-shadow:0 0 25px 8px rgba(229,183,90,.55);
-    top:16%;
-    left:18%;
-}
-
-
-/* CENTER HERO */
+/* CENTER */
 
 .hero-center{
+    position:relative;
+    z-index:3;
+
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding:20px 38px;
-    position:relative;
-    z-index:3;
+
+    padding:30px 25px;
 }
 
 .hero-title{
-    font-family:Cinzel,serif;
+    font-family:Oswald,Arial,sans-serif;
     font-size:82px;
-    font-weight:600;
+    font-weight:500;
     letter-spacing:8px;
-    color:#d9a94e;
-    line-height:1;
-    white-space:nowrap;
+    line-height:.95;
+
+    color:#d9a348;
+
+    text-shadow:
+        0 2px 0 #704713,
+        0 0 30px rgba(201,150,62,.12);
 }
 
-.hero-rule{
+.hero-line{
     width:400px;
+    max-width:100%;
     height:1px;
     background:linear-gradient(
         90deg,
         var(--gold),
-        rgba(201,149,56,.15)
+        rgba(201,150,62,.1)
     );
+
     margin:22px 0;
 }
 
-.hero-subtitle{
+.hero-sub{
     font-size:15px;
     letter-spacing:6px;
-    color:#f0e8d8;
-    margin-bottom:28px;
+    color:#eee7dc;
+    margin-bottom:34px;
+}
+
+.hero-sub span{
+    color:var(--gold);
+    margin:0 13px;
 }
 
 .hero-description{
-    max-width:500px;
-    color:#bbb4a8;
     font-size:13px;
     line-height:2;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#c4bbb0;
+    max-width:520px;
+    margin-bottom:28px;
 }
 
-.enter{
-    margin-top:28px;
-    width:215px;
-    height:46px;
-    display:flex;
+.button{
+    display:inline-flex;
     align-items:center;
     justify-content:center;
+
+    width:215px;
+    height:48px;
+
     border:1px solid var(--gold);
-    color:var(--gold-light);
+
+    color:var(--gold2);
     text-decoration:none;
+
     font-size:11px;
     letter-spacing:3px;
+
     transition:.3s;
 }
 
-.enter:hover{
-    background:rgba(201,149,56,.1);
-    box-shadow:0 0 25px rgba(201,149,56,.15);
+.button:hover{
+    background:var(--gold);
+    color:#080604;
 }
-
 
 /* RIGHT STUDIO */
 
 .hero-right{
     position:relative;
-    overflow:hidden;
-    border-left:1px solid rgba(201,149,56,.16);
+
     background:
-        radial-gradient(
-            ellipse at 50% 42%,
-            rgba(176,116,31,.28),
-            transparent 43%
-        ),
         linear-gradient(
             90deg,
-            rgba(0,0,0,.1),
-            rgba(0,0,0,.7)
-        );
+            #050403 0%,
+            rgba(5,4,3,.25) 20%,
+            rgba(5,4,3,.05) 100%
+        ),
+        url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=85")
+        center/cover no-repeat;
+
+    min-height:480px;
 }
 
-.studio{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-end;
-    padding-bottom:28px;
-}
-
-.studio-ring{
-    position:absolute;
-    width:270px;
-    height:270px;
-    border:2px solid rgba(201,149,56,.65);
-    border-radius:50%;
-    top:55px;
-    left:50%;
-    transform:translateX(-50%);
-    box-shadow:
-        0 0 0 8px rgba(201,149,56,.08),
-        0 0 0 20px rgba(201,149,56,.035);
-}
-
-.studio-ring:after{
+.hero-right::after{
     content:"";
     position:absolute;
-    inset:30px;
-    border:1px solid rgba(201,149,56,.4);
-    border-radius:50%;
-}
+    inset:0;
 
-.person{
-    position:absolute;
-    bottom:42px;
-    width:155px;
-    height:190px;
     background:
         linear-gradient(
-            90deg,
-            transparent 0 15%,
-            #080706 15% 85%,
-            transparent 85%
+            180deg,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.62)
         );
-    clip-path:polygon(
-        35% 0,
-        65% 0,
-        78% 22%,
-        88% 55%,
-        100% 100%,
-        0 100%,
-        12% 55%,
-        22% 22%
-    );
-    filter:drop-shadow(0 0 18px #000);
-}
-
-.console{
-    position:absolute;
-    bottom:0;
-    width:82%;
-    height:55px;
-    border:1px solid rgba(201,149,56,.35);
-    background:linear-gradient(#16110a,#070605);
 }
 
 .play-intro{
-    position:relative;
+    position:absolute;
+    bottom:25px;
+    right:25px;
     z-index:5;
+
     display:flex;
     align-items:center;
     gap:12px;
-    color:var(--gold-light);
+
+    color:var(--gold2);
+
     font-size:10px;
     letter-spacing:3px;
 }
 
-.play-button{
+.play-circle{
     width:34px;
     height:34px;
-    border-radius:50%;
     border:1px solid var(--gold);
+    border-radius:50%;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:11px;
+
+    font-size:12px;
 }
 
+/* VERTICAL TEXT */
 
-/* =========================================================
+.side-text{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%) rotate(180deg);
+
+    writing-mode:vertical-rl;
+
+    font-size:10px;
+    letter-spacing:4px;
+
+    color:var(--gold2);
+
+    z-index:10;
+}
+
+/* =========================
    THREE CARDS
-========================================================= */
+========================= */
 
-.sections{
-    padding:0 40px;
-    margin-top:0;
+.cards{
+    padding:35px 40px 18px;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:14px;
+    gap:15px;
+
+    background:#050403;
 }
 
 .card{
     min-height:260px;
+
     position:relative;
     overflow:hidden;
-    border:1px solid rgba(201,149,56,.25);
-    background:#080706;
-    padding:34px 32px;
+
+    border:1px solid rgba(201,150,62,.28);
+
+    background:#0b0907;
+
     display:flex;
     flex-direction:column;
-    justify-content:space-between;
+    justify-content:flex-end;
+
+    padding:32px;
 }
 
-.card-bg{
+.card::before{
+    content:"";
     position:absolute;
     inset:0;
-    opacity:.52;
-    z-index:0;
-}
 
-.card:nth-child(1) .card-bg{
-    background:
-        radial-gradient(circle at 70% 45%,rgba(195,140,40,.38),transparent 20%),
-        repeating-radial-gradient(circle at 70% 45%,#15100a 0 2px,#050505 3px 5px);
-}
-
-.card:nth-child(2) .card-bg{
     background:
         linear-gradient(
-            145deg,
-            #0c0906,
-            #2b2115 45%,
-            #080706 80%
+            0deg,
+            rgba(0,0,0,.95) 0%,
+            rgba(0,0,0,.40) 65%,
+            rgba(0,0,0,.05) 100%
         );
+
+    z-index:1;
 }
 
-.card:nth-child(3) .card-bg{
-    background:
-        radial-gradient(circle at 68% 45%,rgba(210,148,45,.48),transparent 18%),
-        radial-gradient(circle at 40% 60%,rgba(120,70,10,.25),transparent 25%),
-        #090705;
+.card-image{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+
+    transition:transform .7s;
+}
+
+.card:hover .card-image{
+    transform:scale(1.05);
+}
+
+.music-image{
+    background-image:url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=85");
+}
+
+.visuals-image{
+    background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85");
+}
+
+.experiments-image{
+    background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85");
 }
 
 .card-content{
     position:relative;
-    z-index:2;
+    z-index:3;
 }
 
 .card-number{
     font-family:Oswald,sans-serif;
-    font-size:45px;
-    color:var(--gold-light);
+    font-size:38px;
+    color:var(--gold2);
     letter-spacing:3px;
+    margin-bottom:10px;
 }
 
 .card-title{
-    margin-top:10px;
-    font-family:Montserrat,sans-serif;
     font-size:25px;
-    letter-spacing:5px;
-    font-weight:500;
+    letter-spacing:4px;
+    margin-bottom:14px;
+    color:#f0ebe4;
 }
 
 .card-line{
     width:40px;
     height:1px;
     background:var(--gold);
-    margin:17px 0;
+    margin-bottom:14px;
 }
 
-.card-text{
-    max-width:340px;
-    font-size:13px;
+.card-description{
+    max-width:370px;
+    font-size:12px;
     line-height:1.8;
-    color:#d1cbc0;
+    color:#d0c8be;
 }
 
 .card-link{
-    position:relative;
-    z-index:2;
-    color:var(--gold-light);
+    display:inline-block;
+    margin-top:20px;
+
+    color:var(--gold2);
     text-decoration:none;
-    font-size:11px;
+
+    font-size:10px;
     letter-spacing:3px;
 }
 
-
-/* =========================================================
+/* =========================
    LATEST PROJECT
-========================================================= */
+========================= */
 
 .latest{
-    margin:18px 40px 0;
-    min-height:158px;
+    margin:0 40px 40px;
+
+    min-height:155px;
+
+    border:1px solid rgba(201,150,62,.27);
+
     display:grid;
-    grid-template-columns:24% 17% 34% 25%;
-    border:1px solid rgba(201,149,56,.25);
+    grid-template-columns:25% 17% 32% 26%;
+
     background:#080706;
 }
 
 .latest-info{
-    padding:27px 32px;
-    border-right:1px solid rgba(201,149,56,.16);
-}
+    padding:25px 30px;
 
-.small-title{
-    color:var(--gold-light);
-    font-size:11px;
-    letter-spacing:3px;
-}
-
-.project-title{
-    margin-top:15px;
-    font-family:Oswald,sans-serif;
-    font-size:35px;
-    letter-spacing:4px;
-    color:#eee8dc;
-}
-
-.project-meta{
-    margin-top:12px;
-    color:#aaa49a;
-    font-size:11px;
-    letter-spacing:2px;
-}
-
-.latest-visual{
-    position:relative;
-    background:
-        radial-gradient(
-            circle at 50% 55%,
-            #b67c27 0,
-            #6b4215 13%,
-            #211609 28%,
-            #080706 55%
-        );
-    overflow:hidden;
-}
-
-.latest-visual:before{
-    content:"";
-    position:absolute;
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    border:1px solid rgba(245,192,91,.65);
-    box-shadow:0 0 30px rgba(201,149,56,.3);
-}
-
-.latest-play{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:1px solid var(--gold-light);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold-light);
-}
-
-.latest-copy{
-    padding:28px 32px;
-    border-right:1px solid rgba(201,149,56,.16);
-}
-
-.latest-copy p{
-    color:#aaa49a;
-    font-size:13px;
-    line-height:1.8;
-    margin:13px 0;
-}
-
-.listen{
-    display:inline-block;
-    padding:12px 20px;
-    border:1px solid var(--gold);
-    color:var(--gold-light);
-    text-decoration:none;
-    font-size:10px;
-    letter-spacing:2px;
-}
-
-.quote{
-    padding:30px 35px;
     display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
-.quote-symbol{
-    color:var(--gold);
-    font-size:40px;
-    line-height:.6;
+.latest-label{
+    font-size:10px;
+    letter-spacing:4px;
+    color:var(--gold2);
+    margin-bottom:14px;
 }
 
-.quote-text{
-    font-family:Cinzel,serif;
+.latest-title{
+    font-family:Oswald,sans-serif;
+    font-size:30px;
+    letter-spacing:4px;
+    color:#eee7dc;
+    margin-bottom:12px;
+}
+
+.latest-meta{
+    font-size:10px;
+    letter-spacing:3px;
+    color:#a79d91;
+}
+
+.project-image{
+    position:relative;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.05)
+        ),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85")
+        center/cover no-repeat;
+}
+
+.project-play{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+
+    width:48px;
+    height:48px;
+
+    border:1px solid var(--gold);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold2);
+
+    background:rgba(0,0,0,.35);
+}
+
+.latest-text{
+    padding:25px 32px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    border-left:1px solid rgba(201,150,62,.15);
+    border-right:1px solid rgba(201,150,62,.15);
+}
+
+.latest-small{
+    color:var(--gold2);
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+.latest-description{
+    font-size:13px;
+    line-height:1.8;
+    color:#bbb1a5;
+    margin-bottom:15px;
+}
+
+.listen{
+    width:150px;
+    height:40px;
+
+    border:1px solid var(--gold);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold2);
+    text-decoration:none;
+
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.quote{
+    padding:25px 35px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    font-family:Georgia,serif;
     font-style:italic;
-    color:#aaa49a;
-    font-size:17px;
-    line-height:1.7;
+
+    color:#aaa198;
+    font-size:16px;
+    line-height:1.8;
+}
+
+.quote-mark{
+    color:var(--gold);
+    font-size:35px;
+    line-height:.5;
+    margin-bottom:12px;
 }
 
 .quote-author{
     margin-top:10px;
-    color:var(--gold-light);
+
+    font-family:Montserrat,sans-serif;
     font-size:10px;
     letter-spacing:3px;
+    color:var(--gold2);
 }
 
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 footer{
-    margin-top:45px;
-    padding:25px 40px;
-    border-top:1px solid rgba(201,149,56,.14);
+    border-top:1px solid rgba(201,150,62,.15);
+
+    min-height:90px;
+
+    padding:0 40px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    color:#716b62;
+
+    color:#766e65;
+
     font-size:9px;
     letter-spacing:3px;
 }
 
 .footer-brand{
-    color:var(--gold);
+    color:var(--gold2);
 }
 
+.footer-center{
+    color:#655e57;
+}
 
-/* =========================================================
+/* =========================
    RESPONSIVE
-========================================================= */
+========================= */
 
 @media(max-width:1100px){
 
-    .nav-links{
+    .menu{
         gap:25px;
+    }
+
+    .hero{
+        grid-template-columns:28% 44% 28%;
+    }
+
+    .vinyl{
+        width:280px;
+        height:280px;
+    }
+
+    .vinyl::after{
+        inset:90px;
     }
 
     .hero-title{
         font-size:60px;
     }
 
-    .vinyl{
-        width:270px;
-        height:270px;
+    .hero-sub{
+        font-size:11px;
+        letter-spacing:4px;
     }
-
-    .vinyl-h{
-        font-size:120px;
-    }
-
 }
 
 @media(max-width:800px){
@@ -716,7 +741,7 @@ footer{
         padding:0 20px;
     }
 
-    .nav-links{
+    .menu{
         display:none;
     }
 
@@ -725,89 +750,74 @@ footer{
     }
 
     .hero-left{
-        min-height:350px;
+        min-height:330px;
     }
 
     .hero-center{
-        padding:45px 25px;
+        padding:40px 30px;
     }
 
     .hero-title{
-        font-size:52px;
-    }
-
-    .hero-rule{
-        width:100%;
+        font-size:58px;
     }
 
     .hero-right{
-        min-height:350px;
+        min-height:330px;
     }
 
-    .sections{
+    .cards{
         grid-template-columns:1fr;
-        padding:0 20px;
+        padding:25px 20px;
     }
 
     .latest{
-        margin:20px;
+        margin:0 20px 30px;
         grid-template-columns:1fr;
     }
 
-    .latest-info,
-    .latest-copy{
-        border-right:0;
-        border-bottom:1px solid rgba(201,149,56,.16);
+    .project-image{
+        min-height:200px;
     }
 
-    .latest-visual{
-        min-height:180px;
+    .latest-text{
+        border:none;
+        border-top:1px solid rgba(201,150,62,.15);
+        border-bottom:1px solid rgba(201,150,62,.15);
     }
 
     footer{
         padding:25px 20px;
+        flex-direction:column;
+        gap:15px;
     }
 }
 
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ======================================================
+<!-- =========================
      NAVIGATION
-====================================================== -->
+========================= -->
 
 <nav>
 
-    <div class="brand">
-
-        <div class="logo-circle">
-            <span class="logo-h">H</span>
-        </div>
-
-        <div class="brand-name">
-            HAERVIU
-        </div>
-
+    <div class="logo">
+        <div class="logo-circle">H</div>
+        <div class="logo-name">HAERVIU</div>
     </div>
 
-
-    <div class="nav-links">
-
-        <a href="#home" class="active">HOME</a>
+    <div class="menu">
+        <a href="#" class="active">HOME</a>
         <a href="#music">MUSIC</a>
         <a href="#visuals">VISUALS</a>
         <a href="#experiments">EXPERIMENTS</a>
         <a href="#about">ABOUT</a>
         <a href="#contact">CONTACT</a>
-
     </div>
 
-
-    <div class="socials">
+    <div class="social">
         <span>◎</span>
         <span>▶</span>
         <span>●</span>
@@ -816,21 +826,15 @@ footer{
 </nav>
 
 
-
-<!-- ======================================================
+<!-- =========================
      HERO
-====================================================== -->
+========================= -->
 
-<section class="hero" id="home">
-
-
-    <!-- LEFT -->
+<section class="hero">
 
     <div class="hero-left">
 
         <div class="vinyl">
-
-            <div class="light"></div>
 
             <div class="vinyl-h">
                 H
@@ -841,19 +845,20 @@ footer{
     </div>
 
 
-
-    <!-- CENTER -->
-
     <div class="hero-center">
 
         <h1 class="hero-title">
             HAERVIU
         </h1>
 
-        <div class="hero-rule"></div>
+        <div class="hero-line"></div>
 
-        <div class="hero-subtitle">
-            MUSIC &nbsp;◆&nbsp; VISUALS &nbsp;◆&nbsp; EXPERIMENTS
+        <div class="hero-sub">
+            MUSIC
+            <span>◆</span>
+            VISUALS
+            <span>◆</span>
+            EXPERIMENTS
         </div>
 
         <p class="hero-description">
@@ -861,35 +866,26 @@ footer{
             IMAGINATION AND NEW WORLDS.
         </p>
 
-        <a href="#music" class="enter">
-            ENTER THE LAB &nbsp; → 
+        <a href="#music" class="button">
+            ENTER THE LAB&nbsp;&nbsp; →
         </a>
 
     </div>
 
 
-
-    <!-- RIGHT -->
-
     <div class="hero-right">
 
-        <div class="studio">
+        <div class="side-text">
+            CREATE · FEEL · SHARE
+        </div>
 
-            <div class="studio-ring"></div>
+        <div class="play-intro">
 
-            <div class="person"></div>
-
-            <div class="console"></div>
-
-            <div class="play-intro">
-
-                <div class="play-button">
-                    ▶
-                </div>
-
-                PLAY INTRO
-
+            <div class="play-circle">
+                ▶
             </div>
+
+            PLAY INTRO
 
         </div>
 
@@ -898,19 +894,15 @@ footer{
 </section>
 
 
+<!-- =========================
+     CARDS
+========================= -->
 
-<!-- ======================================================
-     THREE MAIN SECTIONS
-====================================================== -->
-
-<section class="sections">
-
-
-    <!-- MUSIC -->
+<section class="cards">
 
     <article class="card" id="music">
 
-        <div class="card-bg"></div>
+        <div class="card-image music-image"></div>
 
         <div class="card-content">
 
@@ -918,33 +910,29 @@ footer{
                 01
             </div>
 
-            <h2 class="card-title">
+            <div class="card-title">
                 MUSIC
-            </h2>
+            </div>
 
             <div class="card-line"></div>
 
-            <p class="card-text">
+            <div class="card-description">
                 Original tracks, electronic grooves,
-                world influences and musical
-                experiments.
-            </p>
+                world influences and musical experiments.
+            </div>
+
+            <a href="#" class="card-link">
+                EXPLORE&nbsp;&nbsp; →
+            </a>
 
         </div>
-
-        <a href="#" class="card-link">
-            EXPLORE &nbsp; →
-        </a>
 
     </article>
 
 
-
-    <!-- VISUALS -->
-
     <article class="card" id="visuals">
 
-        <div class="card-bg"></div>
+        <div class="card-image visuals-image"></div>
 
         <div class="card-content">
 
@@ -952,32 +940,29 @@ footer{
                 02
             </div>
 
-            <h2 class="card-title">
+            <div class="card-title">
                 VISUALS
-            </h2>
+            </div>
 
             <div class="card-line"></div>
 
-            <p class="card-text">
+            <div class="card-description">
                 Music videos, cinematic atmospheres,
                 visual stories and creative universes.
-            </p>
+            </div>
+
+            <a href="#" class="card-link">
+                DISCOVER&nbsp;&nbsp; →
+            </a>
 
         </div>
-
-        <a href="#" class="card-link">
-            DISCOVER &nbsp; →
-        </a>
 
     </article>
 
 
-
-    <!-- EXPERIMENTS -->
-
     <article class="card" id="experiments">
 
-        <div class="card-bg"></div>
+        <div class="card-image experiments-image"></div>
 
         <div class="card-content">
 
@@ -985,93 +970,86 @@ footer{
                 03
             </div>
 
-            <h2 class="card-title">
+            <div class="card-title">
                 EXPERIMENTS
-            </h2>
+            </div>
 
             <div class="card-line"></div>
 
-            <p class="card-text">
+            <div class="card-description">
                 AI, new ideas, creative tests,
-                discoveries and unexpected
-                directions.
-            </p>
+                discoveries and unexpected directions.
+            </div>
+
+            <a href="#" class="card-link">
+                EXPLORE&nbsp;&nbsp; →
+            </a>
 
         </div>
-
-        <a href="#" class="card-link">
-            EXPLORE &nbsp; →
-        </a>
 
     </article>
 
 </section>
 
 
-
-<!-- ======================================================
+<!-- =========================
      LATEST PROJECT
-====================================================== -->
+========================= -->
 
-<section class="latest" id="about">
-
+<section class="latest">
 
     <div class="latest-info">
 
-        <div class="small-title">
+        <div class="latest-label">
             LATEST PROJECT
         </div>
 
-        <div class="project-title">
+        <div class="latest-title">
             NEW HORIZONS
         </div>
 
-        <div class="project-meta">
-            DEEP HOUSE &nbsp; ◆ &nbsp; WORLD &nbsp; ◆ &nbsp; CINEMATIC
+        <div class="latest-meta">
+            DEEP HOUSE&nbsp;&nbsp; ◆ &nbsp;&nbsp;WORLD&nbsp;&nbsp; ◆ &nbsp;&nbsp;CINEMATIC
         </div>
 
     </div>
 
 
+    <div class="project-image">
 
-    <div class="latest-visual">
-
-        <div class="latest-play">
+        <div class="project-play">
             ▶
         </div>
 
     </div>
 
 
+    <div class="latest-text">
 
-    <div class="latest-copy">
-
-        <div class="small-title">
-            A NEW JOURNEY.
+        <div class="latest-small">
+            A new journey.
         </div>
 
-        <p>
+        <div class="latest-description">
             Sound, energy and emotion
             coming together.
-        </p>
+        </div>
 
         <a href="#" class="listen">
-            LISTEN NOW &nbsp; →
+            LISTEN NOW&nbsp;&nbsp; →
         </a>
 
     </div>
 
 
-
     <div class="quote">
 
-        <div class="quote-symbol">
+        <div class="quote-mark">
             “
         </div>
 
-        <div class="quote-text">
-            The studio is my playground.
-            <br>
+        <div>
+            The studio is my playground.<br>
             The world is my inspiration.
         </div>
 
@@ -1084,10 +1062,9 @@ footer{
 </section>
 
 
-
-<!-- ======================================================
+<!-- =========================
      FOOTER
-====================================================== -->
+========================= -->
 
 <footer id="contact">
 
@@ -1095,7 +1072,7 @@ footer{
         HAERVIU
     </div>
 
-    <div>
+    <div class="footer-center">
         MUSIC · VISUALS · EXPERIMENTS
     </div>
 
