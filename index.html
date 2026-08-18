@@ -3,149 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAERVIU — Music · Visuals · Experiments</title>
+<title>HAERVIU</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
+html,body{
+  width:100%;
+  min-height:100%;
   background:#030303;
   color:#eee;
   font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}play:block;
+}
+
+body{overflow-x:hidden}
+
+#homePage{
+  position:relative;
+  width:100%;
+  max-width:1536px;
+  margin:auto;
+}
+
+.reference{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* ZONES DE NAVIGATION */
+.hotspot{
+  position:absolute;
+  z-index:50;
+  display:block;
+  cursor:pointer;
   background:transparent;
+  border:0;
 }
 
-/* menu */
+/* MENU */
+.hs-home{left:27%;top:2%;width:6%;height:6%}
+.hs-music{left:34%;top:2%;width:7%;height:6%}
+.hs-visuals{left:41%;top:2%;width:7%;height:6%}
+.hs-experiments{left:48%;top:2%;width:10%;height:6%}
+.hs-about{left:58%;top:2%;width:6%;height:6%}
+.hs-contact{left:64%;top:2%;width:8%;height:6%}
 
-.hs-home{
-  left:27%;
-  top:2%;
-  width:6%;
-  height:6%;
-}
+/* HERO */
+.hs-enter{left:28%;top:44%;width:16%;height:7%}
+.hs-play{right:1%;top:45%;width:12%;height:8%}
 
-.hs-music{
-  left:34%;
-  top:2%;
-  width:7%;
-  height:6%;
-}
+/* CARTES */
+.hs-card1{left:2%;top:54%;width:31%;height:28%}
+.hs-card2{left:34%;top:54%;width:32%;height:28%}
+.hs-card3{left:66%;top:54%;width:32%;height:28%}
+.hs-latest{left:2%;top:82%;width:96%;height:17%}
 
-.hs-visuals{
-  left:41%;
-  top:2%;
-  width:7%;
-  height:6%;
-}
-
-.hs-experiments{
-  left:48%;
-  top:2%;
-  width:10%;
-  height:6%;
-}
-
-.hs-about{
-  left:58%;
-  top:2%;
-  width:6%;
-  height:6%;
-}
-
-.hs-contact{
-  left:64%;
-  top:2%;
-  width:8%;
-  height:6%;
-}
-
-/* boutons hero */
-
-.hs-enter{
-  left:28%;
-  top:44%;
-  width:16%;
-  height:7%;
-}
-
-.hs-play{
-  right:1%;
-  top:45%;
-  width:12%;
-  height:8%;
-}
-
-/* cartes */
-
-.hs-card1{
-  left:2%;
-  top:54%;
-  width:31%;
-  height:28%;
-}
-
-.hs-card2{
-  left:34%;
-  top:54%;
-  width:32%;
-  height:28%;
-}
-
-.hs-card3{
-  left:66%;
-  top:54%;
-  width:32%;
-  height:28%;
-}
-
-/* latest */
-
-.hs-latest{
-  left:2%;
-  top:82%;
-  width:96%;
-  height:17%;
-}
-
-
-/* =====================================================
-   PAGES
-===================================================== */
-
+/* PAGES */
 .page{
   display:none;
   min-height:100vh;
   background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(201,149,56,.12),
-      transparent 40%
-    ),
+    radial-gradient(circle at 50% 0%,rgba(201,149,56,.12),transparent 40%),
     #050403;
 }
 
-.page.active{
-  display:block;
-}
+.page.active{display:block}
 
 .page-header{
   height:90px;
   padding:0 45px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   border-bottom:1px solid rgba(201,149,56,.25);
 }
 
@@ -163,6 +93,7 @@ body{
   padding:11px 20px;
   letter-spacing:2px;
   font-size:11px;
+  cursor:pointer;
 }
 
 .page-content{
@@ -238,32 +169,24 @@ body{
   background:transparent;
   letter-spacing:2px;
   font-size:10px;
+  text-decoration:none;
+  cursor:pointer;
 }
 
-
-/* =====================================================
-   INTRO
-===================================================== */
-
+/* INTRO */
 #introScreen{
   position:fixed;
   inset:0;
   z-index:1000;
-
   display:none;
   align-items:center;
   justify-content:center;
-
   background:#030303;
 }
 
-#introScreen.show{
-  display:flex;
-}
+#introScreen.show{display:flex}
 
-.intro-inner{
-  text-align:center;
-}
+.intro-inner{text-align:center}
 
 .intro-h{
   color:#d9a348;
@@ -284,493 +207,261 @@ body{
   color:#d9a348;
   border:1px solid #c99538;
   background:transparent;
+  cursor:pointer;
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
 @media(max-width:800px){
-
-  .page-content{
-    padding:55px 25px;
-  }
-
-  .page-title{
-    font-size:48px;
-  }
-
-  .content-grid{
-    grid-template-columns:1fr;
-  }
-
-  .page-header{
-    padding:0 20px;
-  }
-
-  .logo{
-    font-size:17px;
-  }
-
+  .page-content{padding:55px 25px}
+  .page-title{font-size:48px}
+  .content-grid{grid-template-columns:1fr}
+  .page-header{padding:0 20px}
+  .logo{font-size:17px}
 }
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     ACCUEIL
-===================================================== -->
-
+<!-- ACCUEIL -->
 <div id="homePage">
 
-  <img
-    src="reference.png"
-    class="reference"
-    alt="HAERVIU"
-  >
+  <img src="reference.png" class="reference" alt="HAERVIU">
 
-  <!-- MENU -->
+  <a class="hotspot hs-home" href="#" onclick="showHome();return false;"></a>
+  <a class="hotspot hs-music" href="#" onclick="showPage('music');return false;"></a>
+  <a class="hotspot hs-visuals" href="#" onclick="showPage('visuals');return false;"></a>
+  <a class="hotspot hs-experiments" href="#" onclick="showPage('experiments');return false;"></a>
+  <a class="hotspot hs-about" href="#" onclick="showPage('about');return false;"></a>
+  <a class="hotspot hs-contact" href="#" onclick="showPage('contact');return false;"></a>
 
-  <a class="hotspot hs-home"
-     href="#"
-     onclick="showHome();return false;"></a>
+  <a class="hotspot hs-enter" href="#" onclick="showPage('music');return false;"></a>
+  <a class="hotspot hs-play" href="#" onclick="playIntro();return false;"></a>
 
-  <a class="hotspot hs-music"
-     href="#music"
-     onclick="showPage('music');return false;"></a>
+  <a class="hotspot hs-card1" href="#" onclick="showPage('music');return false;"></a>
+  <a class="hotspot hs-card2" href="#" onclick="showPage('visuals');return false;"></a>
+  <a class="hotspot hs-card3" href="#" onclick="showPage('experiments');return false;"></a>
 
-  <a class="hotspot hs-visuals"
-     href="#visuals"
-     onclick="showPage('visuals');return false;"></a>
-
-  <a class="hotspot hs-experiments"
-     href="#experiments"
-     onclick="showPage('experiments');return false;"></a>
-
-  <a class="hotspot hs-about"
-     href="#about"
-     onclick="showPage('about');return false;"></a>
-
-  <a class="hotspot hs-contact"
-     href="#contact"
-     onclick="showPage('contact');return false;"></a>
-
-
-  <!-- HERO -->
-
-  <a class="hotspot hs-enter"
-     href="#music"
-     onclick="showPage('music');return false;"></a>
-
-  <a class="hotspot hs-play"
-     href="#"
-     onclick="playIntro();return false;"></a>
-
-
-  <!-- CARTES -->
-
-  <a class="hotspot hs-card1"
-     href="#music"
-     onclick="showPage('music');return false;"></a>
-
-  <a class="hotspot hs-card2"
-     href="#visuals"
-     onclick="showPage('visuals');return false;"></a>
-
-  <a class="hotspot hs-card3"
-     href="#experiments"
-     onclick="showPage('experiments');return false;"></a>
-
-
-  <!-- NEW HORIZONS -->
-
-  <a class="hotspot hs-latest"
-     href="#new-horizons"
-     onclick="showPage('new-horizons');return false;"></a>
+  <a class="hotspot hs-latest" href="#" onclick="showPage('new-horizons');return false;"></a>
 
 </div>
 
-
-<!-- =====================================================
-     MUSIC
-===================================================== -->
-
+<!-- MUSIC -->
 <section class="page" id="page-music">
 
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">01 / MUSIC</div>
-
-    <h1 class="page-title">MUSIC</h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      Original music, electronic grooves, world influences
-      and cinematic experiments. This space will become
-      the home for the HAERVIU catalog.
-    </p>
-
-    <div class="content-grid">
-
-      <article class="content-card">
-        <h2>LATEST TRACK</h2>
-        <p>
-          Your latest release will appear here with
-          artwork, description and listening links.
-        </p>
-        <a class="gold-button" href="music/Feels-Right.mp3">
-          LISTEN
-        </a>
-      </article>
-
-      <article class="content-card">
-        <h2>PROJECTS</h2>
-        <p>
-          Albums, singles, extended mixes and future
-          musical projects.
-        </p>
-        <a class="gold-button" href="#">
-          EXPLORE
-        </a>
-      </article>
-
-      <article class="content-card">
-        <h2>STUDIO</h2>
-        <p>
-          Production, synthesizers, machines and the
-          creative process behind the music.
-        </p>
-      </article>
-
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     VISUALS
-===================================================== -->
-
-<section class="page" id="page-visuals">
-
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">02 / VISUALS</div>
-
-    <h1 class="page-title">VISUALS</h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      Music videos, cinematic worlds, visual stories
-      and images created around the HAERVIU universe.
-    </p>
-
-    <div class="content-grid">
-
-      <article class="content-card">
-        <h2>MUSIC VIDEOS</h2>
-        <p>
-          Official videos and visual journeys connected
-          to the music.
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>CINEMATIC</h2>
-        <p>
-          Landscapes, characters, atmosphere and visual
-          storytelling.
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>GALLERY</h2>
-        <p>
-          Artwork, covers and images from the different
-          HAERVIU projects.
-        </p>
-      </article>
-
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     EXPERIMENTS
-===================================================== -->
-
-<section class="page" id="page-experiments">
-
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">03 / EXPERIMENTS</div>
-
-    <h1 class="page-title">EXPERIMENTS</h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      A laboratory for AI, sound, images, new ideas
-      and unexpected creative directions.
-    </p>
-
-    <div class="content-grid">
-
-      <article class="content-card">
-        <h2>AI MUSIC</h2>
-        <p>
-          Experiments combining human ideas,
-          artificial intelligence and production.
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>VISUAL LAB</h2>
-        <p>
-          Images, animation and cinematic concepts
-          developed around the music.
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>NEW IDEAS</h2>
-        <p>
-          Projects that don't fit into a category yet.
-          This is where experimentation begins.
-        </p>
-      </article>
-
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section class="page" id="page-about">
-
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">04 / ABOUT</div>
-
-    <h1 class="page-title">HAERVIU</h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      HAERVIU is a creative universe built around music,
-      visual storytelling and experimentation.
-      Sound is the starting point. Imagination is the direction.
-    </p>
-
-    <div class="content-card">
-      <h2>MUSIC · VISUALS · EXPERIMENTS</h2>
-
-      <p>
-        An independent project where electronic music,
-        world influences, cinematic imagery and new
-        technologies meet.
-      </p>
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section class="page" id="page-contact">
-
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">05 / CONTACT</div>
-
-    <h1 class="page-title">CONTACT</h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      For collaborations, music, visuals and creative
-      projects.
-    </p>
-
-    <div class="content-card">
-
-      <h2>GET IN TOUCH</h2>
-
-      <p>
-        Contact information and social links will be
-        added here.
-      </p>
-
-      <a
-        class="gold-button"
-        href="mailto:contact@haerviu.com">
-        EMAIL
-      </a>
-
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     NEW HORIZONS
-===================================================== -->
-
-<section class="page" id="page-new-horizons">
-
-  <header class="page-header">
-    <div class="logo">HAERVIU</div>
-
-    <button class="back" onclick="showHome()">
-      ← HOME
-    </button>
-  </header>
-
-  <main class="page-content">
-
-    <div class="page-number">
-      LATEST PROJECT
-    </div>
-
-    <h1 class="page-title">
-      NEW HORIZONS
-    </h1>
-
-    <div class="page-line"></div>
-
-    <p class="page-intro">
-      A new musical journey combining electronic
-      energy, world influences and cinematic atmosphere.
-    </p>
-
-    <div class="content-grid">
-
-      <article class="content-card">
-        <h2>PROJECT</h2>
-        <p>
-          New Horizons — HAERVIU
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>STYLE</h2>
-        <p>
-          Deep House · World · Cinematic
-        </p>
-      </article>
-
-      <article class="content-card">
-        <h2>LISTEN</h2>
-        <p>
-          The final music player and streaming links
-          can be inserted here.
-        </p>
-
-        <a class="gold-button" href="#">
-          LISTEN NOW
-        </a>
-      </article>
-
-    </div>
-
-  </main>
-
-</section>
-
-
-<!-- =====================================================
-     INTRO
-===================================================== -->
-
-<div id="introScreen">
-
-  <div class="intro-inner">
-
-    <div class="intro-h">H</div>
-
-    <div class="intro-text">
-      HAERVIU · MUSIC · VISUALS · EXPERIMENTS
-    </div>
-
-    <button
-      class="intro-close"
-      onclick="closeIntro()">
-      ENTER
-    </button>
-
-  </div>
+<header class="page-header">
+  <div class="logo">HAERVIU</div>
+  <button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+
+<div class="page-number">01 / MUSIC</div>
+<h1 class="page-title">MUSIC</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+Original music, electronic grooves, world influences
+and cinematic experiments.
+</p>
+
+<div class="content-grid">
+
+<article class="content-card">
+
+<h2>FEELS RIGHT</h2>
+
+<p>
+HAERVIU — Feels Right
+</p>
+
+<audio controls preload="metadata" style="width:100%;margin-top:25px">
+  <source src="music/Feels-Right.mp3" type="audio/mpeg">
+  Votre navigateur ne peut pas lire ce fichier audio.
+</audio>
+
+</article>
+
+<article class="content-card">
+<h2>PROJECTS</h2>
+<p>
+Albums, singles, extended mixes and future musical projects.
+</p>
+</article>
+
+<article class="content-card">
+<h2>STUDIO</h2>
+<p>
+Production, synthesizers, machines and the creative process.
+</p>
+</article>
 
 </div>
+</main>
+</section>
 
+<!-- VISUALS -->
+<section class="page" id="page-visuals">
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+<header class="page-header">
+<div class="logo">HAERVIU</div>
+<button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+<div class="page-number">02 / VISUALS</div>
+<h1 class="page-title">VISUALS</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+Music videos, cinematic worlds, visual stories and images
+created around the HAERVIU universe.
+</p>
+
+<div class="content-grid">
+<article class="content-card">
+<h2>MUSIC VIDEOS</h2>
+<p>Official videos and visual journeys connected to the music.</p>
+</article>
+
+<article class="content-card">
+<h2>CINEMATIC</h2>
+<p>Landscapes, characters, atmosphere and visual storytelling.</p>
+</article>
+
+<article class="content-card">
+<h2>GALLERY</h2>
+<p>Artwork, covers and images from the different projects.</p>
+</article>
+</div>
+</main>
+</section>
+
+<!-- EXPERIMENTS -->
+<section class="page" id="page-experiments">
+
+<header class="page-header">
+<div class="logo">HAERVIU</div>
+<button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+<div class="page-number">03 / EXPERIMENTS</div>
+<h1 class="page-title">EXPERIMENTS</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+A laboratory for AI, sound, images, new ideas and unexpected
+creative directions.
+</p>
+
+<div class="content-grid">
+<article class="content-card">
+<h2>AI MUSIC</h2>
+<p>Experiments combining human ideas, artificial intelligence and production.</p>
+</article>
+
+<article class="content-card">
+<h2>VISUAL LAB</h2>
+<p>Images, animation and cinematic concepts developed around the music.</p>
+</article>
+
+<article class="content-card">
+<h2>NEW IDEAS</h2>
+<p>Projects that don't fit into a category yet.</p>
+</article>
+</div>
+</main>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="page-about">
+
+<header class="page-header">
+<div class="logo">HAERVIU</div>
+<button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+<div class="page-number">04 / ABOUT</div>
+<h1 class="page-title">HAERVIU</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+HAERVIU is a creative universe built around music,
+visual storytelling and experimentation.
+</p>
+
+<div class="content-card">
+<h2>MUSIC · VISUALS · EXPERIMENTS</h2>
+<p>
+An independent project where electronic music, world influences,
+cinematic imagery and new technologies meet.
+</p>
+</div>
+</main>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="page-contact">
+
+<header class="page-header">
+<div class="logo">HAERVIU</div>
+<button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+<div class="page-number">05 / CONTACT</div>
+<h1 class="page-title">CONTACT</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+For collaborations, music, visuals and creative projects.
+</p>
+
+<div class="content-card">
+<h2>GET IN TOUCH</h2>
+<p>Contact information and social links will be added here.</p>
+</div>
+</main>
+</section>
+
+<!-- NEW HORIZONS -->
+<section class="page" id="page-new-horizons">
+
+<header class="page-header">
+<div class="logo">HAERVIU</div>
+<button class="back" onclick="showHome()">← HOME</button>
+</header>
+
+<main class="page-content">
+<div class="page-number">LATEST PROJECT</div>
+<h1 class="page-title">NEW HORIZONS</h1>
+<div class="page-line"></div>
+
+<p class="page-intro">
+A new musical journey combining electronic energy,
+world influences and cinematic atmosphere.
+</p>
+
+<div class="content-card">
+<h2>NEW HORIZONS</h2>
+<p>HAERVIU — latest project.</p>
+</div>
+</main>
+</section>
+
+<!-- INTRO -->
+<div id="introScreen">
+<div class="intro-inner">
+<div class="intro-h">H</div>
+<div class="intro-text">HAERVIU · MUSIC · VISUALS · EXPERIMENTS</div>
+<button class="intro-close" onclick="closeIntro()">ENTER</button>
+</div>
+</div>
 
 <script>
 
-const pages = [
+const pages=[
   "music",
   "visuals",
   "experiments",
@@ -781,109 +472,40 @@ const pages = [
 
 function showHome(){
 
-  document
-    .getElementById("homePage")
-    .style.display = "block";
+  document.getElementById("homePage").style.display="block";
 
   pages.forEach(function(name){
-
-    const page =
-      document.getElementById("page-" + name);
-
-    if(page){
-      page.classList.remove("active");
-    }
-
+    const page=document.getElementById("page-"+name);
+    if(page) page.classList.remove("active");
   });
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+  window.scrollTo(0,0);
 }
-
 
 function showPage(name){
 
-  document
-    .getElementById("homePage")
-    .style.display = "none";
+  document.getElementById("homePage").style.display="none";
 
   pages.forEach(function(pageName){
-
-    const page =
-      document.getElementById("page-" + pageName);
-
-    if(page){
-      page.classList.remove("active");
-    }
-
+    const page=document.getElementById("page-"+pageName);
+    if(page) page.classList.remove("active");
   });
 
-  const selected =
-    document.getElementById("page-" + name);
+  const selected=document.getElementById("page-"+name);
 
   if(selected){
-
     selected.classList.add("active");
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
+    window.scrollTo(0,0);
   }
-
 }
-
 
 function playIntro(){
-
-  document
-    .getElementById("introScreen")
-    .classList.add("show");
-
+  document.getElementById("introScreen").classList.add("show");
 }
-
 
 function closeIntro(){
-
-  document
-    .getElementById("introScreen")
-    .classList.remove("show");
-
+  document.getElementById("introScreen").classList.remove("show");
 }
-
-
-/* navigation avec les ancres */
-
-window.addEventListener("load",function(){
-
-  const hash =
-    window.location.hash.replace("#","");
-
-  if(pages.includes(hash)){
-    showPage(hash);
-  }
-
-});
-
-
-/* retour avec le bouton précédent */
-
-window.addEventListener("popstate",function(){
-
-  const hash =
-    window.location.hash.replace("#","");
-
-  if(pages.includes(hash)){
-    showPage(hash);
-  }else{
-    showHome();
-  }
-
-});
 
 </script>
 
