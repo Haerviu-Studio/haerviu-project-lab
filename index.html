@@ -31,7 +31,6 @@ body{overflow-x:hidden}
   height:auto;
 }
 
-/* ZONES DE NAVIGATION */
 .hotspot{
   position:absolute;
   z-index:50;
@@ -41,7 +40,6 @@ body{overflow-x:hidden}
   border:0;
 }
 
-/* MENU */
 .hs-home{left:27%;top:2%;width:6%;height:6%}
 .hs-music{left:34%;top:2%;width:7%;height:6%}
 .hs-visuals{left:41%;top:2%;width:7%;height:6%}
@@ -49,17 +47,14 @@ body{overflow-x:hidden}
 .hs-about{left:58%;top:2%;width:6%;height:6%}
 .hs-contact{left:64%;top:2%;width:8%;height:6%}
 
-/* HERO */
 .hs-enter{left:28%;top:44%;width:16%;height:7%}
 .hs-play{right:1%;top:45%;width:12%;height:8%}
 
-/* CARTES */
 .hs-card1{left:2%;top:54%;width:31%;height:28%}
 .hs-card2{left:34%;top:54%;width:32%;height:28%}
 .hs-card3{left:66%;top:54%;width:32%;height:28%}
 .hs-latest{left:2%;top:82%;width:96%;height:17%}
 
-/* PAGES */
 .page{
   display:none;
   min-height:100vh;
@@ -174,37 +169,60 @@ body{overflow-x:hidden}
 }
 
 /* LECTEUR HAERVIU */
+
 .haerviu-player{
   margin-top:25px;
-  padding:18px 18px 16px;
+  padding:20px 22px 18px;
   display:flex;
   align-items:center;
-  gap:16px;
-  border:1px solid rgba(201,149,56,.35);
-  background:linear-gradient(135deg,#0c0a08,#050403);
+  gap:17px;
+  border:1px solid rgba(201,149,56,.32);
+  background:
+    radial-gradient(circle at 8% 50%,rgba(201,149,56,.08),transparent 32%),
+    linear-gradient(135deg,#100d09,#050403 72%);
+  box-shadow:0 12px 35px rgba(0,0,0,.28);
+  position:relative;
+  overflow:hidden;
+}
+
+.haerviu-player::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#c99538,transparent);
+  opacity:.45;
 }
 
 .haerviu-play{
-  flex:0 0 52px;
-  width:52px;
-  height:52px;
+  flex:0 0 48px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   border:1px solid #c99538;
-  background:#090807;
+  background:#0a0806;
   color:#d9a348;
-  font-size:17px;
+  font-size:16px;
   line-height:1;
   cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding-left:3px;
-  transition:.2s ease;
+  padding:0 0 0 3px;
+  transition:all .25s ease;
 }
 
 .haerviu-play:hover{
-  background:#15110b;
-  box-shadow:0 0 18px rgba(201,149,56,.16);
+  background:#171108;
+  transform:scale(1.04);
+  box-shadow:0 0 24px rgba(201,149,56,.18);
+}
+
+.haerviu-play.is-playing{
+  padding-left:0;
+  box-shadow:0 0 18px rgba(201,149,56,.13);
 }
 
 .haerviu-player-main{
@@ -212,49 +230,93 @@ body{overflow-x:hidden}
   min-width:0;
 }
 
-.haerviu-track-top,
-.haerviu-track-bottom{
+.haerviu-track-top{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:12px;
+  align-items:baseline;
+  gap:14px;
+  margin-bottom:12px;
 }
 
 .haerviu-track-name{
   color:#d9a348;
   font-size:11px;
-  letter-spacing:3px;
+  font-weight:600;
+  letter-spacing:3.5px;
 }
 
 .haerviu-time{
-  color:#77716a;
+  color:#81786e;
   font-size:10px;
-  letter-spacing:1px;
+  letter-spacing:1.2px;
+  white-space:nowrap;
 }
 
-.haerviu-progress-wrap{
-  position:relative;
-  width:100%;
-  height:5px;
-  margin:13px 0 11px;
-  background:#24201b;
+.haerviu-wave-wrap{
+  height:38px;
+  display:flex;
+  align-items:center;
+  gap:2px;
   cursor:pointer;
+  user-select:none;
 }
 
-.haerviu-progress{
-  width:0%;
-  height:100%;
+.haerviu-wave-bar{
+  flex:1;
+  min-width:2px;
+  height:var(--h);
+  max-height:34px;
+  background:#3a3023;
+  opacity:.8;
+  transition:background .08s linear,opacity .08s linear;
+  border-radius:2px;
+}
+
+.haerviu-wave-bar.active{
   background:#c99538;
-  transition:width .05s linear;
+  opacity:1;
 }
 
 .haerviu-track-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
   color:#68615a;
   font-size:8px;
   letter-spacing:2px;
 }
 
+@media(max-width:800px){
+  .page-content{padding:55px 25px}
+  .page-title{font-size:48px}
+  .content-grid{grid-template-columns:1fr}
+  .page-header{padding:0 20px}
+  .logo{font-size:17px}
+
+  .haerviu-player{
+    padding:16px;
+    gap:12px;
+  }
+
+  .haerviu-play{
+    flex-basis:44px;
+    width:44px;
+    height:44px;
+  }
+
+  .haerviu-track-bottom{
+    display:none;
+  }
+
+  .haerviu-wave-wrap{
+    height:32px;
+  }
+}
+
 /* INTRO */
+
 #introScreen{
   position:fixed;
   inset:0;
@@ -290,35 +352,11 @@ body{overflow-x:hidden}
   background:transparent;
   cursor:pointer;
 }
-
-@media(max-width:800px){
-  .page-content{padding:55px 25px}
-  .page-title{font-size:48px}
-  .content-grid{grid-template-columns:1fr}
-  .page-header{padding:0 20px}
-  .logo{font-size:17px}
-
-  .haerviu-player{
-    padding:15px;
-    gap:12px;
-  }
-
-  .haerviu-play{
-    flex-basis:46px;
-    width:46px;
-    height:46px;
-  }
-
-  .haerviu-track-bottom{
-    display:none;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<!-- ACCUEIL -->
 <div id="homePage">
 
   <img src="reference.png" class="reference" alt="HAERVIU">
@@ -342,6 +380,7 @@ body{overflow-x:hidden}
 </div>
 
 <!-- MUSIC -->
+
 <section class="page" id="page-music">
 
 <header class="page-header">
@@ -352,7 +391,9 @@ body{overflow-x:hidden}
 <main class="page-content">
 
 <div class="page-number">01 / MUSIC</div>
+
 <h1 class="page-title">MUSIC</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -370,81 +411,150 @@ and cinematic experiments.
 HAERVIU — Feels Right
 </p>
 
-<!-- LECTEUR FEELS RIGHT -->
 <div class="haerviu-player">
 
-  <audio id="feelsRightAudio" preload="metadata">
-    <source src="music/Feels-Right.mp3" type="audio/mpeg">
-    Votre navigateur ne peut pas lire ce fichier audio.
-  </audio>
+<audio id="feelsRightAudio" preload="metadata">
+<source src="music/Feels-Right.mp3" type="audio/mpeg">
+Votre navigateur ne peut pas lire ce fichier audio.
+</audio>
 
-  <button
-    class="haerviu-play"
-    id="feelsRightPlay"
-    type="button"
-    onclick="toggleFeelsRight()"
-    aria-label="Lire Feels Right">
-    ▶
-  </button>
+<button
+class="haerviu-play"
+id="feelsRightPlay"
+type="button"
+onclick="toggleFeelsRight()"
+aria-label="Lire Feels Right">
+▶
+</button>
 
-  <div class="haerviu-player-main">
+<div class="haerviu-player-main">
 
-    <div class="haerviu-track-top">
-      <span class="haerviu-track-name">FEELS RIGHT</span>
-      <span class="haerviu-time" id="feelsRightTime">0:00 / 0:00</span>
-    </div>
+<div class="haerviu-track-top">
 
-    <div
-      class="haerviu-progress-wrap"
-      id="feelsRightProgress">
+<span class="haerviu-track-name">
+FEELS RIGHT
+</span>
 
-      <div
-        class="haerviu-progress"
-        id="feelsRightProgressBar">
-      </div>
+<span class="haerviu-time" id="feelsRightTime">
+0:00 / 0:00
+</span>
 
-    </div>
+</div>
 
-    <div class="haerviu-track-bottom">
-      <span>HAERVIU</span>
-      <span>ORIGINAL MUSIC</span>
-    </div>
+<div
+class="haerviu-wave-wrap"
+id="feelsRightProgress"
+aria-label="Position dans le morceau"
+>
 
-  </div>
+<span class="haerviu-wave-bar" style="--h:12px"></span>
+<span class="haerviu-wave-bar" style="--h:20px"></span>
+<span class="haerviu-wave-bar" style="--h:27px"></span>
+<span class="haerviu-wave-bar" style="--h:16px"></span>
+<span class="haerviu-wave-bar" style="--h:31px"></span>
+<span class="haerviu-wave-bar" style="--h:22px"></span>
+<span class="haerviu-wave-bar" style="--h:14px"></span>
+<span class="haerviu-wave-bar" style="--h:28px"></span>
+<span class="haerviu-wave-bar" style="--h:19px"></span>
+<span class="haerviu-wave-bar" style="--h:34px"></span>
+<span class="haerviu-wave-bar" style="--h:24px"></span>
+<span class="haerviu-wave-bar" style="--h:17px"></span>
+<span class="haerviu-wave-bar" style="--h:29px"></span>
+<span class="haerviu-wave-bar" style="--h:21px"></span>
+<span class="haerviu-wave-bar" style="--h:32px"></span>
+<span class="haerviu-wave-bar" style="--h:15px"></span>
+<span class="haerviu-wave-bar" style="--h:26px"></span>
+<span class="haerviu-wave-bar" style="--h:34px"></span>
+<span class="haerviu-wave-bar" style="--h:20px"></span>
+<span class="haerviu-wave-bar" style="--h:29px"></span>
+<span class="haerviu-wave-bar" style="--h:16px"></span>
+<span class="haerviu-wave-bar" style="--h:25px"></span>
+<span class="haerviu-wave-bar" style="--h:31px"></span>
+<span class="haerviu-wave-bar" style="--h:18px"></span>
+<span class="haerviu-wave-bar" style="--h:27px"></span>
+<span class="haerviu-wave-bar" style="--h:14px"></span>
+<span class="haerviu-wave-bar" style="--h:33px"></span>
+<span class="haerviu-wave-bar" style="--h:21px"></span>
+<span class="haerviu-wave-bar" style="--h:28px"></span>
+<span class="haerviu-wave-bar" style="--h:17px"></span>
+<span class="haerviu-wave-bar" style="--h:30px"></span>
+<span class="haerviu-wave-bar" style="--h:22px"></span>
+<span class="haerviu-wave-bar" style="--h:15px"></span>
+<span class="haerviu-wave-bar" style="--h:27px"></span>
+<span class="haerviu-wave-bar" style="--h:19px"></span>
+<span class="haerviu-wave-bar" style="--h:32px"></span>
+<span class="haerviu-wave-bar" style="--h:24px"></span>
+<span class="haerviu-wave-bar" style="--h:16px"></span>
+<span class="haerviu-wave-bar" style="--h:29px"></span>
+<span class="haerviu-wave-bar" style="--h:20px"></span>
+<span class="haerviu-wave-bar" style="--h:34px"></span>
+<span class="haerviu-wave-bar" style="--h:22px"></span>
+<span class="haerviu-wave-bar" style="--h:13px"></span>
+<span class="haerviu-wave-bar" style="--h:26px"></span>
+<span class="haerviu-wave-bar" style="--h:18px"></span>
+<span class="haerviu-wave-bar" style="--h:30px"></span>
+<span class="haerviu-wave-bar" style="--h:21px"></span>
+<span class="haerviu-wave-bar" style="--h:15px"></span>
+
+</div>
+
+<div class="haerviu-track-bottom">
+<span>HAERVIU</span>
+<span>ORIGINAL MUSIC</span>
+</div>
+
+</div>
 
 </div>
 
 </article>
 
 <article class="content-card">
+
 <h2>PROJECTS</h2>
+
 <p>
 Albums, singles, extended mixes and future musical projects.
 </p>
+
 </article>
 
 <article class="content-card">
+
 <h2>STUDIO</h2>
+
 <p>
 Production, synthesizers, machines and the creative process.
 </p>
+
 </article>
 
 </div>
+
 </main>
+
 </section>
 
 <!-- VISUALS -->
+
 <section class="page" id="page-visuals">
 
 <header class="page-header">
+
 <div class="logo">HAERVIU</div>
-<button class="back" onclick="showHome()">← HOME</button>
+
+<button class="back" onclick="showHome()">
+← HOME
+</button>
+
 </header>
 
 <main class="page-content">
+
 <div class="page-number">02 / VISUALS</div>
+
 <h1 class="page-title">VISUALS</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -455,35 +565,61 @@ created around the HAERVIU universe.
 <div class="content-grid">
 
 <article class="content-card">
+
 <h2>MUSIC VIDEOS</h2>
-<p>Official videos and visual journeys connected to the music.</p>
+
+<p>
+Official videos and visual journeys connected to the music.
+</p>
+
 </article>
 
 <article class="content-card">
+
 <h2>CINEMATIC</h2>
-<p>Landscapes, characters, atmosphere and visual storytelling.</p>
+
+<p>
+Landscapes, characters, atmosphere and visual storytelling.
+</p>
+
 </article>
 
 <article class="content-card">
+
 <h2>GALLERY</h2>
-<p>Artwork, covers and images from the different projects.</p>
+
+<p>
+Artwork, covers and images from the different projects.
+</p>
+
 </article>
 
 </div>
+
 </main>
+
 </section>
 
 <!-- EXPERIMENTS -->
+
 <section class="page" id="page-experiments">
 
 <header class="page-header">
+
 <div class="logo">HAERVIU</div>
-<button class="back" onclick="showHome()">← HOME</button>
+
+<button class="back" onclick="showHome()">
+← HOME
+</button>
+
 </header>
 
 <main class="page-content">
+
 <div class="page-number">03 / EXPERIMENTS</div>
+
 <h1 class="page-title">EXPERIMENTS</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -494,35 +630,61 @@ creative directions.
 <div class="content-grid">
 
 <article class="content-card">
+
 <h2>AI MUSIC</h2>
-<p>Experiments combining human ideas, artificial intelligence and production.</p>
+
+<p>
+Experiments combining human ideas, artificial intelligence and production.
+</p>
+
 </article>
 
 <article class="content-card">
+
 <h2>VISUAL LAB</h2>
-<p>Images, animation and cinematic concepts developed around the music.</p>
+
+<p>
+Images, animation and cinematic concepts developed around the music.
+</p>
+
 </article>
 
 <article class="content-card">
+
 <h2>NEW IDEAS</h2>
-<p>Projects that don't fit into a category yet.</p>
+
+<p>
+Projects that don't fit into a category yet.
+</p>
+
 </article>
 
 </div>
+
 </main>
+
 </section>
 
 <!-- ABOUT -->
+
 <section class="page" id="page-about">
 
 <header class="page-header">
+
 <div class="logo">HAERVIU</div>
-<button class="back" onclick="showHome()">← HOME</button>
+
+<button class="back" onclick="showHome()">
+← HOME
+</button>
+
 </header>
 
 <main class="page-content">
+
 <div class="page-number">04 / ABOUT</div>
+
 <h1 class="page-title">HAERVIU</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -531,27 +693,40 @@ visual storytelling and experimentation.
 </p>
 
 <div class="content-card">
+
 <h2>MUSIC · VISUALS · EXPERIMENTS</h2>
+
 <p>
 An independent project where electronic music, world influences,
 cinematic imagery and new technologies meet.
 </p>
+
 </div>
 
 </main>
+
 </section>
 
 <!-- CONTACT -->
+
 <section class="page" id="page-contact">
 
 <header class="page-header">
+
 <div class="logo">HAERVIU</div>
-<button class="back" onclick="showHome()">← HOME</button>
+
+<button class="back" onclick="showHome()">
+← HOME
+</button>
+
 </header>
 
 <main class="page-content">
+
 <div class="page-number">05 / CONTACT</div>
+
 <h1 class="page-title">CONTACT</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -559,24 +734,39 @@ For collaborations, music, visuals and creative projects.
 </p>
 
 <div class="content-card">
+
 <h2>GET IN TOUCH</h2>
-<p>Contact information and social links will be added here.</p>
+
+<p>
+Contact information and social links will be added here.
+</p>
+
 </div>
 
 </main>
+
 </section>
 
 <!-- NEW HORIZONS -->
+
 <section class="page" id="page-new-horizons">
 
 <header class="page-header">
+
 <div class="logo">HAERVIU</div>
-<button class="back" onclick="showHome()">← HOME</button>
+
+<button class="back" onclick="showHome()">
+← HOME
+</button>
+
 </header>
 
 <main class="page-content">
+
 <div class="page-number">LATEST PROJECT</div>
+
 <h1 class="page-title">NEW HORIZONS</h1>
+
 <div class="page-line"></div>
 
 <p class="page-intro">
@@ -585,175 +775,290 @@ world influences and cinematic atmosphere.
 </p>
 
 <div class="content-card">
+
 <h2>NEW HORIZONS</h2>
-<p>HAERVIU — latest project.</p>
+
+<p>
+HAERVIU — latest project.
+</p>
+
 </div>
 
 </main>
+
 </section>
 
 <!-- INTRO -->
+
 <div id="introScreen">
+
 <div class="intro-inner">
+
 <div class="intro-h">H</div>
-<div class="intro-text">HAERVIU · MUSIC · VISUALS · EXPERIMENTS</div>
-<button class="intro-close" onclick="closeIntro()">ENTER</button>
+
+<div class="intro-text">
+HAERVIU · MUSIC · VISUALS · EXPERIMENTS
 </div>
+
+<button class="intro-close" onclick="closeIntro()">
+ENTER
+</button>
+
+</div>
+
 </div>
 
 <script>
 
 const pages=[
-  "music",
-  "visuals",
-  "experiments",
-  "about",
-  "contact",
-  "new-horizons"
+"music",
+"visuals",
+"experiments",
+"about",
+"contact",
+"new-horizons"
 ];
 
 function showHome(){
 
-  document.getElementById("homePage").style.display="block";
+document.getElementById("homePage").style.display="block";
 
-  pages.forEach(function(name){
-    const page=document.getElementById("page-"+name);
-    if(page) page.classList.remove("active");
-  });
+pages.forEach(function(name){
 
-  window.scrollTo(0,0);
+const page=document.getElementById("page-"+name);
+
+if(page){
+page.classList.remove("active");
+}
+
+});
+
+window.scrollTo(0,0);
+
 }
 
 function showPage(name){
 
-  document.getElementById("homePage").style.display="none";
+document.getElementById("homePage").style.display="none";
 
-  pages.forEach(function(pageName){
-    const page=document.getElementById("page-"+pageName);
-    if(page) page.classList.remove("active");
-  });
+pages.forEach(function(pageName){
 
-  const selected=document.getElementById("page-"+name);
+const page=document.getElementById("page-"+pageName);
 
-  if(selected){
-    selected.classList.add("active");
-    window.scrollTo(0,0);
-  }
+if(page){
+page.classList.remove("active");
+}
+
+});
+
+const selected=document.getElementById("page-"+name);
+
+if(selected){
+
+selected.classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
 }
 
 function playIntro(){
-  document.getElementById("introScreen").classList.add("show");
+
+document.getElementById("introScreen").classList.add("show");
+
 }
 
 function closeIntro(){
-  document.getElementById("introScreen").classList.remove("show");
+
+document.getElementById("introScreen").classList.remove("show");
+
 }
+
 
 /* LECTEUR FEELS RIGHT */
 
 const feelsRightAudio=document.getElementById("feelsRightAudio");
+
 const feelsRightPlay=document.getElementById("feelsRightPlay");
+
 const feelsRightTime=document.getElementById("feelsRightTime");
+
 const feelsRightProgress=document.getElementById("feelsRightProgress");
-const feelsRightProgressBar=document.getElementById("feelsRightProgressBar");
+
+const feelsRightBars=feelsRightProgress
+?Array.from(
+feelsRightProgress.querySelectorAll(".haerviu-wave-bar")
+)
+:[];
+
 
 function formatTime(seconds){
 
-  if(!Number.isFinite(seconds)) return "0:00";
-
-  const minutes=Math.floor(seconds/60);
-
-  const secs=Math.floor(seconds%60)
-    .toString()
-    .padStart(2,"0");
-
-  return minutes+":"+secs;
+if(!Number.isFinite(seconds)){
+return "0:00";
 }
+
+const minutes=Math.floor(seconds/60);
+
+const secs=Math.floor(seconds%60)
+.toString()
+.padStart(2,"0");
+
+return minutes+":"+secs;
+
+}
+
 
 function updateFeelsRight(){
 
-  if(!feelsRightAudio) return;
-
-  const current=feelsRightAudio.currentTime || 0;
-  const duration=feelsRightAudio.duration || 0;
-
-  feelsRightTime.textContent=
-    formatTime(current)+" / "+formatTime(duration);
-
-  feelsRightProgressBar.style.width=
-    (duration ? (current/duration)*100 : 0)+"%";
+if(!feelsRightAudio){
+return;
 }
+
+const current=feelsRightAudio.currentTime || 0;
+
+const duration=feelsRightAudio.duration || 0;
+
+const percent=duration
+?current/duration
+:0;
+
+feelsRightTime.textContent=
+formatTime(current)+" / "+formatTime(duration);
+
+const activeCount=
+Math.round(percent*feelsRightBars.length);
+
+feelsRightBars.forEach(function(bar,index){
+
+bar.classList.toggle(
+"active",
+index<activeCount
+);
+
+});
+
+}
+
 
 function toggleFeelsRight(){
 
-  if(!feelsRightAudio) return;
-
-  if(feelsRightAudio.paused){
-    feelsRightAudio.play();
-  }else{
-    feelsRightAudio.pause();
-  }
+if(!feelsRightAudio){
+return;
 }
+
+if(feelsRightAudio.paused){
+
+feelsRightAudio.play();
+
+}else{
+
+feelsRightAudio.pause();
+
+}
+
+}
+
 
 if(feelsRightAudio){
 
-  feelsRightAudio.addEventListener("play",function(){
+feelsRightAudio.addEventListener(
+"play",
+function(){
 
-    feelsRightPlay.textContent="Ⅱ";
-    feelsRightPlay.style.paddingLeft="0";
+feelsRightPlay.textContent="Ⅱ";
 
-  });
+feelsRightPlay.classList.add("is-playing");
 
-  feelsRightAudio.addEventListener("pause",function(){
+feelsRightPlay.setAttribute(
+"aria-label",
+"Mettre Feels Right en pause"
+);
 
-    feelsRightPlay.textContent="▶";
-    feelsRightPlay.style.paddingLeft="3px";
+}
+);
 
-  });
 
-  feelsRightAudio.addEventListener(
-    "timeupdate",
-    updateFeelsRight
-  );
+feelsRightAudio.addEventListener(
+"pause",
+function(){
 
-  feelsRightAudio.addEventListener(
-    "loadedmetadata",
-    updateFeelsRight
-  );
+feelsRightPlay.textContent="▶";
 
-  feelsRightAudio.addEventListener("ended",function(){
+feelsRightPlay.classList.remove("is-playing");
 
-    feelsRightPlay.textContent="▶";
-    feelsRightPlay.style.paddingLeft="3px";
+feelsRightPlay.setAttribute(
+"aria-label",
+"Lire Feels Right"
+);
 
-    updateFeelsRight();
+}
+);
 
-  });
+
+feelsRightAudio.addEventListener(
+"timeupdate",
+updateFeelsRight
+);
+
+
+feelsRightAudio.addEventListener(
+"loadedmetadata",
+updateFeelsRight
+);
+
+
+feelsRightAudio.addEventListener(
+"ended",
+function(){
+
+feelsRightPlay.textContent="▶";
+
+feelsRightPlay.classList.remove("is-playing");
+
+feelsRightPlay.setAttribute(
+"aria-label",
+"Lire Feels Right"
+);
+
+updateFeelsRight();
+
+}
+);
 
 }
 
+
 if(feelsRightProgress){
 
-  feelsRightProgress.addEventListener("click",function(event){
+feelsRightProgress.addEventListener(
+"click",
+function(event){
 
-    if(!feelsRightAudio || !feelsRightAudio.duration) return;
+if(
+!feelsRightAudio ||
+!feelsRightAudio.duration
+){
+return;
+}
 
-    const rect=
-      feelsRightProgress.getBoundingClientRect();
+const rect=
+feelsRightProgress.getBoundingClientRect();
 
-    const percent=
-      Math.max(
-        0,
-        Math.min(
-          1,
-          (event.clientX-rect.left)/rect.width
-        )
-      );
+const percent=Math.max(
+0,
+Math.min(
+1,
+(event.clientX-rect.left)/rect.width
+)
+);
 
-    feelsRightAudio.currentTime=
-      percent*feelsRightAudio.duration;
+feelsRightAudio.currentTime=
+percent*feelsRightAudio.duration;
 
-  });
+}
+);
 
 }
 
