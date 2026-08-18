@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +8,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    --black:#050403;
-    --black2:#090806;
-    --gold:#c99538;
-    --gold2:#e0ad51;
-    --gold3:#f0c46a;
-    --white:#eee9df;
-    --muted:#a59d8f;
-    --line:rgba(201,149,56,.30);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -35,33 +29,48 @@ html{
 
 body{
     background:#050403;
-    color:var(--white);
+    color:#eee8dd;
     font-family:Montserrat,Arial,sans-serif;
     overflow-x:hidden;
 }
 
+:root{
+    --black:#050403;
+    --black-soft:#0a0806;
+    --gold:#c9953b;
+    --gold-light:#e1ad52;
+    --gold-bright:#f1c56d;
+    --cream:#eee8dd;
+    --grey:#aaa297;
+    --border:rgba(201,149,59,.30);
+}
+
+
 /* =========================================================
-   NAVIGATION
+   HEADER
 ========================================================= */
 
-nav{
+header{
     height:86px;
-    width:100%;
     position:fixed;
     top:0;
     left:0;
+    right:0;
     z-index:1000;
 
+    background:#050403;
+
+    border-bottom:1px solid rgba(201,149,59,.18);
+
     display:grid;
-    grid-template-columns:280px 1fr 280px;
+    grid-template-columns:300px 1fr 300px;
     align-items:center;
 
     padding:0 40px;
-
-    background:rgba(4,3,2,.96);
-    border-bottom:1px solid rgba(201,149,56,.18);
-    backdrop-filter:blur(12px);
 }
+
+
+/* BRAND */
 
 .brand{
     display:flex;
@@ -69,10 +78,12 @@ nav{
     gap:18px;
 }
 
-.brand-mark{
+.brand-circle{
     width:55px;
     height:55px;
+
     border:1px solid var(--gold);
+
     border-radius:50%;
 
     display:flex;
@@ -82,498 +93,716 @@ nav{
     position:relative;
 }
 
-.brand-mark:before{
+.brand-circle::after{
     content:"";
+
     position:absolute;
+
     inset:5px;
-    border:1px solid rgba(201,149,56,.5);
+
+    border:1px solid rgba(201,149,59,.40);
+
     border-radius:50%;
 }
 
-.brand-mark span{
-    font-family:Cinzel,serif;
-    font-size:31px;
-    color:var(--gold2);
+.brand-circle span{
     position:relative;
+    z-index:2;
+
+    font-family:Cinzel,serif;
+
+    font-size:31px;
+
+    color:var(--gold-light);
 }
 
 .brand-name{
     font-family:Cinzel,serif;
+
+    color:var(--gold-light);
+
+    font-size:20px;
+
     letter-spacing:7px;
-    font-size:21px;
-    color:var(--gold2);
 }
 
-.menu{
+
+/* NAV */
+
+nav{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:52px;
+
+    gap:48px;
 }
 
-.menu a{
-    color:#ddd7cd;
-    text-decoration:none;
-    font-size:12px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+nav a{
     position:relative;
-    padding:34px 0;
+
+    text-decoration:none;
+
+    color:#e4ded4;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    padding:33px 0;
 }
 
-.menu a:after{
+nav a::after{
     content:"";
+
     position:absolute;
+
     left:0;
-    bottom:20px;
+    bottom:19px;
+
     width:0;
     height:1px;
-    background:var(--gold2);
+
+    background:var(--gold-light);
+
     transition:.3s;
 }
 
-.menu a:hover:after,
-.menu a.active:after{
+nav a:hover::after,
+nav a.active::after{
     width:100%;
 }
 
-.socials{
+
+/* SOCIAL */
+
+.social{
     display:flex;
     justify-content:flex-end;
     align-items:center;
-    gap:24px;
+
+    gap:25px;
 }
 
-.socials a{
-    color:var(--gold2);
-    text-decoration:none;
-    font-size:16px;
+.social span{
+    color:var(--gold-light);
+
+    font-size:17px;
 }
+
 
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero{
-    min-height:650px;
     margin-top:86px;
-    position:relative;
+
+    height:477px;
+
     display:grid;
+
     grid-template-columns:27% 43% 30%;
+
+    position:relative;
+
     overflow:hidden;
 
     background:
-        radial-gradient(circle at 22% 45%,rgba(173,103,18,.13),transparent 28%),
-        radial-gradient(circle at 68% 48%,rgba(122,70,18,.09),transparent 32%),
-        linear-gradient(90deg,#090705,#060504 55%,#090705);
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(154,92,21,.15),
+            transparent 34%
+        ),
+        linear-gradient(
+            90deg,
+            #090705 0%,
+            #070504 52%,
+            #080605 100%
+        );
 }
 
-/* fine grain */
 
-.hero:after{
+/* subtle gold dust */
+
+.hero::before{
     content:"";
+
     position:absolute;
+
     inset:0;
+
     pointer-events:none;
-    opacity:.22;
 
     background-image:
-        radial-gradient(rgba(255,255,255,.14) .6px,transparent .6px);
+        radial-gradient(
+            circle,
+            rgba(220,164,70,.45) 0 1px,
+            transparent 1.5px
+        );
 
-    background-size:5px 5px;
-    mix-blend-mode:soft-light;
+    background-size:75px 75px;
+
+    opacity:.10;
 }
 
-/* LEFT VINYL */
+
+/* =========================================================
+   LEFT VINYL
+========================================================= */
 
 .hero-left{
     position:relative;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    overflow:hidden;
 }
 
+
 .vinyl{
-    width:430px;
-    height:430px;
+    width:365px;
+    height:365px;
+
     border-radius:50%;
+
     position:relative;
 
     background:
         repeating-radial-gradient(
-            circle,
-            #070707 0px,
+            circle at center,
+            #080808 0px,
             #0b0b0b 2px,
             #050505 4px,
-            #111 5px
+            #111 5px,
+            #070707 7px
         );
 
-    border:2px solid #9e6b1d;
+    border:2px solid #b37b25;
 
     box-shadow:
-        0 0 0 7px rgba(201,149,56,.10),
-        0 0 35px rgba(199,136,38,.20),
-        inset 0 0 45px #000;
+        0 0 0 6px rgba(201,149,59,.08),
+        0 0 25px rgba(201,149,59,.16),
+        inset 0 0 40px #000;
 }
 
-.vinyl:before{
+
+.vinyl::before{
     content:"";
+
     position:absolute;
-    inset:23px;
+
+    inset:12px;
+
     border-radius:50%;
-    border:2px solid rgba(210,151,53,.75);
+
+    border:1px solid rgba(222,171,78,.65);
 }
 
-.vinyl:after{
+
+.vinyl::after{
     content:"";
+
     position:absolute;
-    inset:80px;
+
+    inset:31px;
+
     border-radius:50%;
-    border:1px solid rgba(201,149,56,.55);
+
+    border:1px solid rgba(201,149,59,.38);
+
     box-shadow:
-        0 0 0 12px rgba(0,0,0,.4),
-        inset 0 0 35px rgba(201,149,56,.12);
+        inset 0 0 30px rgba(0,0,0,.8);
 }
 
-.vinyl-logo{
+
+.vinyl-h{
     position:absolute;
+
     inset:0;
+
     display:flex;
+
+    justify-content:center;
+
     align-items:center;
-    justify-content:center;
-    z-index:3;
+
+    z-index:4;
 }
 
-.vinyl-logo span{
+
+.vinyl-h span{
     font-family:Cinzel,serif;
+
     font-size:160px;
+
     line-height:1;
-    color:#dca64b;
-
-    text-shadow:
-        0 2px 2px #3b2107,
-        0 0 25px rgba(219,158,60,.2);
-}
-
-.vinyl-glint{
-    position:absolute;
-    width:23px;
-    height:23px;
-    background:#f3d17f;
-    border-radius:50%;
-    top:72px;
-    right:82px;
-    box-shadow:0 0 22px 7px rgba(240,194,89,.35);
-}
-
-/* CENTER */
-
-.hero-center{
-    position:relative;
-    z-index:2;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:30px 20px 30px 25px;
-}
-
-.hero-title{
-    font-family:Oswald,Arial,sans-serif;
-    font-weight:500;
-    font-size:104px;
-    letter-spacing:7px;
-    line-height:.95;
 
     color:#d9a348;
 
     text-shadow:
-        0 2px 0 #5b370c,
-        0 0 28px rgba(203,143,39,.10);
+        0 2px 1px #5a3509,
+        0 0 22px rgba(220,161,67,.12);
 }
 
-.hero-line{
-    width:400px;
-    height:1px;
-    margin:23px 0 20px;
-    background:linear-gradient(
-        90deg,
-        var(--gold),
-        rgba(201,149,56,.2)
-    );
+
+.vinyl-light{
+    position:absolute;
+
+    width:20px;
+    height:20px;
+
+    border-radius:50%;
+
+    top:38px;
+    right:48px;
+
+    background:#f2cc7c;
+
+    box-shadow:
+        0 0 12px 5px rgba(241,194,95,.25);
 }
 
-.hero-sub{
-    font-size:16px;
-    letter-spacing:6px;
-    color:#e4dfd5;
-    margin-bottom:31px;
-}
 
-.hero-sub span{
-    color:var(--gold2);
-    margin:0 10px;
-}
+/* =========================================================
+   HERO CENTER
+========================================================= */
 
-.hero-description{
-    max-width:570px;
-    font-size:13px;
-    line-height:2.15;
-    letter-spacing:2px;
-    color:#b8b0a2;
-    text-transform:uppercase;
-    margin-bottom:29px;
-}
+.hero-center{
+    display:flex;
 
-.cta{
-    display:inline-flex;
-    align-items:center;
+    flex-direction:column;
+
     justify-content:center;
 
-    width:215px;
-    height:48px;
+    position:relative;
 
-    border:1px solid var(--gold);
-    color:var(--gold2);
-    text-decoration:none;
+    z-index:3;
+
+    padding-left:5px;
+}
+
+
+.hero-title{
+    font-family:Oswald,Arial,sans-serif;
+
+    font-size:77px;
+
+    font-weight:500;
+
+    letter-spacing:6px;
+
+    line-height:.95;
+
+    color:#dba54a;
+
+    text-shadow:
+        0 2px 0 #583608,
+        0 0 25px rgba(201,149,59,.10);
+}
+
+
+.title-rule{
+    width:400px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #c9953b,
+            rgba(201,149,59,.15)
+        );
+
+    margin:22px 0 20px;
+}
+
+
+.hero-category{
+    font-size:15px;
+
+    letter-spacing:5px;
+
+    color:#e9e3d9;
+
+    margin-bottom:27px;
+}
+
+.hero-category b{
+    color:#c9953b;
+
+    margin:0 11px;
+}
+
+
+.hero-description{
+    color:#b8b0a3;
 
     font-size:12px;
+
+    line-height:2;
+
+    letter-spacing:1.8px;
+
+    text-transform:uppercase;
+
+    margin-bottom:27px;
+}
+
+
+.enter{
+    width:215px;
+
+    height:45px;
+
+    border:1px solid #c9953b;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:17px;
+
+    color:#d9a348;
+
+    text-decoration:none;
+
+    font-size:11px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
 
     transition:.3s;
 }
 
-.cta span{
-    margin-left:17px;
-    font-size:18px;
+.enter:hover{
+    background:rgba(201,149,59,.10);
 }
 
-.cta:hover{
-    background:rgba(201,149,56,.12);
-    box-shadow:0 0 25px rgba(201,149,56,.10);
-}
 
-/* RIGHT STUDIO */
+/* =========================================================
+   HERO RIGHT / STUDIO
+========================================================= */
 
 .hero-right{
     position:relative;
+
     overflow:hidden;
 
     background:
         linear-gradient(
             90deg,
-            rgba(5,4,3,.15),
-            rgba(5,4,3,.05)
+            #080605 0%,
+            rgba(8,6,5,.35) 35%,
+            rgba(8,6,5,.15) 100%
         ),
-        url("https://images.unsplash.com/photo-1598387993281-cecf8b71a8f8?auto=format&fit=crop&w=1400&q=85")
-        center/cover no-repeat;
+        url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1500&q=90")
+        center center / cover no-repeat;
 }
 
-.hero-right:before{
-    content:"";
-    position:absolute;
-    inset:0;
 
-    background:
-        linear-gradient(
-            90deg,
-            #060504 0%,
-            rgba(6,5,4,.40) 20%,
-            rgba(6,5,4,.08) 100%
-        );
-}
-
-.hero-right:after{
+.hero-right::after{
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
         radial-gradient(
-            circle at 52% 32%,
-            rgba(215,157,51,.28),
+            circle at 53% 36%,
+            rgba(202,148,53,.28),
             transparent 25%
+        ),
+        linear-gradient(
+            90deg,
+            #070504 0%,
+            transparent 42%
         );
 }
 
+
+/* GOLD RING */
+
 .studio-ring{
     position:absolute;
-    width:350px;
-    height:350px;
-    border:2px solid rgba(210,157,58,.55);
+
+    z-index:2;
+
+    width:285px;
+    height:285px;
+
+    border:2px solid rgba(207,155,62,.65);
+
     border-radius:50%;
-    top:48px;
+
+    top:47px;
+
     left:50%;
+
     transform:translateX(-50%);
 
     box-shadow:
-        0 0 0 7px rgba(201,149,56,.08),
-        0 0 35px rgba(201,149,56,.12);
+        0 0 0 7px rgba(201,149,59,.07),
+        0 0 25px rgba(201,149,59,.12);
 }
 
-.studio-ring:after{
+.studio-ring::after{
     content:"";
+
     position:absolute;
+
     inset:16px;
-    border:1px solid rgba(201,149,56,.35);
+
+    border:1px solid rgba(207,155,62,.45);
+
     border-radius:50%;
 }
 
-.play-intro{
+
+/* SIDE TEXT */
+
+.vertical{
     position:absolute;
-    z-index:5;
-    right:25px;
-    bottom:25px;
 
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    color:#d5a149;
-    font-size:11px;
-    letter-spacing:3px;
-}
-
-.play-circle{
-    width:34px;
-    height:34px;
-    border:1px solid var(--gold);
-    border-radius:50%;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:11px;
-}
-
-/* VERTICAL TEXT */
-
-.side-text{
-    position:absolute;
     right:8px;
-    top:150px;
-    z-index:10;
+
+    top:155px;
+
+    z-index:8;
 
     writing-mode:vertical-rl;
 
-    font-size:10px;
+    color:#c9953b;
+
+    font-size:9px;
+
     letter-spacing:4px;
-    color:#c99538;
-    text-transform:uppercase;
 }
 
+
+/* PLAY */
+
+.play{
+    position:absolute;
+
+    z-index:10;
+
+    bottom:22px;
+
+    right:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    color:#d9a348;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+.play-button{
+    width:34px;
+    height:34px;
+
+    border:1px solid #c9953b;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:10px;
+}
+
+
 /* =========================================================
-   FEATURE CARDS
+   THREE CARDS
 ========================================================= */
 
-.features{
-    padding:40px;
+.cards{
+    padding:20px 40px 16px;
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
-    gap:16px;
+
+    gap:15px;
+
     background:#050403;
 }
 
+
 .card{
-    min-height:260px;
+    height:260px;
+
     position:relative;
+
     overflow:hidden;
 
-    border:1px solid rgba(201,149,56,.24);
+    border:1px solid rgba(201,149,59,.28);
 
-    background:#0b0907;
+    background:#0a0806;
 }
+
 
 .card-image{
     position:absolute;
+
     inset:0;
 
     background-size:cover;
+
     background-position:center;
 
-    transition:transform .6s ease;
+    transition:transform .7s ease;
 }
+
 
 .card:hover .card-image{
-    transform:scale(1.05);
+    transform:scale(1.04);
 }
 
-.card:after{
+
+.card:nth-child(1) .card-image{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8,6,4,.30),
+            rgba(8,6,4,.10)
+        ),
+        url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1300&q=90");
+}
+
+
+.card:nth-child(2) .card-image{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,5,4,.30),
+            rgba(5,5,4,.12)
+        ),
+        url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1300&q=90");
+}
+
+
+.card:nth-child(3) .card-image{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(5,3,2,.42),
+            rgba(5,3,2,.15)
+        ),
+        url("https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1300&q=90");
+}
+
+
+.card::after{
     content:"";
+
     position:absolute;
+
     inset:0;
 
     background:
         linear-gradient(
-            90deg,
-            rgba(4,3,2,.93),
-            rgba(4,3,2,.42),
-            rgba(4,3,2,.22)
+            180deg,
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.63)
         );
 }
 
-.card:nth-child(1) .card-image{
-    background-image:url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1200&q=85");
-}
-
-.card:nth-child(2) .card-image{
-    background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=85");
-}
-
-.card:nth-child(3) .card-image{
-    background-image:url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=85");
-}
 
 .card-content{
     position:relative;
-    z-index:2;
+
+    z-index:3;
+
     height:100%;
-    padding:32px;
+
+    padding:30px 32px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:space-between;
 }
 
-.card-number{
+
+.number{
     font-family:Oswald,sans-serif;
+
     font-size:38px;
-    font-weight:400;
+
+    font-weight:300;
+
     color:#d5a149;
-    letter-spacing:3px;
+
+    letter-spacing:2px;
 }
+
 
 .card h2{
-    font-family:Montserrat,sans-serif;
     font-size:25px;
-    letter-spacing:5px;
+
     font-weight:500;
-    margin:10px 0 18px;
+
+    letter-spacing:5px;
+
+    color:#f0ebe3;
+
+    margin:8px 0 14px;
 }
 
-.card-line{
+
+.small-rule{
     width:38px;
+
     height:2px;
-    background:var(--gold);
-    margin-bottom:16px;
+
+    background:#c9953b;
+
+    margin-bottom:14px;
 }
+
 
 .card p{
     max-width:330px;
-    color:#d0c9bc;
-    font-size:13px;
+
+    font-size:12px;
+
     line-height:1.75;
+
+    color:#e0d9ce;
 }
+
 
 .card-link{
     color:#d5a149;
+
     text-decoration:none;
-    font-size:11px;
+
+    font-size:10px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
-    margin-top:20px;
 }
+
 
 /* =========================================================
    LATEST PROJECT
@@ -582,324 +811,408 @@ nav{
 .latest{
     margin:0 40px 40px;
 
-    min-height:160px;
+    height:158px;
 
     display:grid;
-    grid-template-columns:24% 18% 35% 23%;
 
-    border:1px solid rgba(201,149,56,.22);
+    grid-template-columns:24% 16% 34% 26%;
+
+    border:1px solid rgba(201,149,59,.28);
+
     background:#080706;
 }
 
-.latest-info{
-    padding:26px 30px;
+
+.latest-left{
+    padding:24px 31px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 }
 
-.eyebrow{
-    font-size:10px;
-    letter-spacing:4px;
+
+.latest-label{
     color:#d5a149;
-    text-transform:uppercase;
-    margin-bottom:13px;
-}
 
-.latest h2{
-    font-family:Oswald,sans-serif;
-    font-size:31px;
-    letter-spacing:4px;
-    font-weight:500;
-    color:#ece6db;
-}
-
-.tags{
-    margin-top:14px;
-    color:#a9a193;
     font-size:10px;
-    letter-spacing:2px;
+
+    letter-spacing:4px;
+
+    margin-bottom:12px;
 }
 
-.tags span{
-    color:var(--gold2);
-    margin:0 8px;
+
+.latest-title{
+    font-family:Oswald,sans-serif;
+
+    font-size:31px;
+
+    font-weight:400;
+
+    letter-spacing:4px;
+
+    color:#eee9df;
 }
+
+
+.latest-tags{
+    color:#a59e92;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    margin-top:14px;
+}
+
+
+.latest-tags span{
+    color:#c9953b;
+
+    padding:0 8px;
+}
+
+
+/* IMAGE */
 
 .latest-image{
     position:relative;
 
     background:
         linear-gradient(
-            rgba(25,13,3,.15),
-            rgba(25,13,3,.15)
+            rgba(35,18,4,.15),
+            rgba(35,18,4,.15)
         ),
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85")
-        center/cover;
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=90")
+        center / cover;
 }
+
 
 .latest-play{
     position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
 
-    width:54px;
-    height:54px;
+    width:52px;
+    height:52px;
+
     border:1px solid #d5a149;
+
     border-radius:50%;
 
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    color:#e0ad51;
+    color:#e1ad52;
+
     background:rgba(0,0,0,.25);
 }
 
+
+/* COPY */
+
 .latest-copy{
-    padding:26px 30px;
+    padding:24px 31px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 }
+
 
 .latest-copy strong{
     color:#d5a149;
-    font-size:13px;
-    margin-bottom:11px;
+
+    font-size:12px;
+
     font-weight:500;
+
+    margin-bottom:9px;
 }
+
 
 .latest-copy p{
-    color:#aaa296;
-    font-size:13px;
-    line-height:1.8;
-    max-width:310px;
+    color:#aaa297;
+
+    font-size:12px;
+
+    line-height:1.7;
 }
 
-.listen{
-    margin-top:17px;
 
-    display:inline-flex;
-    width:150px;
+.listen{
+    width:151px;
+
     height:38px;
 
-    border:1px solid var(--gold);
+    margin-top:15px;
+
+    border:1px solid #c9953b;
+
+    display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     color:#d5a149;
+
     text-decoration:none;
 
     font-size:10px;
+
     letter-spacing:2px;
-    text-transform:uppercase;
 }
+
+
+/* QUOTE */
 
 .quote{
-    padding:25px 35px;
+    padding:20px 34px;
 
     display:flex;
+
     flex-direction:column;
+
     justify-content:center;
 
-    border-left:1px solid rgba(201,149,56,.15);
+    border-left:1px solid rgba(201,149,59,.16);
 }
 
+
 .quote-mark{
-    color:#d5a149;
     font-family:Georgia,serif;
-    font-size:48px;
-    line-height:.5;
+
+    font-size:45px;
+
+    line-height:.45;
+
+    color:#c9953b;
+
     margin-bottom:15px;
 }
 
+
 .quote p{
-    color:#bdb5a8;
     font-family:Georgia,serif;
+
     font-style:italic;
-    font-size:17px;
+
+    font-size:16px;
+
     line-height:1.55;
+
+    color:#aaa297;
 }
 
+
 .quote small{
-    color:#d5a149;
-    margin-top:12px;
-    letter-spacing:3px;
+    color:#c9953b;
+
     font-size:9px;
+
+    letter-spacing:3px;
+
+    margin-top:10px;
 }
+
 
 /* =========================================================
    FOOTER
 ========================================================= */
 
 footer{
-    min-height:100px;
     margin:0 40px;
 
-    border-top:1px solid rgba(201,149,56,.15);
+    height:75px;
+
+    border-top:1px solid rgba(201,149,59,.14);
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    color:#726b61;
+    color:#6f695f;
+
     font-size:9px;
+
     letter-spacing:3px;
 }
 
 footer strong{
-    color:#c99538;
+    color:#c9953b;
 }
+
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:1100px){
+@media(max-width:1200px){
+
+    header{
+        grid-template-columns:230px 1fr 150px;
+        padding:0 25px;
+    }
 
     nav{
-        grid-template-columns:180px 1fr 100px;
-        padding:0 20px;
-    }
-
-    .menu{
-        gap:22px;
-    }
-
-    .menu a{
-        font-size:9px;
-        letter-spacing:2px;
+        gap:28px;
     }
 
     .hero{
         grid-template-columns:28% 42% 30%;
-        min-height:560px;
     }
 
     .vinyl{
-        width:320px;
-        height:320px;
+        width:310px;
+        height:310px;
     }
 
-    .vinyl-logo span{
-        font-size:120px;
+    .vinyl-h span{
+        font-size:135px;
     }
 
     .hero-title{
-        font-size:72px;
+        font-size:62px;
     }
 
-    .hero-sub{
-        font-size:12px;
-        letter-spacing:4px;
+    .title-rule{
+        width:320px;
     }
 
-    .hero-description{
-        font-size:10px;
+    .hero-category{
+        font-size:11px;
     }
 
-    .features{
-        padding:25px;
+    .cards{
+        padding-left:25px;
+        padding-right:25px;
     }
 
     .latest{
-        margin:0 25px 25px;
+        margin-left:25px;
+        margin-right:25px;
     }
 }
 
-@media(max-width:800px){
 
-    nav{
+@media(max-width:850px){
+
+    header{
         height:72px;
+
         display:flex;
+
         justify-content:space-between;
+
+        padding:0 20px;
     }
 
-    .menu{
+    nav{
         display:none;
     }
 
-    .brand-name{
-        font-size:16px;
-    }
-
-    .socials{
-        gap:12px;
+    .social{
+        gap:13px;
     }
 
     .hero{
         margin-top:72px;
+
+        height:auto;
+
         grid-template-columns:1fr;
-        min-height:auto;
     }
 
     .hero-left{
-        min-height:360px;
+        height:350px;
     }
 
     .hero-center{
-        padding:45px 28px;
+        padding:45px 25px;
+
         align-items:center;
+
         text-align:center;
     }
 
     .hero-title{
-        font-size:70px;
-    }
-
-    .hero-line{
-        width:280px;
+        font-size:65px;
     }
 
     .hero-right{
-        min-height:330px;
+        height:340px;
     }
 
-    .features{
+    .cards{
         grid-template-columns:1fr;
+
         padding:20px;
     }
 
     .latest{
         margin:0 20px 25px;
+
+        height:auto;
+
         grid-template-columns:1fr;
     }
 
     .latest-image{
-        min-height:190px;
+        height:200px;
     }
 
     .quote{
         border-left:0;
-        border-top:1px solid rgba(201,149,56,.15);
+
+        border-top:1px solid rgba(201,149,59,.16);
+
+        min-height:170px;
     }
 
     footer{
         margin:0 20px;
+
         flex-direction:column;
-        gap:15px;
+
         justify-content:center;
-        padding:30px 0;
+
+        gap:15px;
+
+        height:110px;
     }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =====================================================
-     NAVIGATION
+     HEADER
 ===================================================== -->
 
-<nav>
+<header>
 
     <div class="brand">
 
-        <div class="brand-mark">
+        <div class="brand-circle">
             <span>H</span>
         </div>
 
@@ -909,26 +1222,46 @@ footer strong{
 
     </div>
 
-    <div class="menu">
 
-        <a href="#home" class="active">Home</a>
-        <a href="#music">Music</a>
-        <a href="#visuals">Visuals</a>
-        <a href="#experiments">Experiments</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+    <nav>
+
+        <a href="#home" class="active">
+            Home
+        </a>
+
+        <a href="#music">
+            Music
+        </a>
+
+        <a href="#visuals">
+            Visuals
+        </a>
+
+        <a href="#experiments">
+            Experiments
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="social">
+
+        <span>◎</span>
+        <span>▶</span>
+        <span>●</span>
 
     </div>
 
-    <div class="socials">
+</header>
 
-        <a href="#" aria-label="Instagram">◎</a>
-        <a href="#" aria-label="YouTube">▶</a>
-        <a href="#" aria-label="Spotify">●</a>
-
-    </div>
-
-</nav>
 
 
 <!-- =====================================================
@@ -937,13 +1270,14 @@ footer strong{
 
 <section class="hero" id="home">
 
+
     <div class="hero-left">
 
         <div class="vinyl">
 
-            <div class="vinyl-glint"></div>
+            <div class="vinyl-light"></div>
 
-            <div class="vinyl-logo">
+            <div class="vinyl-h">
                 <span>H</span>
             </div>
 
@@ -952,46 +1286,59 @@ footer strong{
     </div>
 
 
+
     <div class="hero-center">
 
         <h1 class="hero-title">
             HAERVIU
         </h1>
 
-        <div class="hero-line"></div>
+        <div class="title-rule"></div>
 
-        <div class="hero-sub">
+        <div class="hero-category">
+
             MUSIC
-            <span>◆</span>
+
+            <b>◆</b>
+
             VISUALS
-            <span>◆</span>
+
+            <b>◆</b>
+
             EXPERIMENTS
+
         </div>
 
         <p class="hero-description">
+
             A CREATIVE JOURNEY BETWEEN SOUND,<br>
             IMAGINATION AND NEW WORLDS.
+
         </p>
 
-        <a href="#music" class="cta">
+        <a href="#music" class="enter">
+
             ENTER THE LAB
+
             <span>→</span>
+
         </a>
 
     </div>
+
 
 
     <div class="hero-right">
 
         <div class="studio-ring"></div>
 
-        <div class="side-text">
+        <div class="vertical">
             CREATE · FEEL · SHARE
         </div>
 
-        <div class="play-intro">
+        <div class="play">
 
-            <div class="play-circle">
+            <div class="play-button">
                 ▶
             </div>
 
@@ -1004,11 +1351,12 @@ footer strong{
 </section>
 
 
+
 <!-- =====================================================
-     THREE WORLDS
+     CARDS
 ===================================================== -->
 
-<section class="features">
+<section class="cards">
 
 
     <article class="card" id="music">
@@ -1019,7 +1367,7 @@ footer strong{
 
             <div>
 
-                <div class="card-number">
+                <div class="number">
                     01
                 </div>
 
@@ -1027,17 +1375,16 @@ footer strong{
                     MUSIC
                 </h2>
 
-                <div class="card-line"></div>
+                <div class="small-rule"></div>
 
                 <p>
                     Original tracks, electronic grooves,
-                    world influences and musical
-                    experiments.
+                    world influences and musical experiments.
                 </p>
 
             </div>
 
-            <a class="card-link" href="#">
+            <a href="#" class="card-link">
                 EXPLORE&nbsp;&nbsp; →
             </a>
 
@@ -1055,7 +1402,7 @@ footer strong{
 
             <div>
 
-                <div class="card-number">
+                <div class="number">
                     02
                 </div>
 
@@ -1063,17 +1410,16 @@ footer strong{
                     VISUALS
                 </h2>
 
-                <div class="card-line"></div>
+                <div class="small-rule"></div>
 
                 <p>
                     Music videos, cinematic atmospheres,
-                    visual stories and creative
-                    universes.
+                    visual stories and creative universes.
                 </p>
 
             </div>
 
-            <a class="card-link" href="#">
+            <a href="#" class="card-link">
                 DISCOVER&nbsp;&nbsp; →
             </a>
 
@@ -1091,7 +1437,7 @@ footer strong{
 
             <div>
 
-                <div class="card-number">
+                <div class="number">
                     03
                 </div>
 
@@ -1099,17 +1445,16 @@ footer strong{
                     EXPERIMENTS
                 </h2>
 
-                <div class="card-line"></div>
+                <div class="small-rule"></div>
 
                 <p>
                     AI, new ideas, creative tests,
-                    discoveries and unexpected
-                    directions.
+                    discoveries and unexpected directions.
                 </p>
 
             </div>
 
-            <a class="card-link" href="#">
+            <a href="#" class="card-link">
                 EXPLORE&nbsp;&nbsp; →
             </a>
 
@@ -1117,7 +1462,9 @@ footer strong{
 
     </article>
 
+
 </section>
+
 
 
 <!-- =====================================================
@@ -1127,25 +1474,32 @@ footer strong{
 <section class="latest" id="about">
 
 
-    <div class="latest-info">
+    <div class="latest-left">
 
-        <div class="eyebrow">
+        <div class="latest-label">
             LATEST PROJECT
         </div>
 
-        <h2>
+        <div class="latest-title">
             NEW HORIZONS
-        </h2>
+        </div>
 
-        <div class="tags">
+        <div class="latest-tags">
+
             DEEP HOUSE
+
             <span>◆</span>
+
             WORLD
+
             <span>◆</span>
+
             CINEMATIC
+
         </div>
 
     </div>
+
 
 
     <div class="latest-image">
@@ -1157,6 +1511,7 @@ footer strong{
     </div>
 
 
+
     <div class="latest-copy">
 
         <strong>
@@ -1164,7 +1519,7 @@ footer strong{
         </strong>
 
         <p>
-            Sound, energy and emotion
+            Sound, energy and emotion<br>
             coming together.
         </p>
 
@@ -1173,6 +1528,7 @@ footer strong{
         </a>
 
     </div>
+
 
 
     <div class="quote">
@@ -1192,7 +1548,9 @@ footer strong{
 
     </div>
 
+
 </section>
+
 
 
 <!-- =====================================================
