@@ -13,20 +13,20 @@
 <style>
 
 :root{
-    --black:#050403;
-    --black2:#0b0907;
-    --gold:#c9963e;
-    --gold2:#e0ae55;
-    --gold3:#8b6120;
-    --cream:#eee5d5;
-    --muted:#aaa096;
-    --line:rgba(201,150,62,.35);
+    --black:#030303;
+    --black2:#080706;
+    --gold:#c89438;
+    --gold-light:#e3b25b;
+    --gold-dark:#6e4615;
+    --white:#f0ebe3;
+    --grey:#aaa39b;
+    --line:rgba(200,148,56,.30);
 }
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -34,42 +34,44 @@ html{
 }
 
 body{
-    background:#050403;
-    color:var(--cream);
+    background:#030303;
+    color:var(--white);
     font-family:Montserrat,Arial,sans-serif;
     overflow-x:hidden;
 }
 
-/* =========================
+
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 nav{
     height:86px;
-    width:100%;
-    background:#050403;
-    border-bottom:1px solid rgba(201,150,62,.18);
+    padding:0 42px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:0 42px;
+    background:#030303;
+
+    border-bottom:1px solid rgba(200,148,56,.20);
 
     position:sticky;
     top:0;
-    z-index:1000;
+    z-index:100;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:17px;
 }
 
-.logo-circle{
-    width:58px;
-    height:58px;
+.logoMark{
+    width:56px;
+    height:56px;
+
     border:1px solid var(--gold);
     border-radius:50%;
 
@@ -79,363 +81,457 @@ nav{
 
     font-family:Cinzel,serif;
     font-size:30px;
-    color:var(--gold2);
+
+    color:var(--gold-light);
 
     box-shadow:
-        0 0 0 1px rgba(201,150,62,.12) inset,
-        0 0 25px rgba(201,150,62,.08);
+        0 0 0 4px rgba(200,148,56,.06),
+        0 0 20px rgba(200,148,56,.08);
 }
 
-.logo-name{
+.logoText{
     font-family:Cinzel,serif;
-    font-size:22px;
+    font-size:20px;
     letter-spacing:7px;
-    color:var(--gold2);
+    color:var(--gold-light);
 }
 
-.menu{
-    display:flex;
-    gap:48px;
-    align-items:center;
-}
-
-.menu a{
-    color:#eee7dc;
-    text-decoration:none;
-    font-size:12px;
-    letter-spacing:3px;
-    position:relative;
-    padding:34px 0;
-}
-
-.menu a:hover{
-    color:var(--gold2);
-}
-
-.menu a.active::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:20px;
-    height:2px;
-    background:var(--gold);
-}
-
-.social{
-    display:flex;
-    gap:22px;
-    align-items:center;
-}
-
-.social span{
-    color:var(--gold2);
-    font-size:18px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-    min-height:480px;
-    position:relative;
-
-    display:grid;
-    grid-template-columns:30% 40% 30%;
-
-    overflow:hidden;
-
-    background:
-        radial-gradient(circle at 15% 45%,rgba(196,137,39,.14),transparent 30%),
-        radial-gradient(circle at 70% 40%,rgba(155,94,19,.10),transparent 30%),
-        linear-gradient(90deg,#080604,#030302 50%,#090705);
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-
-    background-image:
-        radial-gradient(circle,rgba(255,184,67,.45) 1px,transparent 1px);
-
-    background-size:110px 110px;
-    opacity:.18;
-    pointer-events:none;
-}
-
-/* LEFT VINYL */
-
-.hero-left{
+.navLinks{
     display:flex;
     align-items:center;
-    justify-content:center;
-    position:relative;
-    z-index:2;
+    gap:44px;
 }
 
-.vinyl{
-    width:350px;
-    height:350px;
-
-    border-radius:50%;
-
-    background:
-        repeating-radial-gradient(
-            circle,
-            #050505 0px,
-            #050505 4px,
-            #111 5px,
-            #050505 7px
-        );
-
-    border:3px solid var(--gold);
-
-    box-shadow:
-        0 0 0 9px rgba(201,150,62,.13),
-        0 0 0 11px rgba(201,150,62,.32),
-        0 0 55px rgba(201,150,62,.18);
-
-    position:relative;
-}
-
-.vinyl::before{
-    content:"";
-    position:absolute;
-    inset:35px;
-
-    border:1px solid rgba(201,150,62,.8);
-    border-radius:50%;
-}
-
-.vinyl::after{
-    content:"";
-    position:absolute;
-    inset:112px;
-
-    border-radius:50%;
-    border:2px solid var(--gold);
-
-    background:
-        radial-gradient(circle,#17110a 0%,#080604 70%);
-}
-
-.vinyl-h{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    z-index:4;
-
-    font-family:Cinzel,serif;
-    font-size:130px;
-    color:#dca64d;
-
-    text-shadow:
-        0 2px 0 #6e4716,
-        0 0 25px rgba(218,164,72,.25);
-}
-
-/* CENTER */
-
-.hero-center{
-    position:relative;
-    z-index:3;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-
-    padding:30px 25px;
-}
-
-.hero-title{
-    font-family:Oswald,Arial,sans-serif;
-    font-size:82px;
-    font-weight:500;
-    letter-spacing:8px;
-    line-height:.95;
-
-    color:#d9a348;
-
-    text-shadow:
-        0 2px 0 #704713,
-        0 0 30px rgba(201,150,62,.12);
-}
-
-.hero-line{
-    width:400px;
-    max-width:100%;
-    height:1px;
-    background:linear-gradient(
-        90deg,
-        var(--gold),
-        rgba(201,150,62,.1)
-    );
-
-    margin:22px 0;
-}
-
-.hero-sub{
-    font-size:15px;
-    letter-spacing:6px;
-    color:#eee7dc;
-    margin-bottom:34px;
-}
-
-.hero-sub span{
-    color:var(--gold);
-    margin:0 13px;
-}
-
-.hero-description{
-    font-size:13px;
-    line-height:2;
-    letter-spacing:2px;
-    color:#c4bbb0;
-    max-width:520px;
-    margin-bottom:28px;
-}
-
-.button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    width:215px;
-    height:48px;
-
-    border:1px solid var(--gold);
-
-    color:var(--gold2);
+.navLinks a{
+    color:#e6e0d7;
     text-decoration:none;
 
     font-size:11px;
     letter-spacing:3px;
 
-    transition:.3s;
-}
-
-.button:hover{
-    background:var(--gold);
-    color:#080604;
-}
-
-/* RIGHT STUDIO */
-
-.hero-right{
     position:relative;
+}
+
+.navLinks a:hover{
+    color:var(--gold-light);
+}
+
+.navLinks a.active::after{
+    content:"";
+
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-14px;
+
+    height:2px;
+
+    background:var(--gold);
+}
+
+.navIcons{
+    display:flex;
+    gap:18px;
+
+    color:var(--gold-light);
+    font-size:18px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:475px;
+
+    display:grid;
+    grid-template-columns:29% 42% 29%;
+
+    position:relative;
+    overflow:hidden;
+
+    background:#050403;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 22% 48%,
+            rgba(160,92,20,.18),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 70% 48%,
+            rgba(137,77,18,.10),
+            transparent 35%
+        );
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   VINYL
+========================================================= */
+
+.heroLeft{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.vinyl{
+    width:340px;
+    height:340px;
+
+    border-radius:50%;
+
+    position:relative;
+
+    background:
+        repeating-radial-gradient(
+            circle,
+            #050505 0px,
+            #050505 3px,
+            #101010 4px,
+            #050505 6px
+        );
+
+    border:3px solid #b77b25;
+
+    box-shadow:
+        0 0 0 8px rgba(200,148,56,.10),
+        0 0 0 10px rgba(200,148,56,.32),
+        0 0 50px rgba(200,148,56,.12);
+}
+
+.vinyl::before{
+    content:"";
+
+    position:absolute;
+    inset:42px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(218,164,72,.55);
+}
+
+.vinyl::after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:125px;
+    height:125px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #0a0805 0%,
+            #090705 68%,
+            #1a1208 69%,
+            #090705 72%
+        );
+
+    border:1px solid var(--gold);
+}
+
+.vinylH{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:3;
+
+    font-family:Cinzel,serif;
+
+    font-size:105px;
+
+    color:#dca54b;
+
+    text-shadow:
+        0 2px 0 #684313,
+        0 0 20px rgba(225,170,75,.18);
+}
+
+.vinylLight{
+    position:absolute;
+
+    width:17px;
+    height:17px;
+
+    left:64px;
+    top:54px;
+
+    border-radius:50%;
+
+    background:#ffe1a0;
+
+    box-shadow:
+        0 0 12px #ffe1a0,
+        0 0 30px rgba(255,190,70,.5);
+
+    z-index:5;
+}
+
+
+/* =========================================================
+   HERO CENTER
+========================================================= */
+
+.heroCenter{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    padding:35px 20px;
+
+    position:relative;
+    z-index:3;
+}
+
+.heroTitle{
+    font-family:Cinzel,serif;
+
+    font-size:78px;
+    font-weight:500;
+
+    letter-spacing:7px;
+
+    line-height:1;
+
+    color:#dda64d;
+
+    text-shadow:
+        0 2px 0 #704714,
+        0 0 25px rgba(200,148,56,.12);
+}
+
+.heroRule{
+    width:390px;
+    max-width:100%;
+
+    height:1px;
+
+    margin:21px 0;
 
     background:
         linear-gradient(
             90deg,
-            #050403 0%,
-            rgba(5,4,3,.25) 20%,
-            rgba(5,4,3,.05) 100%
-        ),
-        url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=85")
-        center/cover no-repeat;
-
-    min-height:480px;
+            var(--gold),
+            rgba(200,148,56,.08)
+        );
 }
 
-.hero-right::after{
+.heroCategory{
+    font-size:14px;
+
+    letter-spacing:6px;
+
+    color:#f1ebe2;
+
+    margin-bottom:28px;
+}
+
+.heroCategory span{
+    color:var(--gold);
+    padding:0 12px;
+}
+
+.heroDescription{
+    max-width:520px;
+
+    color:#bbb4aa;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    line-height:2;
+
+    margin-bottom:27px;
+}
+
+.heroButton{
+    width:215px;
+    height:46px;
+
+    border:1px solid var(--gold);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--gold-light);
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    transition:.3s;
+}
+
+.heroButton:hover{
+    background:var(--gold);
+    color:#080604;
+}
+
+
+/* =========================================================
+   STUDIO IMAGE
+========================================================= */
+
+.heroRight{
+    position:relative;
+
+    min-height:475px;
+
+    overflow:hidden;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            #050403 0%,
+            rgba(5,4,3,.60) 8%,
+            rgba(5,4,3,.12) 45%,
+            rgba(0,0,0,.30) 100%
+        ),
+        url("https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1400&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.heroRight::after{
     content:"";
+
     position:absolute;
     inset:0;
 
     background:
         linear-gradient(
             180deg,
-            rgba(0,0,0,.05),
-            rgba(0,0,0,.62)
+            rgba(0,0,0,.08),
+            rgba(0,0,0,.55)
         );
 }
 
-.play-intro{
+.sideText{
     position:absolute;
-    bottom:25px;
-    right:25px;
+
+    right:12px;
+    top:50%;
+
+    transform:translateY(-50%) rotate(180deg);
+
+    writing-mode:vertical-rl;
+
     z-index:5;
+
+    color:var(--gold-light);
+
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.playIntro{
+    position:absolute;
+
+    right:20px;
+    bottom:23px;
+
+    z-index:6;
 
     display:flex;
     align-items:center;
     gap:12px;
 
-    color:var(--gold2);
+    color:var(--gold-light);
 
-    font-size:10px;
+    font-size:9px;
     letter-spacing:3px;
 }
 
-.play-circle{
+.playCircle{
     width:34px;
     height:34px;
+
     border:1px solid var(--gold);
+
     border-radius:50%;
 
     display:flex;
     align-items:center;
     justify-content:center;
-
-    font-size:12px;
 }
 
-/* VERTICAL TEXT */
 
-.side-text{
-    position:absolute;
-    right:12px;
-    top:50%;
-    transform:translateY(-50%) rotate(180deg);
-
-    writing-mode:vertical-rl;
-
-    font-size:10px;
-    letter-spacing:4px;
-
-    color:var(--gold2);
-
-    z-index:10;
-}
-
-/* =========================
-   THREE CARDS
-========================= */
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards{
-    padding:35px 40px 18px;
-
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:15px;
 
-    background:#050403;
+    padding:22px 40px 17px;
+
+    background:#030303;
 }
 
 .card{
-    min-height:260px;
+    height:260px;
 
     position:relative;
+
     overflow:hidden;
 
-    border:1px solid rgba(201,150,62,.28);
+    border:1px solid rgba(200,148,56,.28);
 
-    background:#0b0907;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-
-    padding:32px;
+    background:#090806;
 }
 
-.card::before{
+.cardImage{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+
+    transition:transform .8s;
+}
+
+.card:hover .cardImage{
+    transform:scale(1.06);
+}
+
+.card::after{
     content:"";
+
     position:absolute;
     inset:0;
 
@@ -443,191 +539,260 @@ nav{
         linear-gradient(
             0deg,
             rgba(0,0,0,.95) 0%,
-            rgba(0,0,0,.40) 65%,
+            rgba(0,0,0,.48) 60%,
             rgba(0,0,0,.05) 100%
         );
 
     z-index:1;
 }
 
-.card-image{
+
+/* REALISTIC VISUALS */
+
+.musicVisual{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.25)
+        ),
+        url("https://images.unsplash.com/photo-1461360228754-6e81c478b882?auto=format&fit=crop&w=1200&q=90");
+}
+
+.visualVisual{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.18),
+            rgba(0,0,0,.35)
+        ),
+        url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=90");
+}
+
+.experimentVisual{
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.20),
+            rgba(0,0,0,.30)
+        ),
+        url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=90");
+}
+
+.cardContent{
     position:absolute;
-    inset:0;
 
-    background-size:cover;
-    background-position:center;
+    left:32px;
+    right:25px;
+    bottom:27px;
 
-    transition:transform .7s;
-}
-
-.card:hover .card-image{
-    transform:scale(1.05);
-}
-
-.music-image{
-    background-image:url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1000&q=85");
-}
-
-.visuals-image{
-    background-image:url("https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85");
-}
-
-.experiments-image{
-    background-image:url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85");
-}
-
-.card-content{
-    position:relative;
     z-index:3;
 }
 
-.card-number{
+.number{
     font-family:Oswald,sans-serif;
+
     font-size:38px;
-    color:var(--gold2);
-    letter-spacing:3px;
+
+    color:#dda64d;
+
+    letter-spacing:2px;
+
     margin-bottom:10px;
 }
 
-.card-title{
+.cardTitle{
     font-size:25px;
+
     letter-spacing:4px;
-    margin-bottom:14px;
-    color:#f0ebe4;
+
+    color:#f1ece5;
+
+    margin-bottom:12px;
 }
 
-.card-line{
-    width:40px;
+.smallRule{
+    width:39px;
     height:1px;
+
     background:var(--gold);
-    margin-bottom:14px;
+
+    margin-bottom:13px;
 }
 
-.card-description{
-    max-width:370px;
-    font-size:12px;
+.cardText{
+    max-width:400px;
+
+    font-size:11px;
+
     line-height:1.8;
-    color:#d0c8be;
+
+    color:#d0c8bd;
 }
 
-.card-link{
+.cardLink{
     display:inline-block;
-    margin-top:20px;
 
-    color:var(--gold2);
+    margin-top:12px;
+
+    color:var(--gold-light);
+
     text-decoration:none;
 
-    font-size:10px;
+    font-size:9px;
+
     letter-spacing:3px;
 }
 
-/* =========================
-   LATEST PROJECT
-========================= */
+
+/* =========================================================
+   LATEST
+========================================================= */
 
 .latest{
-    margin:0 40px 40px;
+    margin:0 40px 35px;
 
-    min-height:155px;
-
-    border:1px solid rgba(201,150,62,.27);
+    min-height:158px;
 
     display:grid;
-    grid-template-columns:25% 17% 32% 26%;
 
-    background:#080706;
+    grid-template-columns:24% 18% 32% 26%;
+
+    border:1px solid rgba(200,148,56,.25);
+
+    background:#070605;
 }
 
-.latest-info{
-    padding:25px 30px;
+.latestInfo{
+    padding:24px 30px;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
 }
 
-.latest-label{
-    font-size:10px;
+.latestLabel{
+    color:var(--gold-light);
+
+    font-size:9px;
+
     letter-spacing:4px;
-    color:var(--gold2);
+
     margin-bottom:14px;
 }
 
-.latest-title{
+.latestTitle{
     font-family:Oswald,sans-serif;
-    font-size:30px;
+
+    font-size:31px;
+
     letter-spacing:4px;
-    color:#eee7dc;
-    margin-bottom:12px;
+
+    color:#eee7dd;
+
+    margin-bottom:13px;
 }
 
-.latest-meta{
-    font-size:10px;
+.latestMeta{
+    font-size:9px;
+
     letter-spacing:3px;
-    color:#a79d91;
+
+    color:#a79d92;
 }
 
-.project-image{
+
+/* LANDSCAPE */
+
+.latestImage{
     position:relative;
 
-    background:
+    background-image:
         linear-gradient(
-            90deg,
-            rgba(0,0,0,.15),
-            rgba(0,0,0,.05)
+            rgba(20,10,0,.08),
+            rgba(0,0,0,.18)
         ),
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85")
-        center/cover no-repeat;
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=90");
+
+    background-size:cover;
+    background-position:center;
 }
 
-.project-play{
+.latestImage::after{
+    content:"";
+
     position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(238,169,61,.18),
+            transparent 35%
+        );
+}
+
+.latestPlay{
+    position:absolute;
+
     left:50%;
     top:50%;
+
     transform:translate(-50%,-50%);
 
-    width:48px;
-    height:48px;
+    width:49px;
+    height:49px;
 
-    border:1px solid var(--gold);
+    border:1px solid #e0a84d;
+
     border-radius:50%;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:var(--gold2);
+    color:#f0ba5b;
 
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.28);
+
+    z-index:2;
 }
 
-.latest-text{
-    padding:25px 32px;
+
+/* LATEST TEXT */
+
+.latestText{
+    padding:25px 30px;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
 
-    border-left:1px solid rgba(201,150,62,.15);
-    border-right:1px solid rgba(201,150,62,.15);
+    border-left:1px solid rgba(200,148,56,.15);
+    border-right:1px solid rgba(200,148,56,.15);
 }
 
-.latest-small{
-    color:var(--gold2);
-    font-size:12px;
+.latestSmall{
+    color:var(--gold-light);
+
+    font-size:11px;
+
     margin-bottom:10px;
 }
 
-.latest-description{
-    font-size:13px;
+.latestDescription{
+    color:#bdb5aa;
+
+    font-size:12px;
+
     line-height:1.8;
-    color:#bbb1a5;
-    margin-bottom:15px;
+
+    margin-bottom:14px;
 }
 
 .listen{
     width:150px;
-    height:40px;
+    height:38px;
 
     border:1px solid var(--gold);
 
@@ -635,113 +800,132 @@ nav{
     align-items:center;
     justify-content:center;
 
-    color:var(--gold2);
     text-decoration:none;
 
-    font-size:10px;
+    color:var(--gold-light);
+
+    font-size:9px;
+
     letter-spacing:2px;
 }
 
+
+/* QUOTE */
+
 .quote{
-    padding:25px 35px;
+    padding:25px 34px;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
 
     font-family:Georgia,serif;
+
     font-style:italic;
 
     color:#aaa198;
+
     font-size:16px;
-    line-height:1.8;
+
+    line-height:1.7;
 }
 
-.quote-mark{
+.quoteMark{
+    font-size:38px;
+
     color:var(--gold);
-    font-size:35px;
+
     line-height:.5;
+
     margin-bottom:12px;
 }
 
-.quote-author{
-    margin-top:10px;
+.author{
+    margin-top:8px;
 
     font-family:Montserrat,sans-serif;
-    font-size:10px;
+
+    font-size:9px;
+
     letter-spacing:3px;
-    color:var(--gold2);
+
+    color:var(--gold-light);
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-    border-top:1px solid rgba(201,150,62,.15);
-
-    min-height:90px;
+    min-height:82px;
 
     padding:0 40px;
+
+    border-top:1px solid rgba(200,148,56,.13);
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    color:#766e65;
+    color:#625c54;
 
-    font-size:9px;
+    font-size:8px;
+
     letter-spacing:3px;
 }
 
-.footer-brand{
-    color:var(--gold2);
+.footerBrand{
+    color:var(--gold-light);
 }
 
-.footer-center{
-    color:#655e57;
-}
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 
-    .menu{
-        gap:25px;
+    .navLinks{
+        gap:20px;
     }
 
     .hero{
-        grid-template-columns:28% 44% 28%;
+        grid-template-columns:27% 43% 30%;
     }
 
     .vinyl{
-        width:280px;
-        height:280px;
+        width:270px;
+        height:270px;
     }
 
     .vinyl::after{
-        inset:90px;
+        width:105px;
+        height:105px;
     }
 
-    .hero-title{
-        font-size:60px;
+    .heroTitle{
+        font-size:55px;
     }
 
-    .hero-sub{
-        font-size:11px;
+    .heroCategory{
+        font-size:10px;
         letter-spacing:4px;
+    }
+
+    .latest{
+        grid-template-columns:25% 20% 30% 25%;
     }
 }
 
-@media(max-width:800px){
+
+@media(max-width:760px){
 
     nav{
         padding:0 20px;
     }
 
-    .menu{
+    .navLinks{
         display:none;
     }
 
@@ -749,94 +933,112 @@ footer{
         grid-template-columns:1fr;
     }
 
-    .hero-left{
+    .heroLeft{
         min-height:330px;
     }
 
-    .hero-center{
+    .heroCenter{
         padding:40px 30px;
     }
 
-    .hero-title{
-        font-size:58px;
-    }
-
-    .hero-right{
+    .heroRight{
         min-height:330px;
     }
 
     .cards{
         grid-template-columns:1fr;
-        padding:25px 20px;
+        padding:20px;
     }
 
     .latest{
-        margin:0 20px 30px;
+        margin:0 20px 25px;
+
         grid-template-columns:1fr;
     }
 
-    .project-image{
+    .latestImage{
         min-height:200px;
-    }
-
-    .latest-text{
-        border:none;
-        border-top:1px solid rgba(201,150,62,.15);
-        border-bottom:1px solid rgba(201,150,62,.15);
     }
 
     footer{
         padding:25px 20px;
+
         flex-direction:column;
-        gap:15px;
+
+        gap:14px;
     }
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- ======================================================
      NAVIGATION
-========================= -->
+====================================================== -->
 
 <nav>
 
     <div class="logo">
-        <div class="logo-circle">H</div>
-        <div class="logo-name">HAERVIU</div>
+
+        <div class="logoMark">
+            H
+        </div>
+
+        <div class="logoText">
+            HAERVIU
+        </div>
+
     </div>
 
-    <div class="menu">
+
+    <div class="navLinks">
+
         <a href="#" class="active">HOME</a>
+
         <a href="#music">MUSIC</a>
+
         <a href="#visuals">VISUALS</a>
+
         <a href="#experiments">EXPERIMENTS</a>
+
         <a href="#about">ABOUT</a>
+
         <a href="#contact">CONTACT</a>
+
     </div>
 
-    <div class="social">
+
+    <div class="navIcons">
+
         <span>◎</span>
         <span>▶</span>
         <span>●</span>
+
     </div>
 
 </nav>
 
 
-<!-- =========================
+<!-- ======================================================
      HERO
-========================= -->
+====================================================== -->
 
 <section class="hero">
 
-    <div class="hero-left">
+
+    <!-- VINYL -->
+
+    <div class="heroLeft">
 
         <div class="vinyl">
 
-            <div class="vinyl-h">
+            <div class="vinylLight"></div>
+
+            <div class="vinylH">
                 H
             </div>
 
@@ -845,43 +1047,60 @@ footer{
     </div>
 
 
-    <div class="hero-center">
+    <!-- CENTER -->
 
-        <h1 class="hero-title">
+    <div class="heroCenter">
+
+        <h1 class="heroTitle">
             HAERVIU
         </h1>
 
-        <div class="hero-line"></div>
+        <div class="heroRule"></div>
 
-        <div class="hero-sub">
+        <div class="heroCategory">
+
             MUSIC
+
             <span>◆</span>
+
             VISUALS
+
             <span>◆</span>
+
             EXPERIMENTS
+
         </div>
 
-        <p class="hero-description">
+
+        <p class="heroDescription">
+
             A CREATIVE JOURNEY BETWEEN SOUND,
             IMAGINATION AND NEW WORLDS.
+
         </p>
 
-        <a href="#music" class="button">
+
+        <a href="#music" class="heroButton">
+
             ENTER THE LAB&nbsp;&nbsp; →
+
         </a>
 
     </div>
 
 
-    <div class="hero-right">
+    <!-- STUDIO -->
 
-        <div class="side-text">
+    <div class="heroRight">
+
+        <div class="sideText">
             CREATE · FEEL · SHARE
         </div>
 
-        <div class="play-intro">
 
-            <div class="play-circle">
+        <div class="playIntro">
+
+            <div class="playCircle">
                 ▶
             </div>
 
@@ -894,34 +1113,37 @@ footer{
 </section>
 
 
-<!-- =========================
-     CARDS
-========================= -->
+<!-- ======================================================
+     THREE MAIN AREAS
+====================================================== -->
 
 <section class="cards">
 
+
+    <!-- MUSIC -->
+
     <article class="card" id="music">
 
-        <div class="card-image music-image"></div>
+        <div class="cardImage musicVisual"></div>
 
-        <div class="card-content">
+        <div class="cardContent">
 
-            <div class="card-number">
+            <div class="number">
                 01
             </div>
 
-            <div class="card-title">
+            <div class="cardTitle">
                 MUSIC
             </div>
 
-            <div class="card-line"></div>
+            <div class="smallRule"></div>
 
-            <div class="card-description">
+            <div class="cardText">
                 Original tracks, electronic grooves,
                 world influences and musical experiments.
             </div>
 
-            <a href="#" class="card-link">
+            <a href="#" class="cardLink">
                 EXPLORE&nbsp;&nbsp; →
             </a>
 
@@ -930,28 +1152,30 @@ footer{
     </article>
 
 
+    <!-- VISUALS -->
+
     <article class="card" id="visuals">
 
-        <div class="card-image visuals-image"></div>
+        <div class="cardImage visualVisual"></div>
 
-        <div class="card-content">
+        <div class="cardContent">
 
-            <div class="card-number">
+            <div class="number">
                 02
             </div>
 
-            <div class="card-title">
+            <div class="cardTitle">
                 VISUALS
             </div>
 
-            <div class="card-line"></div>
+            <div class="smallRule"></div>
 
-            <div class="card-description">
+            <div class="cardText">
                 Music videos, cinematic atmospheres,
                 visual stories and creative universes.
             </div>
 
-            <a href="#" class="card-link">
+            <a href="#" class="cardLink">
                 DISCOVER&nbsp;&nbsp; →
             </a>
 
@@ -960,28 +1184,30 @@ footer{
     </article>
 
 
+    <!-- EXPERIMENTS -->
+
     <article class="card" id="experiments">
 
-        <div class="card-image experiments-image"></div>
+        <div class="cardImage experimentVisual"></div>
 
-        <div class="card-content">
+        <div class="cardContent">
 
-            <div class="card-number">
+            <div class="number">
                 03
             </div>
 
-            <div class="card-title">
+            <div class="cardTitle">
                 EXPERIMENTS
             </div>
 
-            <div class="card-line"></div>
+            <div class="smallRule"></div>
 
-            <div class="card-description">
+            <div class="cardText">
                 AI, new ideas, creative tests,
                 discoveries and unexpected directions.
             </div>
 
-            <a href="#" class="card-link">
+            <a href="#" class="cardLink">
                 EXPLORE&nbsp;&nbsp; →
             </a>
 
@@ -992,45 +1218,46 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- ======================================================
      LATEST PROJECT
-========================= -->
+====================================================== -->
 
 <section class="latest">
 
-    <div class="latest-info">
 
-        <div class="latest-label">
+    <div class="latestInfo">
+
+        <div class="latestLabel">
             LATEST PROJECT
         </div>
 
-        <div class="latest-title">
+        <div class="latestTitle">
             NEW HORIZONS
         </div>
 
-        <div class="latest-meta">
+        <div class="latestMeta">
             DEEP HOUSE&nbsp;&nbsp; ◆ &nbsp;&nbsp;WORLD&nbsp;&nbsp; ◆ &nbsp;&nbsp;CINEMATIC
         </div>
 
     </div>
 
 
-    <div class="project-image">
+    <div class="latestImage">
 
-        <div class="project-play">
+        <div class="latestPlay">
             ▶
         </div>
 
     </div>
 
 
-    <div class="latest-text">
+    <div class="latestText">
 
-        <div class="latest-small">
+        <div class="latestSmall">
             A new journey.
         </div>
 
-        <div class="latest-description">
+        <div class="latestDescription">
             Sound, energy and emotion
             coming together.
         </div>
@@ -1044,7 +1271,7 @@ footer{
 
     <div class="quote">
 
-        <div class="quote-mark">
+        <div class="quoteMark">
             “
         </div>
 
@@ -1053,7 +1280,7 @@ footer{
             The world is my inspiration.
         </div>
 
-        <div class="quote-author">
+        <div class="author">
             — HAERVIU
         </div>
 
@@ -1062,17 +1289,17 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- ======================================================
      FOOTER
-========================= -->
+====================================================== -->
 
 <footer id="contact">
 
-    <div class="footer-brand">
+    <div class="footerBrand">
         HAERVIU
     </div>
 
-    <div class="footer-center">
+    <div>
         MUSIC · VISUALS · EXPERIMENTS
     </div>
 
